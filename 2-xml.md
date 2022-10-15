@@ -224,7 +224,7 @@ dels error existents. Existeixen validadors en línia com XML Validation http://
 
 **Activitat 7**. Valida alguns dels exemples anteriors amb el validador online.
 
-## 2.8. Espai de noms
+## 2.7. Espai de noms
 
 Els noms dels elements XML els escull el desenvolupador. Podem tenir diferents aplicacions que generin elements amb idèntic nom però diferent significat.
 Aquí tenim un codi XML que fa servir l’element title per descriure el títol d’una entrada bibliogràfica:
@@ -287,7 +287,7 @@ Referències:
 
 https://edutechwiki.unige.ch/en/XML_namespace#Namespaces
 
-## 2.9. Correció sintàctica a XML
+## 2.8. Correció sintàctica a XML
 
 L'especificació XML defineix la sintaxi que el llenguatge ha de seguir:
 
