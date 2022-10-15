@@ -155,3 +155,5 @@ Per declarar l’element &lt;employee&gt; amb XSD:
     </xs:element>
 
 
+## 3.4. Facetes
+
