@@ -41,49 +41,47 @@ http://www.corefiling.com/opensource/schemaValidate.html
 ### 3.2.1. Regles XSD
 
 Un esquema XML és un document XML que ha de complir les següents regles:
-• L'element arrel s'anomena <schema>.
-• L'espai de noms ha de ser http://www.w3.org.2001/XMLSchema. Es
-pot no usar prefixe, o utilitzar xs o xsd:
-<?xml versión=”1.0”?>
-<xs:schema xmnls:xs =”http://www.w3.org.2001/XMLSchema”>
-.....
-</xs:schema>
-• Igual que a DTD, hem de declarar l'element arrel del nostre XML, la seva
-sintaxis seria:
-<xs:element name = "nombreElementoRaiz">
-Aquest element conté l'atribut name que defineix l'element arrel del
-document. Podem tenir més d'un element arrel al nostre esquema.
-<?xml versión=”1.0”?>
-<xs:schema xmlns:xs =”http://www.w3.org.2001/XMLSchema”>
-<xs:element name=”coche” />
-<xs:element name=”barco” />
-</xs:schema>
-• L'ordre en que es declaren els elements (anomenats components a XSD) no
-és rellevant.
-• Per a vincular un esquema amb un document XML, al nostre XML afegirem
-dos atributs a l'element arrel:
-<?xml version = “1.0” encoding = “UTF-8”?>
-<coches xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance”
-xsi:noNamespaceSchemaLocation = “landrover.xsd”>
-...
-</coches>
-A l'arxiu landrover.xsd tindriem les nostres declaracions XSD.
-Els components principals d'un esquema són xs:schema i xs:element. El
-components de tipus xs:element poden ser de tipus simpleType o complexType.
-Els elements simpleType només poden tenir un valor de text, no poden contenir
-altres elements o atributs.
+
+* L'element arrel s'anomena &lt;schema&gt;.
+* L'espai de noms ha de ser http://www.w3.org.2001/XMLSchema. Es pot no usar prefixe, o utilitzar xs o xsd:
+
+      <?xml versión=”1.0”?>
+      <xs:schema xmnls:xs =”http://www.w3.org.2001/XMLSchema”>
+      .....
+      </xs:schema>
+
+* Igual que a DTD, hem de declarar l'element arrel del nostre XML, la seva sintaxis seria:
+
+      <xs:element name = "nombreElementoRaiz">
+
+Aquest element conté l'atribut name que defineix l'element arrel del document. Podem tenir més d'un element arrel al nostre esquema.
+
+      <?xml versión=”1.0”?>
+        <xs:schema xmlns:xs =”http://www.w3.org.2001/XMLSchema”>
+        <xs:element name=”coche” />
+        <xs:element name=”barco” />
+      </xs:schema>
+
+* L'ordre en que es declaren els elements (anomenats components a XSD) no és rellevant.* 
+* Per a vincular un esquema amb un document XML, al nostre XML afegirem dos atributs a l'element arrel:
+
+    <?xml version = “1.0” encoding = “UTF-8”?>
+    <coches xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” xsi:noNamespaceSchemaLocation = “landrover.xsd”>
+      ...
+    </coches>
+
+
+A l'arxiu landrover.xsd tindriem les nostres declaracions XSD. Els components principals d'un esquema són xs:schema i xs:element. El components de tipus xs:element poden ser de tipus simpleType o complexType. Els elements simpleType només poden tenir un valor de text, no poden contenir altres elements o atributs.
+
 Atributs principals de xs:element:
-• name: indica el nom de l'element, obligatori si és l'arrel.
-• ref: indica el nom d'un altre element que es troba en el document.
-• type: indica el tipus d'element (veure a continuació).
-• default: valor per defecte que pendrà l'element. Només es pot utilitzar per
-a continguts amb texte.
-• fixed: indica l'únic valor possible, sempre que sigui texte.
-• minOccurs: número mínim d'ocurrències d'un element dintre del document
-XML. Els valors possibles són desde 0 fins a unbounded (il.limitat).
-• maxOccurs: número màxim d'ocurrències d'un element dintre del document
-XML. Els valors possibles són desde 0 fins a unbounded (il.limitat).
-• id: identificador únic per a l'element
+* name: indica el nom de l'element, obligatori si és l'arrel.
+* ref: indica el nom d'un altre element que es troba en el document.
+* type: indica el tipus d'element (veure a continuació).
+* default: valor per defecte que pendrà l'element. Només es pot utilitzar per a continguts amb texte.
+* fixed: indica l'únic valor possible, sempre que sigui texte.
+* minOccurs: número mínim d'ocurrències d'un element dintre del document XML. Els valors possibles són desde 0 fins a unbounded (il.limitat).
+* maxOccurs: número màxim d'ocurrències d'un element dintre del document XML. Els valors possibles són desde 0 fins a unbounded (il.limitat).
+* id: identificador únic per a l'element
 
 ## 3.2.2. Tipus de dades
 
@@ -123,6 +121,7 @@ Els atributs principals son:
 * id: indica identificador únic per al atribut.
 
 Exemple:
+
       <xs:attribute name="alias" type="xs:string"/>
       <!-- Ahora podemos usarlo dentro de un elemento nombre -->
       <nombre alias=”Snake”> Plissken </nombre>
