@@ -168,14 +168,14 @@ pels espais de noms, que veurem a continuació).
 
 **Activitat 6.** 
 Omple la següent taula:
-Nom Correcte Si/No i perquè
-<Nombre_Persona> </Nombre_persona>
-<1_Codigo> </1_Codigo>
-<día/mes/año> </día/mes/año>
-<関東中> </関東中>
-<Delegado provincial> </Delegado
-provincial>
-<Código-Interno> </Código-interno>
+      Nom Correcte Si/No i perquè
+
+      <Nombre_Persona> </Nombre_persona>
+      <1_Codigo> </1_Codigo>
+      <día/mes/año> </día/mes/año>
+      <関東中> </関東中>
+      <Delegado provincial> </Delegado provincial>
+      <Código-Interno> </Código-interno>
 
 Elements vs Atributs
 Les dades poden ser emmagatzemades tant als elements com als atributs. Per exemple, podem veure els següents exemples:
@@ -257,20 +257,16 @@ Per exemple:
 
 A tenir en compte:
 
-* La URI no ha d’apuntar a cap web que estigui on-line, és només un
-identificador únic. Si volguèssim desenvolupar un llenguatge XML per un
-àmbit, hauriem de tenir una web on hi hagués un índex de tots els elements
-que es poden fer servir.
+* La URI no ha d’apuntar a cap web que estigui on-line, és només un identificador únic. Si volguèssim desenvolupar un llenguatge XML per un àmbit, hauriem de tenir una web on hi hagués un índex de tots els elements que es poden fer servir.
 
-* Quan fem servir un element d’aquell espai de noms, afegim el prefix seguit
-del nom de l’element, separat per dos punts.
+* Quan fem servir un element d’aquell espai de noms, afegim el prefix seguit del nom de l’element, separat per dos punts.
 
       <prefix:element>data</prefix:element>
 
 L’inconvenient d’aquest sistema és que hem d’afegir el prefixe per a cada element. Si fem servir majoritàriament un espai de noms, podem definir-ho com a
 espai de noms per defecte. Simplement treiem el prefix:
 
-    <element xmlns="URI">
+      <element xmlns="URI">
 
 En aquest cas, ja no haurem d’afegir el prefix a cada element. Per exemple, per escriure un doment en XHTML:
 
