@@ -315,7 +315,7 @@ Els indicadors **maxOccurs** i **minOccurs** es poden utilitzar com a atributs d
 Exemples:
 
 ```xml
-      <xs:element name"book" maxOccurs>
+      <xs:element name="book" maxOccurs="unbounded">
       <xs:complexType >
         <xs:sequence>
           <xs:element name="cotxe" type="xs:string"/>
