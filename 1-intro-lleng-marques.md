@@ -44,6 +44,7 @@ Tim Berners-Lee. HTML també deriva de SGML, però no és un metallenguatge. L�
 
 La següent imatge ens relaciona els diferents llenguatges de la família GML.
 
+
 ![Llenguatges família GML](/assets/img/sgml-xml-html.drawio.png "Llenguatges família GML")
 
 ## 1.3. Característiques dels llenguatges de marques
@@ -68,13 +69,13 @@ Els llenguatges de marques han evolucionat i és fan servir en moltes àrees, no
 
 Podem classificar els llenguatges de marques segons els tipus de marques que utilitzen:
 
-* Presentació.
+* **Presentació**.
 Aquests llenguatges especifiques característiques com el tamany de la font, centrar el texte o cambiar una paraula a negreta o cursiva. Els procesadors de texte i en general les aplicacions d'edició professional fan servir aquest marcatge.
 
-* Descriptiu, estructural o semàntic.
+* **Descriptiu, estructural o semàntic**.
 En aquest cas els llenguatges especifiquen com s'estrucura el document, sense especificar com s'han de presentar a la pantalla. Aquests llenguatges creen documents amb **estructures d'arbre** que emmagatzemen la informació. Per tant podríem parlar de bases de dades. No obstant això, els llenguatges de marques no tenen algunes de les característiques de les BBDD com les taules o les regles d'integritat, i tanbé se les anomena **Bases de Dades semiestructurades**.
 
-* Híbrid.
+* **Híbrid**.
 Aquests llenguatges contenen marques dels dos tipus anteriors.
 
 **Activitat 2** 

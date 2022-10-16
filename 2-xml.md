@@ -2,7 +2,7 @@
 
 ## 2.1. Què és XML?
 
-XML o eXtended Markup Language és un sistema de emmagatzemament d'informació basat en marques o etiquetes definides per l'usuari. XML està dissenyat per a emmagatzemar dades. A diferència de HTML (un altre llenguatge de marques), XML no diu res de com mostrar les dades en un navegador. A XML les etiquetes no estan predefinides com a HTML. Cada usuari pot definir les seves etiquetes depenent de l'àmbit al que pertany el document.  
+XML o eXtended Markup Language és un sistema de emmagatzemament d'informació basat en marques o etiquetes definides per l'usuari. XML està dissenyat per a emmagatzemar dades i enviar-les per la xarxa. A diferència de HTML (un altre llenguatge de marques), XML no diu res de com mostrar les dades en un navegador. A XML les etiquetes no estan predefinides com a HTML. Cada usuari pot definir les seves etiquetes depenent de l'àmbit al que pertany el document.  
 
 Els llenguatges de marques han de complir una sèrie de regles. Aquestes regles faran que el document XML sigui correcte sintàcticament o estigui ben format. Per exemples, les etiquetes s'han d'obrir i tancar en ordre invers, els valors dels atributs han d’anar entre cometes, comentaris, etc.
 
@@ -25,12 +25,12 @@ fixe, sino que els desenvolupadors poden crear els elements que necessitin amb l
 
 Què NO és XML?
 
-* No és un llenguatge de programació, de forma que no existeixen compiladors de XML que generin executables a partir d'un document XML.
+* **No és un llenguatge de programació**, de forma que no existeixen compiladors de XML que generin executables a partir d'un document XML.
 
-* No és un protocol de comunicacions, de forma que no enviarà dades per nosaltres a Internet, com tampoc ho fa HTML. Tenim protocols de
+* **No és un protocol de comunicacion**, de forma que no enviarà dades per nosaltres a Internet, com tampoc ho fa HTML. Tenim protocols de
 comunicacions com HTTP, FTP.
 
-* No és un gestor de BBDD (SGDB). Una BBDD relacional pot contenir camps de tipus XML. Existeixen inclús BBDD natives en XML, és a dir que guarden i
+* **No és un gestor de BBDD (SGDB)**. Una BBDD relacional pot contenir camps de tipus XML. Existeixen inclús BBDD natives en XML, és a dir que guarden i
 recuperen la informació en format XML, però aquests sistemes en sí mateixos no són una BBDD.
 
 XML té format de texte pla, i es pot transmetre per Internet doncs són relativament lleugers. L'extensió dels arxius serà XML (encara que no és obligatori, qualsevol arxiu XML es pot veure amb un editor de texte).
@@ -39,7 +39,9 @@ XML té format de texte pla, i es pot transmetre per Internet doncs són relativ
 
 La informació en un document XML s'organitza de forma jeràrquica, de forma que els elements es relacionen entre ells mitjançant relacions: pares, fills, germans.
 
-Aquesta estructura jeràrquica es denomina arbre. Cada element o node està connectar amb altre node. Als nodes que no tenen fills se'ls anomena nodes finals o fulles i a la resta nodes intermitgos o branques.
+![Estructura document XML](/assets/img/2-3-XML-estructura.drawio.png "Estructura document XML")
+
+Aquesta estructura jeràrquica es denomina arbre. Cada element o node està connectat amb altre node. Als nodes que no tenen fills se'ls anomena nodes finals o fulles i a la resta nodes intermitgos o branques.
 
 Per exemple, si volem tenir una agenda, crearem l'element &lt;persona&gt; que conté els elements &lt;nom&gt;, &lt;cognoms&gt; i telèfons que a la seva vegada pot contenir múltiples numeros.
 
@@ -63,16 +65,22 @@ Per exemple, si volem tenir una agenda, crearem l'element &lt;persona&gt; que co
 L'estructura d'un document XML està formada pels següents tipus de nodes:
 
 ### Arrel. 
+
 Aquest element s'anomena node arrel i es designa com "/". Es fa servir principalment per recòrrer l'arbre XML i processar la resta de nodes.
 El node arrel només hi pot haver-hi un, i no té ni ascendents ni germans, només descendents.
 
 ### Elements. 
+
 És la unitat bàsica dels documents XML i contenen la informació. Delimiten la informació fent servir una etiqueta d'obertura i un altre de tancament. Entre aquestes etiquetes es troba el contingut de l'element, que pot ser una dada, altres elements o estar buit.
 
+![Elements XML](/assets/img/2-41-xml-element.drawio.png "Elements XML")
+
 ### Elements buits. 
+
 Poden tenir atributs, però no tenen contingut i s'obre i es tanca amb una sola etiqueta.
 
 ### Atributs. 
+
 Són parells nom-valor que permeten especificar dades adicionals d'un element. Estan ubicats a l'etiqueta d'obertura. Es fan servir per emmagatzemar informació adicional sobre el contingut. Per exemple, per especificar les unitats de mesura:
 
 ```xml
@@ -101,10 +109,12 @@ El texte representa les dades d'un document XML. Pot aparèixer com a contingut 
 Els espais en blanc entre elements són ignorats.
 
 ### Comentaris. 
+
 Els comentaris comencen pels caràcters &lt;!-- i es tanquen amb els caràcters --&gt;. Dintre dels comentaris es pot escriure qualsevol caràcter excepte el doble guió (--) que pot confondre l'analitzador amb una etiqueta de tancament. Els comentaris, com en el cas de la programació, són fonamentals per a la
 comprensió del document XML, ja que és on explicarem per a que serveix cadascun dels elements. Els comentaris són molt últils quan tornem al nostre document al cap d'un temps o quan l'utilitzen altres programadors.
 
 ### Instruccions de processament. 
+
 Comencen per &lt;? i terminen per ?&gt;. Són instruccions per al processador XML (el programa que analitza els documents XML) de manera que aquestes instruccions són independents del document XML. No formen part del document XML. Es fan servir per especificar la versió de XML que fem servir, la codificació del texte i per últim indiquem si el fitxer té altres fitxers externs de definició associants.
 
 Exemple:
@@ -113,6 +123,7 @@ Exemple:
 ```
 
 ### Entitats predefinides. 
+
 Són entitats que permeten escriure alguns caràcters especials de marcatge, i per tant són interpretades. A la següent taula podem veure les entitats predefinides a XML.
 
 | Entitat | Caràcter |
@@ -124,13 +135,16 @@ Són entitats que permeten escriure alguns caràcters especials de marcatge, i p
 | &quot;  | "        |
 
 ### Seccions CDATA. 
+
 Són equivalents als comentaris, donat que l'analitzador (parser) XML no els processarà. No poden aparèixer ni abans de l'element arrel ni després del seu tancament. Fa servir l'etiqueta &lt;![CDATA[ per l'inici i ]]&gt; per indicar la fi.
 
 ### Definicions de tipus de document (DTD). Els documents DTD i XSD
-permeten definir regles que imposen restriccions sobre els elements XML. La seva existència no és obligatoria per tal que el document estigui ben format, però si hem d'afegir aquesta línea si volem tenir un document vàlid.
+
+Permeten definir regles que imposen restriccions sobre els elements XML. La seva existència no és obligatoria per tal que el document estigui ben format, però si hem d'afegir aquesta línea si volem tenir un document vàlid.
 
 Exemple complet:
 
+![Exemple XML](assets/img/2-42-exemple-complet.drawio.png "Exemple XML")
 
 
 ## 2.5. Editors XML
