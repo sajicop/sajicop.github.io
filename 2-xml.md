@@ -1,5 +1,34 @@
 # Tema 2. XML: Emmagatzemament de dades
 
+[taula de continguts generada des de https://ecotrust-canada.github.io/markdown-toc/]: #
+
+## Índex de continguts
+
+- [Tema 2. XML: Emmagatzemament de dades](#tema-2-xml--emmagatzemament-de-dades)
+  * [2.1. Què és XML?](#21-qu---s-xml-)
+  * [2.2. Què és i què no és XML.](#22-qu---s-i-qu--no--s-xml)
+  * [2.3. Estructura d'un document XML](#23-estructura-d-un-document-xml)
+  * [2.4. Model de dades d'un document XML. Nodes.](#24-model-de-dades-d-un-document-xml-nodes)
+    + [Arrel.](#arrel)
+    + [Elements.](#elements)
+    + [Elements buits.](#elements-buits)
+    + [Atributs.](#atributs)
+    + [Texte.](#texte)
+    + [Comentaris.](#comentaris)
+    + [Instruccions de processament.](#instruccions-de-processament)
+    + [Entitats predefinides.](#entitats-predefinides)
+    + [Seccions CDATA.](#seccions-cdata)
+    + [Definicions de tipus de document (DTD). Els documents DTD i XSD](#definicions-de-tipus-de-document--dtd--els-documents-dtd-i-xsd)
+  * [2.5. Editors XML](#25-editors-xml)
+  * [2.5. Elements. Regles i consideracions](#25-elements-regles-i-consideracions)
+  * [2.6. Analitzadors XML (XML Parser)](#26-analitzadors-xml--xml-parser-)
+  * [2.7. Espai de noms](#27-espai-de-noms)
+  * [2.8. Correció sintàctica a XML](#28-correci--sint-ctica-a-xml)
+  * [Consells de disseny](#consells-de-disseny)
+    + [1. Nivell desglossament dades](#1-nivell-desglossament-dades)
+
+---------------------
+
 ## 2.1. Què és XML?
 
 XML o eXtended Markup Language és un sistema de emmagatzemament d'informació basat en marques o etiquetes definides per l'usuari. XML està dissenyat per a emmagatzemar dades i enviar-les per la xarxa. A diferència de HTML (un altre llenguatge de marques), XML no diu res de com mostrar les dades en un navegador. A XML les etiquetes no estan predefinides com a HTML. Cada usuari pot definir les seves etiquetes depenent de l'àmbit al que pertany el document.  
@@ -329,7 +358,9 @@ Un document XML es diu que està ben format quan segueix les regles establertes 
 
 ## Consells de disseny
 
-### 1. Fins a quan hem de desglossar les nostres dades, partir-les en unitats més petites? 
+### 1. Nivell desglossament dades
+
+Fins a quan hem de desglossar les nostres dades, partint-les en unitats més petites? 
 
 Els valors de les dades s'han de desglossar al nivell més baix possible. Això els permet ser processats de diverses formes per diferents usos, com a visualització, operacions matemàtiques i validació de les dades. És molt més fàcil concatenar dos valors de dades de nou que no pas dividir-los. A més, les dades més granulars són molt més fàcils de validar.
 

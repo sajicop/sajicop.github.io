@@ -1,5 +1,31 @@
 #  Tema 3. Validació de documents XML (XSD)
 
+[taula de continguts generada des de https://ecotrust-canada.github.io/markdown-toc/]: #
+
+## Índex de continguts
+
+- [Tema 3. Validació de documents XML (XSD)](#tema-3-validaci--de-documents-xml--xsd-)
+  * [3.1. Esquemes a XML, una introducció (XSD i DTD).](#31-esquemes-a-xml--una-introducci---xsd-i-dtd-)
+    + [3.1.1. DTD i XSD](#311-dtd-i-xsd)
+  * [3.2. Estructura d'un esquema XML.](#32-estructura-d-un-esquema-xml)
+    + [3.2.1. Regles XSD](#321-regles-xsd)
+    + [3.2.2. Vinculació d'un document XML amb un document XSD.](#322-vinculaci--d-un-document-xml-amb-un-document-xsd)
+    + [3.2.3. Elements](#323-elements)
+    + [3.2.4. Tipus de dades](#324-tipus-de-dades)
+    + [3.2.5. Atributs](#324-atributs)
+  * [3.3. ComplexType a XSD i exemples.](#33-complextype-a-xsd-i-exemples)
+  * [3.4. Indicadors](#34-indicadors)
+  * [3.5. Facetes](#35-facetes)
+    + [1. Restriccions per valors](#1-restriccions-per-valors)
+    + [2. Restriccions per una sèrie de valors](#2-restriccions-per-una-s-rie-de-valors)
+    + [3. Restriccions per una sèrie de valors (patrons)](#3-restriccions-per-una-s-rie-de-valors--patrons-)
+    + [4. Restriccions amb els caràcters "white-space"](#4-restriccions-amb-els-car-cters--white-space-)
+    + [5. Restriccions de tamany](#5-restriccions-de-tamany)
+    + [6. Restriccions disponibles per als tipus de dades](#6-restriccions-disponibles-per-als-tipus-de-dades)
+    + [7. Altres exemples amb restriccions](#7-altres-exemples-amb-restriccions)
+
+---------------------
+
 ## 3.1. Esquemes a XML, una introducció (XSD i DTD).
 
 Una vegada el nostre document XML és correcte sintàcticament, veurem com validar-lo. Els esquemes serveixen per a comprobar que un document XML és vàlid respecte a un conjunt de regles ben definit. Donat el següent XML:
@@ -105,7 +131,7 @@ Un esquema XML és un document XML que ha de complir les següents regles:
 
 * L'ordre en que es declaren els elements (anomenats **components** a XSD) no és rellevant.
 
-### Vinculació d'un document XML amb un document XSD.
+### 3.2.2. Vinculació d'un document XML amb un document XSD.
 
 * Per a vincular un esquema amb un document XML hem d'afegir l'atribut __noNamespaceSchemaLocation__ a l'element arrel **del nostre document XML**:
 
@@ -118,7 +144,7 @@ Un esquema XML és un document XML que ha de complir les següents regles:
 
 En l'exemple anterior, a l'arxiu __landrover.xsd__ tindrem les nostres declaracions XSD. Els blocs principals d'un esquema XSD són **xs:element** i **xs:attribute**, que veurem a continuació.
 
-## 3.2.2. Elements i tipus de dades
+### 3.2.3. Elements
 
 A XSD podem dividir els elements en **elements simples** i **elements complexos**. Els elements simples només poden contenir texte. És a dir, no poden contenir altres fills, **ni tampoc tenir atributs**.
 
@@ -135,7 +161,7 @@ Atributs principals de **&lt;xs:element&gt;**:
 | maxOccurs   | número màxim d'ocurrències d'un element. Els valors possibles són desde 0 fins a unbounded (il.limitat). |
 | id          | identificador únic per a l'element |
 
-**Tipus de dades**
+### 3.2.4. Tipus de dades
 
 Els tipus de dades més comuns a XSD són:
 
@@ -167,7 +193,7 @@ Exemples:
     </xs:schema>
 ```    
 
-## 3.2.3. Atributs
+### 3.2.5. Atributs
 
 Fem servir el component  <xs:attribute> per especificar els atributs dels nostre document XML.
 
@@ -224,8 +250,107 @@ Per declarar l’element &lt;employee&gt; amb XSD:
       </xs:complexType>
     </xs:element>
 ```
+## 3.4. Indicadors
 
-## 3.4. Facetes
+Hi ha set indicadors a XML. Els indicadors especifiquen com s'utilitzen els elements dintre del document XML.
+
+### 3.4.1. Indicadors d'ordre
+
+Cada element complexe (excepte els elements buits) conté un únic model de grup.
+
+**Sequence**
+L'indicador sequence s'utilitza per indicar l'ordre dels elements (si apareixen) fills de l'element complexe. Els elements contenen un indicador d'ocurrència, com minOccurs, però aquest és opcional.
+
+Exemple:
+
+```xml
+      <xs:element name"employee">
+      <xs:complexType >
+        <xs:sequence>
+          <xs:element name="firstname" type="xs:string"/>
+          <xs:element name="lastname" type="xs:string"/>
+          <xs:element name="registration-date" type="xs:"/>
+        </xs:sequence>
+      </xs:complexType>
+      </xs:element>
+```
+
+**All**
+L'indicador all es comporta com el seqüence, excepte que no es necessari que surtin tots els elements ni en el mateix ordre. Si surten, només poden sortir un cop.
+
+```xml
+      <xsd:element name="samarreta">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="color" type="xsd:string"/>
+            <xsd:element name="tamany" type="tamanys-roba"/>
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+```
+
+**Choice**
+L'indicador choice declara un grup d'elements del qual només sortirà un al document XML
+
+```xml
+      <xs:element name"vehicle-motor">
+      <xs:complexType >
+        <xs:sequence>
+          <xs:element name="cotxe" type="xs:string"/>
+          <xs:element name="moto" type="xs:string"/>
+          <xs:element name="camio" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      </xs:element>
+
+```
+
+
+### 3.4.2. Indicadors d'ocurrència
+
+Els indicadors d'ocurrència determinen el número de vegades que surt un element en el document XML. Els valors per defecte de minOccurs i maxOccurs és 1.
+
+Els indicadors **maxOccurs** i **minOccurs** es poden utilitzar com a atributs dintre dels xs:element i els indicadors d'ordre (xs:sequence, xs:choice).
+
+Exemples:
+
+```xml
+      <xs:element name"book" maxOccurs>
+      <xs:complexType >
+        <xs:sequence>
+          <xs:element name="cotxe" type="xs:string"/>
+          <xs:element name="moto" type="xs:string"/>
+          <xs:element name="camio" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      </xs:element>
+```
+
+### 3.4.3. Indicadors de grup
+
+**Group name** i **attributeGroup name**
+Podem definir un grup d'elements o atributs, donar-li un nom i fer referència al grup desde una altra definició. Exemple
+
+```xml
+      <xs:group name="persona-grup">
+        <xs:sequence>
+          <xs:element name="nom" type="xs:string"/>
+          <xs:element name="cognom" type="xs:string"/>
+          <xs:element name="data-naixement" type="xs:date"/>
+        </xs:sequence>
+      </xs:group>
+
+      <xs:element name="person" type="personinfo"/>
+
+      <xs:complexType name="personinfo">
+        <xs:sequence>
+          <xs:group ref="persona-group"/>
+          <xs:element name="country" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType> 
+```
+
+## 3.5. Facetes
 
 Las restriccions a XSD -també anomenades facetes- s'utilizan per a definir un rang de valors acceptable per als elements simples o atributs XML. Les restriccions a XML també s'anomenen facetes.
 
