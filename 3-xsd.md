@@ -11,14 +11,11 @@ Una vegada el nostre document XML és correcte sintàcticament, veurem com valid
 </llibre>
 ```
 
-Un esquema permet validar, per exemple:
+Un esquema permet validar:
 
 * L'estructura dels elements i els atributs. 
-  Per exemple, l'element __llibre__ ha de contenir els elements __autor__ i __titol__, i opcionalment l'atribut __isbn__.
+  Per exemple, l'element ```xmlllibre``` ha de contenir els elements __autor__ i __titol__, i opcionalment l'atribut __isbn__.
 
-  Per exemple, si estem definint un document XML per als llibres d'una biblioteca, podem decidir que per a cada llibre hem d'incloure un identificador únic (per
-  exemple el ISBN), el title i l'autor principal.
- 
 * L'ordre dels elements. Per exemple, podem especificar que l'element __autor__ va abans que __titol__,
 
 * Tipus de dades dels elements i els atributs: Numero, texte, decimal. També es poden definir tipus de dades basades en rangs, enumeracions i coincidència de patrons (patterns). Per exemple, podem definir que l'atribut isbn tingui el patró 0-0000-0000-0.
