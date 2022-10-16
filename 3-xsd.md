@@ -47,7 +47,7 @@ Un esquema XML és un document XML que ha de complir les següents regles:
 * L'element arrel s'anomena **&lt;schema&gt;**.
 * L'espai de noms ha de ser [http://www.w3.org.2001/XMLSchema](http://www.w3.org.2001/XMLSchema). Es pot no usar prefixe, utilitzar xs o xsd:
 
-```xsd
+```xml
       <?xml versión=”1.0”?>
       <xs:schema xmnls:xs =”http://www.w3.org.2001/XMLSchema”>
       .....
