@@ -42,6 +42,10 @@ si volem fer servir les seves característiques especials.
 * **HTML** o HyperText Markup Language és el llenguatge de marques estandar dissenyat per a ser mostrat al navegador i va ser creat a finals de 1990 per
 Tim Berners-Lee. HTML també deriva de SGML, però no és un metallenguatge. L’última versió de HTML, HTML5 va sortir el 2014. Apart dels llenguatges abans esmenats, n'hi ha d'altres basats en XML
 
+La següent imatge ens relaciona els diferents llenguatges de la família GML.
+
+![Llenguatges família GML](/assets/img/sgml-xml-html.drawio.png "Llenguatges família GML")
+
 ## 1.3. Característiques dels llenguatges de marques
 
 Els llenguatges de marques tenen les següents característiques:
