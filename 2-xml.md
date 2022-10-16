@@ -186,14 +186,14 @@ pels espais de noms, que veurem a continuació).
 **Activitat 6.** 
 Omple la següent taula:
 
-      |Nom                                          | Correcte Si/No | Motiu |
-      |---------------------------------------------|----------------|-------|
-      | <Nombre_Persona> </Nombre_persona>          | | | 
-      | <1_Codigo> </1_Codigo>                      | | | 
-      | <día/mes/año> </día/mes/año>                | | | 
-      | <関東中> </関東中>                            | | | 
-      | <Delegado provincial> </Delegado provincial>| | | 
-      | <Código-Interno> </Código-interno>          | | | 
+|Nom                                          | Correcte Si/No | Motiu |
+|---------------------------------------------|----------------|-------|
+| <Nombre_Persona> </Nombre_persona>          | | | 
+| <1_Codigo> </1_Codigo>                      | | | 
+| <día/mes/año> </día/mes/año>                | | | 
+| <関東中> </関東中>                            | | | 
+| <Delegado provincial> </Delegado provincial>| | | 
+| <Código-Interno> </Código-interno>          | | | 
 
 Elements vs Atributs
 Les dades poden ser emmagatzemades tant als elements com als atributs. Per exemple, podem veure els següents exemples:
