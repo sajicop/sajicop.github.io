@@ -45,7 +45,7 @@ Tim Berners-Lee. HTML també deriva de SGML, però no és un metallenguatge. L�
 La següent imatge ens relaciona els diferents llenguatges de la família GML.
 
 
-![Llenguatges família GML](/assets/img/sgml-xml-html.drawio.png "Llenguatges família GML")
+![Llenguatges família GML](assets/img/sgml-xml-html.drawio.png "Llenguatges família GML")
 
 ## 1.3. Característiques dels llenguatges de marques
 

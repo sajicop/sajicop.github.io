@@ -39,7 +39,7 @@ XML té format de texte pla, i es pot transmetre per Internet doncs són relativ
 
 La informació en un document XML s'organitza de forma jeràrquica, de forma que els elements es relacionen entre ells mitjançant relacions: pares, fills, germans.
 
-![Estructura document XML](/assets/img/2-3-XML-estructura.drawio.png "Estructura document XML")
+![Estructura document XML](assets/img/2-3-XML-estructura.drawio.png "Estructura document XML")
 
 Aquesta estructura jeràrquica es denomina arbre. Cada element o node està connectat amb altre node. Als nodes que no tenen fills se'ls anomena nodes finals o fulles i a la resta nodes intermitgos o branques.
 
@@ -73,7 +73,7 @@ El node arrel només hi pot haver-hi un, i no té ni ascendents ni germans, nom�
 
 És la unitat bàsica dels documents XML i contenen la informació. Delimiten la informació fent servir una etiqueta d'obertura i un altre de tancament. Entre aquestes etiquetes es troba el contingut de l'element, que pot ser una dada, altres elements o estar buit.
 
-![Elements XML](/assets/img/2-41-xml-element.drawio.png "Elements XML")
+![Elements XML](assets/img/2-41-xml-element.drawio.png "Elements XML")
 
 ### Elements buits. 
 
@@ -100,10 +100,10 @@ El texte representa les dades d'un document XML. Pot aparèixer com a contingut 
 
 | Nom             |Simbol | Codi  | Abreviatura |
 |-----------------|-------|-------|-------------|
-| Tabulador       | \t    | &#9;  | TAB         |
-| Nova línea      | \n    | &#10; | LF          |
-| Retorn de carro | \r    | &#13; | CR          |
-| Espai           | \s    | &#32; | SPACE       |
+| Tabulador       | \\t    | \&#9;  | TAB         |
+| Nova línea      | \\n    | \&#10; | LF          |
+| Retorn de carro | \\r    | \&#13; | CR          |
+| Espai           | \\s    | \&#32; | SPACE       |
 
 
 Els espais en blanc entre elements són ignorats.
@@ -128,11 +128,11 @@ Són entitats que permeten escriure alguns caràcters especials de marcatge, i p
 
 | Entitat | Caràcter |
 |---------|----------|
-| &amp;   | &        |
-| &lt;    | <        |
-| &gt;    | >        |
-| &apos;  | '        |
-| &quot;  | "        |
+| \&amp;   | &        |
+| \&lt;    | <        |
+| \&gt;    | >        |
+| \&apos;  | '        |
+| \&quot;  | "        |
 
 ### Seccions CDATA. 
 
@@ -188,12 +188,12 @@ Omple la següent taula:
 
 |Nom                                          | Correcte Si/No | Motiu |
 |---------------------------------------------|----------------|-------|
-| <Nombre_Persona> </Nombre_persona>          | | | 
-| <1_Codigo> </1_Codigo>                      | | | 
-| <día/mes/año> </día/mes/año>                | | | 
-| <関東中> </関東中>                            | | | 
-| <Delegado provincial> </Delegado provincial>| | | 
-| <Código-Interno> </Código-interno>          | | | 
+| \<Nombre_Persona\> \</Nombre_persona\>          | | | 
+| \<1_Codigo\> \</1_Codigo\>                      | | | 
+| \<día/mes/año\> \</día/mes/año\>                | | | 
+| <関東中> <関東中>                            | | | 
+| \<Delegado provincial\> \</Delegado provincial\>| | | 
+| \<Código-Interno\> \</Código-interno\>          | | | 
 
 Elements vs Atributs
 Les dades poden ser emmagatzemades tant als elements com als atributs. Per exemple, podem veure els següents exemples:
@@ -269,7 +269,7 @@ Per utilitzar els espais de noms primer hem de definir-los. Per declarar un espa
 ```
 Per exemple:
 ```xml    
-    <b:book xmlns:b=”https://martinfowler.com/articles/writingInXml.html>”
+    <b:book xmlns:b="https://martinfowler.com/articles/writingInXml.html">
       <b:title>A true story</b:title>
       <b:description>A real cool publication</b:description>
     </b:book>
@@ -305,7 +305,7 @@ Els espais de noms s’utilitzen en la validació de documents XML (XML Schema /
 
 Referències:
 
-https://edutechwiki.unige.ch/en/XML_namespace#Namespaces
+[Edutech Wiki XML namespace](https://edutechwiki.unige.ch/en/XML_namespace#Namespaces)
 
 ## 2.8. Correció sintàctica a XML
 
