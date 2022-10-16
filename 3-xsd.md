@@ -264,7 +264,7 @@ L'indicador sequence s'utilitza per indicar l'ordre dels elements (si apareixen)
 Exemple:
 
 ```xml
-      <xs:element name"employee">
+      <xs:element name="employee">
       <xs:complexType >
         <xs:sequence>
           <xs:element name="firstname" type="xs:string"/>
@@ -293,7 +293,7 @@ L'indicador all es comporta com el seqüence, excepte que no es necessari que su
 L'indicador choice declara un grup d'elements del qual només sortirà un al document XML
 
 ```xml
-      <xs:element name"vehicle-motor">
+      <xs:element name="vehicle-motor">
       <xs:complexType >
         <xs:sequence>
           <xs:element name="cotxe" type="xs:string"/>
