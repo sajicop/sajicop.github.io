@@ -13,19 +13,35 @@ Una vegada el nostre document XML és correcte sintàcticament, veurem com valid
 
 Un esquema permet validar:
 
-* L'estructura dels elements i els atributs. 
-  Per exemple, l'element ```xmlllibre``` ha de contenir els elements __autor__ i __titol__, i opcionalment l'atribut __isbn__.
+* L'**estructura dels elements i els atributs.** 
+  Per exemple, l'element __llibre__ ha de contenir els elements __autor__ i __titol__, i opcionalment l'atribut __isbn__.
 
-* L'ordre dels elements. Per exemple, podem especificar que l'element __autor__ va abans que __titol__,
+* L'**ordre dels elements**. Per exemple, podem especificar que l'element __autor__ va abans que __titol__,
 
-* Tipus de dades dels elements i els atributs: Numero, texte, decimal. També es poden definir tipus de dades basades en rangs, enumeracions i coincidència de patrons (patterns). Per exemple, podem definir que l'atribut isbn tingui el patró 0-0000-0000-0.
+* **Tipus de dades** dels elements i els atributs. Enter, decimal o cadena de texte són alguns exemples. També es poden definir tipus de dades basades en rangs, enumeracions o coincidència de patrons (patterns). Per exemple, podem definir que l'atribut __isbn__ tingui el patró 0-0000-0000-0.
+
+Els esquemes XML poden tenir altres utilitats:
+
+* **Servir com a contracte entre empreses que es suministren productes**. Un esquema indica clarament quins elements han d'aparèixer en els documents que rebrà. Per exemple, pot especificar que totes les factures indiquin el NIF de l'empresa a qui es factura.
+
+* **Documentació de sistema**. Permet a qualsevol que vulgui, entendre els noms, atributs i estructura del document XML. També es poden fer anotacions.
+
+* **Incorporació de dades noves** XSD permet incorporar valors per defecte i fixes al document XML. També permet normalitzar els espais en blanc.
+
+XML Schema o XSD (XML Schema Definition) permet definir de forma molt precisa el contingut dels documents XML. Existeixen altres llenguatges d'esquema:
+
+* [Relax NG](https://relaxng.org/). Basat en gramàtica. És més fàcil d'entendre que XML Schema. Desenvolupat per [Oasis](https://www.oasis-open.org/).
+
+* [Schematron](https://en.wikipedia.org/wiki/Schematron). Està basat en afirmacións enlloc de gramàtica.
+
+També hi ha utilitats per convertir d'aquests formats a XSD.
 
 
 ### 3.1.1. DTD i XSD
 
 Un document ben format pot ser validat amb les tecnologies DTD (Document Type Definition) o XSD (XML Schema).
 
-DTD defineix els blocs o elements d'un document XML. DTD prové d'un subconjunt del llenguatge SGML. En la actualitat (2022)  aquest sistema no s'utilitza gaire, principalment degut a les seves limitacions.
+DTD defineix els blocs o elements d'un document XML. DTD prové d'un subconjunt del llenguatge SGML. Des de principis de 2000, DTD ha estat substituit per altres opcions com XSD o Relax NG, principalment degut a les seves limitacions.
 
 Algunes de les seves limitacions són:
 
@@ -36,14 +52,14 @@ Algunes de les seves limitacions són:
 
 L'alternativa als documents DTD són els esquemes XML o XSD (XML Schema Definition). 
 
-XSD supera totes les limitacions de DTD:
+XSD supera les limitacions de DTD:
 
 * Els documents XSD deriven de XML, per tant són documents XML i es poden comprobar sintàcticament.
 * XSD defineix molts tipus de dades predefinits.
 * XSD permet definir la cardinalitat dels elements.
 * XSD permet mesclar diferents vocabularis XML (espais de noms).
 
-Els XSD tenen l'inconvenient de que són lleugerament més difícils d'interpretar a diferència dels DTD.
+Els documents XSD tenen l'inconvenient de que són lleugerament més difícils d'interpretar que els DTD.
 
 Un Esquema XML és el motlle d'on sortiran els diferents documents XML que compliran l'estructura definida a l'esquema, cadascun amb les seves dades concretes.
 
@@ -54,34 +70,38 @@ Per validar els documents XML, podem fer servir les eines de programació vistes
 
 ## 3.2. Estructura d'un esquema XML.
 
+Per crear un esquema haurem de crear un document amb extensió XSD que validarà el document XML. Per indicar-li a un document XML quin document de validació volem fer servir, afegirem un atribut a l'element arrel del document XML.
 
 ### 3.2.1. Regles XSD
 
 Un esquema XML és un document XML que ha de complir les següents regles:
 
-* L'element arrel s'anomena **&lt;schema&gt;**.
+* L'element arrel s'anomena **schema**.
+
 * L'espai de noms ha de ser [http://www.w3.org.2001/XMLSchema](http://www.w3.org.2001/XMLSchema). Es pot no usar prefixe, utilitzar xs o xsd:
 
-```xml
-      <?xml versión=”1.0”?>
-      <xs:schema xmnls:xs =”http://www.w3.org.2001/XMLSchema”>
-      .....
-      </xs:schema>
-```      
+  ```xml
+        <?xml versión="1.0"?>
+        <xs:schema xmnls:xs ="http://www.w3.org.2001/XMLSchema">
+        .....
+        </xs:schema>
+  ```      
 
 * Igual que a DTD, el primer que hem de fer és declarar l'element arrel del nostre XML. La sintaxi de **xs:element** seria:
 
-      <xs:element name = "nombreElementoRaiz">
+  ```xml
+      <xs:element name = "nom-element-arrel">
+  ```
 
   Aquest element conté l'atribut name que defineix l'element arrel del document. XSD permet tenir més d'un element arrel al nostre esquema. 
 
-```xml
-      <?xml versión=”1.0”?>
-        <xs:schema xmlns:xs =”http://www.w3.org.2001/XMLSchema”>
-        <xs:element name=”coche” />
-        <xs:element name=”barco” />
-      </xs:schema>
-```        
+  ```xml
+        <?xml versión="1.0"?>
+          <xs:schema xmlns:xs ="http://www.w3.org.2001/XMLSchema">
+          <xs:element name="cotxe" />
+          <xs:element name="vaixell" />
+        </xs:schema>
+  ```        
 
 * L'ordre en que es declaren els elements (anomenats **components** a XSD) no és rellevant.
 
@@ -96,13 +116,13 @@ Un esquema XML és un document XML que ha de complir les següents regles:
       </arrel>
 ```
 
-A l'arxiu landrover.xsd tindrem les nostres declaracions XSD. Els blocs principals d'un esquema XSD són **xs:element** i **xs:attribute**, passem a definir-los a continuació.
+En l'exemple anterior, a l'arxiu __landrover.xsd__ tindrem les nostres declaracions XSD. Els blocs principals d'un esquema XSD són **xs:element** i **xs:attribute**, que veurem a continuació.
 
 ## 3.2.2. Elements i tipus de dades
 
-A XSD podem dividir els elements en ****elements simples** i **elements complexos**. Els elements simples només poden contenir texte. És a dir, no poden contenir altres fills, **ni tampoc tenir atributs**.
+A XSD podem dividir els elements en **elements simples** i **elements complexos**. Els elements simples només poden contenir texte. És a dir, no poden contenir altres fills, **ni tampoc tenir atributs**.
 
-Atributs principals de **xs:element**:
+Atributs principals de **&lt;xs:element&gt;**:
 
 | nom atribut | propòsit |
 |-------------|----------|
@@ -151,7 +171,7 @@ Exemples:
 
 Fem servir el component  <xs:attribute> per especificar els atributs dels nostre document XML.
 
-Atributs principals de **xs:attribute**:
+Atributs principals de **&lt;xs:attribute&gt;**:
 
 | nom atribut | propòsit |
 |-------------|----------|
@@ -173,7 +193,7 @@ Exemple:
 
 Un exemple complet:
 
-  https://www.w3schools.com/xml/schema_howto.asp
+  [XML Schema Tutorial](https://www.w3schools.com/xml/schema_intro.asp)
 
 **Activitat 9**.
 
@@ -211,10 +231,10 @@ Las restriccions a XSD -també anomenades facetes- s'utilizan per a definir un r
 
 ### 1. Restriccions per valors
 
-El següent exemple defineix un element anomenat "age" amb una restricció. El valor de l'edat no pot ser més petita que 0 o més gran que 120.
+El següent exemple defineix un element anomenat __edat__ amb una restricció. El valor de l'edat no pot ser més petita que 0 o més gran que 120.
 
 ```xml
-    <xs:element name="age">
+    <xs:element name="edat">
       <xs:simpleType>
         <xs:restriction base="xs:integer">
           <xs:minInclusive value="0"/>
@@ -226,10 +246,10 @@ El següent exemple defineix un element anomenat "age" amb una restricció. El v
 
 ### 2. Restriccions per una sèrie de valors
 
-Per limitar el contingunt d'un element XML a una sèrie acceptable de valors, farem servir la restricció d'enumeració. L'exemple que ve a continuació defineix un element anomenat "car" amb una restricció. Els únics valors acceptables son: Audi, Golf, BMW.
+Per limitar el contingunt d'un element XML a una sèrie acceptable de valors, farem servir la restricció d'enumeració. L'exemple que ve a continuació defineix un element anomenat __cotxe__ amb una restricció. Els únics valors acceptables son: Audi, Golf, BMW.
 
 ```xml
-    <xs:element name="car">
+    <xs:element name="cotxe">
       <xs:simpleType>
         <xs:restriction base="xs:string">
           <xs:enumeration value="Audi"/>
@@ -270,7 +290,7 @@ L'exemple següent defineix un element anomenat "letter" amb una restricció, qu
     </xs:element>
 ```    
 
-En el següent exemple només s'admeten **TRES** lletres majúscules (a fins z):
+En el següent exemple només s'admeten **tres** lletres majúscules (a fins z):
 
 ```xml
     <xs:element name="initials">
@@ -282,7 +302,7 @@ En el següent exemple només s'admeten **TRES** lletres majúscules (a fins z):
     </xs:element>
 ```
 
-En el següent exemple només s'admeten **TRES** lletres **MAJÚSCULES o MINÚSCULES**:
+En el següent exemple només s'admeten tres lletres **majúscules o minúscules**:
 
 ```xml
     <xs:element name="initials">
@@ -294,7 +314,7 @@ En el següent exemple només s'admeten **TRES** lletres **MAJÚSCULES o MINÚSC
     </xs:element>
 ```
 
-En el següent exemple només s'admet **UNA** de les següents lletres x, y o z:
+En el següent exemple només s'admet **una** de les següents lletres x, y o z:
 
 ```xml
     <xs:element name="choice">
@@ -306,7 +326,7 @@ En el següent exemple només s'admet **UNA** de les següents lletres x, y o z:
     </xs:element>
 ```
 
-Només s'accepten CINC digits en seqüència, cada dígit ha d'estar en el rang 0 fins a 9.
+Només s'accepten **cinc** digits en seqüència, cada dígit ha d'estar en el rang 0 fins a 9.
 
 ```xml
     <xs:element name="prodid">
@@ -320,7 +340,7 @@ Només s'accepten CINC digits en seqüència, cada dígit ha d'estar en el rang 
 
 ###  4. Restriccions amb els caràcters "white-space"
 
-Per especificar com es tracten els caracters "white-space", farem servir la restricció **whiteSpace**. 
+Per especificar com es tracten els caràcters "white-space", farem servir la restricció **whiteSpace**. 
 El següent exemple defineix un element anomenat "address" amb una restricció. La restricció está establerta a "preserve", que vol dir que el processador XML no esborrarà cap caracter "white-space" (espais, tabuladors, noves línees i retorns de carro).
 
 ```xml
