@@ -306,3 +306,29 @@ Un document XML es diu que està ben format quan segueix les regles establertes 
 * No pot haver-hi dos atrinuts amb el mateix nom associat al mateix element.
 * No es poden introduir instruccions de procesament ni comentaris en cap lloc de l'interior de les etiquetes d'obertura o tancament dels elements.
 * No pot haver res iabans de l'instrucció de procesament.
+
+## Consells de disseny
+
+### 1. Fins a quan hem de desglossar les nostres dades, partir-les en unitats més petites? 
+
+Els valors de les dades s'han de desglossar al nivell més baix possible. Això els permet ser processats de diverses formes per diferents usos, com a visualització, operacions matemàtiques y validació de les daes. És molt més fàcil concatenar dos valors de dades de nou que no pas dividir-los. A més, les dades més granulars són molt més fàcils de validar.
+
+És una pràctica força habitual posar un valor de dades i les seves unitats en el mateix element, per exemple &lt;length&gt;3cm&lt;/length&gt;. Tanmateix, l'enfocament preferit és tenir un atribut per a les unitats, per exemple &lt;length units="cm"&gt;3&lt;/length&gt;.
+
+L'ús d'un únic valor concatenat és limitant perquè:
+
+* És extremadament complicat de validar. S'ha d'aplicar un patró complicat que hauria de canviar cada vegada que s'afegeix un tipus d'unitat.
+
+* No es poden realitzar comparacions, conversions ni operacions matemàtiques amb les dades sense dividir-les.
+
+* Si es vol mostrar l'element de dades de manera diferent -per exemple, com "3 centímetres" o "3 cm" o només "3"-, l'heu de dividir. Això complica els fulls d'estil i les aplicacions que processen el document d'instància.
+
+També és possible anar massa lluny. Per exemple, podeu desglossar una data de la manera següent:
+
+    <dataComanda>
+      <any>2001</any>
+      <mes>06</mes>
+      <dia>15</dia>
+    </dataComanda>
+
+Probablement això sigui excessiu, tret que tingueu una necessitat especial de processar aquests elements per separat.
