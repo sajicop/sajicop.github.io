@@ -352,7 +352,7 @@ Podem definir un grup d'elements o atributs, donar-li un nom i fer referència a
 
 ## 3.5. Facetes
 
-Las restriccions a XSD -també anomenades facetes- s'utilizan per a definir un rang de valors acceptable per als elements simples o atributs XML. Les restriccions a XML també s'anomenen facetes.
+Las restriccions a XSD -també anomenades facetes- s'utilizan per a definir un rang de valors acceptable per als elements simples o atributs XML. 
 
 ### 1. Restriccions per valors
 
