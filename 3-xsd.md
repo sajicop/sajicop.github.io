@@ -1,17 +1,34 @@
 #  Tema 3. Validació de documents XML (XSD)
 
-## 3.1. Introducció. XSD vs DTD.
+## 3.1. Esquemes a XML, una introducció (XSD i DTD).
 
-Una vegada el nostre document XML és correcte sintàcticament, veurem com validar un document XML. Un document és vàlid si existeixen unes regles que defineixen quins elements aparèixen en el XML i de quin tipus (numero, texte, decimal), en quin ordre, quins són obligatoris o optatius i els atributs que conté cada element, entre altres. 
+Una vegada el nostre document XML és correcte sintàcticament, veurem com validar-lo. Els esquemes serveixen per a comprobar que un document XML és vàlid respecte a un conjunt de regles ben definit. Donat el següent XML:
 
-Per exemple, si estem definint un document XML per als llibres una llibreria, podem decidir que per a cada llibre hem d'incloure un identificador únic (per
-exemple el ISBN), el title i l'autor principal.
+```xml
+<llibre isbn="0-2777-6861-6">
+  <autor>J.D. Salinger</autor>
+  <titol>The Catcher in the Rye</titol>
+</llibre>
+```
 
-Podem crear un sistema per guardar tots els jugadors i equips d'una lliga de futbol. Podriem definir una regla que verifiqués que hi hagués onze elements dintre de cada equip o que un jugador no pot jugar en dos equips alhora.
+Un esquema permet validar, per exemple:
 
-Un document ben format pot ser validat amb les tecnologies DTD o XML Schema (XSD).
+* L'estructura dels elements i els atributs. 
+  Per exemple, l'element __llibre__ ha de contenir els elements __autor__ i __titol__, i opcionalment l'atribut __isbn__.
 
-Document Type Definition (DTD) defineix els blocs o elements d'un document XML. DTD prové d'un subconjunt del llenguatge SGML. En la actualitat (2022)  aquest sistema no s'utilitza gaire, principalment degut a les seves limitacions.
+  Per exemple, si estem definint un document XML per als llibres d'una biblioteca, podem decidir que per a cada llibre hem d'incloure un identificador únic (per
+  exemple el ISBN), el title i l'autor principal.
+ 
+* L'ordre dels elements. Per exemple, podem especificar que l'element __autor__ va abans que __titol__,
+
+* Tipus de dades dels elements i els atributs: Numero, texte, decimal. També es poden definir tipus de dades basades en rangs, enumeracions i coincidència de patrons (patterns). Per exemple, podem definir que l'atribut isbn tingui el patró 0-0000-0000-0.
+
+
+### 3.1.1. DTD i XSD
+
+Un document ben format pot ser validat amb les tecnologies DTD (Document Type Definition) o XSD (XML Schema).
+
+DTD defineix els blocs o elements d'un document XML. DTD prové d'un subconjunt del llenguatge SGML. En la actualitat (2022)  aquest sistema no s'utilitza gaire, principalment degut a les seves limitacions.
 
 Algunes de les seves limitacions són:
 
@@ -20,7 +37,7 @@ Algunes de les seves limitacions són:
 * No es pot donar un valor per defecte per als elements (si els atributs).
 * No soporta espais de noms.
 
-L'alternativa als documents DTD son els esquemes XML o XSD (XML Schema Definition). 
+L'alternativa als documents DTD són els esquemes XML o XSD (XML Schema Definition). 
 
 XSD supera totes les limitacions de DTD:
 
@@ -35,10 +52,11 @@ Un Esquema XML és el motlle d'on sortiran els diferents documents XML que compl
 
 Per validar els documents XML, podem fer servir les eines de programació vistes fins ara. També podem trobar alguns validadors on-line, com per exemple:
 
-[CoreFiling XML Schema Validator] (http://www.corefiling.com/opensource/schemaValidate.html)
+[CoreFiling XML Schema Validator](http://www.corefiling.com/opensource/schemaValidate.html)
 
 
 ## 3.2. Estructura d'un esquema XML.
+
 
 ### 3.2.1. Regles XSD
 
@@ -70,7 +88,9 @@ Un esquema XML és un document XML que ha de complir les següents regles:
 
 * L'ordre en que es declaren els elements (anomenats **components** a XSD) no és rellevant.
 
-* Per a vincular un esquema amb un document XML hem d'afegir l'atribut __noNamespaceSchemaLocation__ a l'element arrel:
+### Vinculació d'un document XML amb un document XSD.
+
+* Per a vincular un esquema amb un document XML hem d'afegir l'atribut __noNamespaceSchemaLocation__ a l'element arrel **del nostre document XML**:
 
 ```xml
       <?xml version = “1.0” encoding = “UTF-8”?>
@@ -148,9 +168,11 @@ Atributs principals de **xs:attribute**:
 
 Exemple:
 
+```xml
       <xs:attribute name="alias" type="xs:string"/>
       <!-- Ahora podemos usarlo dentro de un elemento nombre -->
       <nombre alias=”Snake”> Plissken </nombre>
+```
 
 Un exemple complet:
 
