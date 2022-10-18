@@ -317,8 +317,46 @@ A continuació tenim un exemple de cadascun i com definir-los a XSD.
 <color valor="blau"/>
 ```
 
-Definicions amb xml
+Definicions amb XSD:
 
+```xml
+<!--1 -->
+      <xs:element name="tamany">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="sistema" type="xs:string"></xs:attribute>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+
+<!--2 -->
+      <xs:element name="tamany">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="numero" type="xs:string"/>
+            <xs:element name="tamany" type="xs:integer"/>
+          </xs:sequence>          
+        </xs:complexType>
+      </xs:element>  
+
+<!--3 -->
+      <xs:element name="carta">
+        <xs:complexType mixed="true">
+          <xs:sequence>
+            <xs:element name="nomClient"></xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+<!--4 -->
+      <xs:element name="color">
+        <xs:complexType>
+          <xs:attribute name="valor" type="TipusColorValors"/>
+        </xs:complexType>
+      </xs:element>
+
+```
 
 
 
