@@ -133,6 +133,30 @@ Formats d’imatge admesos:
 Les llistes ens permeten mostrar elements amb vinyetes per formar una llista d’elements. Les llistes poden ser ordenades, desordenades i de definició. 
 Unordered List
 
+```html
+  <h3>Llista de la compra:</h3>
+  <ul>
+    <li>Patates</li>
+    <li>Vi</li>
+    <li>Pollastre</li>
+  </ul>
+  Ordered List
+  <h3>Grups favorits:</h3>
+  <ol>
+    <li>Led Zeppelin</li>
+    <li>Metallica</li>
+    <li>Iron Maiden</li>
+  </ol>
+  Definition List
+  Sintaxi:
+  <dl>
+    <dd>Definició-1</dd>
+    <dt>Terme-1</dt>
+    <dd>Definició-2</dd>
+    <dt>Terme-2</dt>
+  </dl>
+```
+
 <h3>Llista de la compra:</h3>
 <ul>
 <li>Patates</li>
@@ -155,6 +179,24 @@ Sintaxi:
 </dl>
 
 Exemple de llista de definicions:
+
+```html
+<p>Termes informàtics:</p>
+<dl>
+  <dt>Cookie</dt>
+  <dd>Un pequeño archivo de texto enviado por un sitio web
+  visitado. Permite reconocer al usuario y personalizar
+  la web.</dd>
+  <dt>Spam</dt>
+  <dd>Mensajes de correo no deseados enviados masivamente y
+  generalmente por motivos comerciales.</dd>
+  <dt>CAPTCHA</dt>
+  <dd>Las comprobaciones CAPTCHA permiten verificar que el
+  usuario de una web es un humano y no un bot o un
+  proceso automatizado.</dd>
+</dl>
+```
+
 <p>Termes informàtics:</p>
 <dl>
 <dt>Cookie</dt>
@@ -169,7 +211,10 @@ generalmente por motivos comerciales.</dd>
 usuario de una web es un humano y no un bot o un
 proceso automatizado.</dd>
 </dl>
+
+
 L’estil de les vinyetes de les llistes es pot canviar amb CSS!
+
 ul {
 list-style-type: none;
 }
@@ -453,7 +498,8 @@ CSS:
 #destacat {
 color: red;
 }
-4.17. Selectors pseudoclasses
+## 4.17. Selectors pseudoclasses
+
 Els pseudoselectors serveixen per a aplicar un estil a un element HTML que es
 trobi en un estat concret. És molt útil amb els elements del tipus hipervincle: <a>
 Sintaxi:

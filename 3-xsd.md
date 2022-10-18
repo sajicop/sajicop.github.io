@@ -13,7 +13,8 @@
     + [3.2.3. Elements](#323-elements)
     + [3.2.4. Tipus de dades](#324-tipus-de-dades)
     + [3.2.5. Atributs](#324-atributs)
-  * [3.3. ComplexType a XSD i exemples.](#33-complextype-a-xsd-i-exemples)
+  * [3.3. Data Types i exemples.](#33-data-types-i-exemples)
+    + [3.3.1 Tipus complexes](#331-tipus-complexes)
   * [3.4. Indicadors](#34-indicadors)
   * [3.5. Facetes](#35-facetes)
     + [1. Restriccions per valors](#1-restriccions-per-valors)
@@ -146,19 +147,46 @@ En l'exemple anterior, a l'arxiu __landrover.xsd__ tindrem les nostres declaraci
 
 ### 3.2.3. Elements
 
-A XSD podem dividir els elements en **elements simples** i **elements complexos**. Els elements simples només poden contenir texte. És a dir, no poden contenir altres fills, **ni tampoc tenir atributs**.
+Els elements i els atributs són els blocs principals amb els que es construeixen els documents XML. Per tant, el nostre esquema XSD contindrà una declaració per a cada element i cada atribut que hi hagi al document.
 
-Atributs principals de **&lt;xs:element&gt;**:
+Cadascun dels elements i atributs està associat a un __tipus de dades__. XSD separa els conceptes d'element i atributs dels seus tipus de dades. Això permet reutilitzar la mateixa estructura a varis elements idèntics. Per exemple, a un a factura podem tenir dos elements anomenats __direccionEnvio__ i __direccionFacturacion__ que tenen la mateixa estructura pero noms diferents. Només hem de declarar un tipus __TipoDireccion__ i fer-lo servir en la declaració dels elements.
+
+Els elements han d'incloure com a mínim l'atribut name per especificar el nom de l'element XML i type per especificar el tipus de dades.
+
+Exemples de declaració d'elements a XSD:
+```xml
+<xsd:element name="tamany" type="TamanyTipus"/>
+
+<xsd:element name="nom" type="xsd:string"/>
+
+<xsd:element name="product">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:element ref="name"/>
+      <xsd:element ref="size"/>
+    <xsd:sequence>
+  </xsd:complexType>
+</xsd:element>  
+
+<xsd:element name="anything"/>
+```
+El primer element fa servir el tipus __TamanyTipus__ per indicar el tipus de dades de __tamany__. 
+
+També podem definir un tipus de dada especificant __simpleType__ o __complexType__.
+
+Per últim, si no hem especificat cap tipus de dades, el tipus serà __anyType__ que permet qualsevol contingut amb fills o caràcters.
+
+Els atributs principals de **&lt;xs:element&gt;**:
 
 | nom atribut | propòsit |
 |-------------|----------|
 | name        | nom de l'element, obligatori si és l'arrel |
 | ref         | nom d'un altre element que es troba en el document |
-| type        | el tipus d'element (veure tipus de dades) |
-| default     | valor per defecte que pendrà l'element. Només es pot utilitzar per a continguts amb texte. |
+| type        | el tipus d'element (veure [tipus de dades](#324-tipus-de-dades)) |
+| default     | valor per defecte de l'element. Només es pot utilitzar per a continguts amb texte. |
 | fixed       | indica l'únic valor possible, sempre que sigui texte. |
-| minOccurs   | número mínim d'ocurrències d'un element. Els valors possibles són desde 0 fins a unbounded (il.limitat). |
-| maxOccurs   | número màxim d'ocurrències d'un element. Els valors possibles són desde 0 fins a unbounded (il.limitat). |
+| minOccurs   | número mínim d'ocurrències d'un element. veure [indicadors](#34-indicadors). |
+| maxOccurs   | número màxim d'ocurrències d'un element. veure [indicadors](#34-indicadors). |
 | id          | identificador únic per a l'element |
 
 ### 3.2.4. Tipus de dades
@@ -195,7 +223,7 @@ Exemples:
 
 ### 3.2.5. Atributs
 
-Fem servir el component  <xs:attribute> per especificar els atributs dels nostre document XML.
+Fem servir el component **&lt;xs:attribute&gt;** per especificar els atributs dels nostre document XML.
 
 Atributs principals de **&lt;xs:attribute&gt;**:
 
@@ -203,7 +231,7 @@ Atributs principals de **&lt;xs:attribute&gt;**:
 |-------------|----------|
 |  name       | nom de l'atribut. Aquest atribut no puede aparèixer al mateix temps que ref |
 |  ref        | referència a la descripció de l'atribut que es troba en altre lloc de l'esquema. Si surt aquest atribut, no apareixeran els atributs type, ni form, ni podrà contenir un component xs:simpleType |
-|  type       | tipus de l'element |
+|  type       | el tipus d'element (veure [tipus de dades](#324-tipus-de-dades)) |
 |  use        | indica si l'existència de l'atribut és opcional, obligatòria o prohibida (optional, required, prohibited) |
 |  default    | valor que prendrà l'atribut quan sigui procesat per alguna aplicació quan al document XML no hi té cap valor assignat. No pot aparèixer al  mateix temps que fixed |
 |  fixed      | Valor únic que pot contenir el document. No pot aparèixer simultàniament amb default |
@@ -225,31 +253,75 @@ Un exemple complet:
 
 Crea l'atribut moneda de tipus cadena que per defecte tingui el valor euro. Un atribut unitat amb tipus de dades cadena que tingui un valor fixe “minuts” i un element idEmple amb tipus de dades enter positiu i amb existència obligatòria.
 
-## 3.3. ComplexType a XSD i exemples.
+## 3.3. Data types i exemples.
 
-Els components es poden dividir en dos tipus: simpleType i complexType. Els tipus simpleType no poden contenir element dins, només text. Un element complexe pot contenir altres elements. Per definir-ho fem servir els elements &lt;xs:complexType&gt; i &lt;xs:sequence&gt;. L’indicador &lt;sequence&gt; implica que els elements han d’aparèixer en el mateix ordre que a la seva declaració.
+Els tipus de dades permeten la validació del contingut dels elements i els valors dels atributs. Poden ser tipus simples (simpleType) o tipus complexes (complexType).
 
-Tenim el següent element XML, anomenat “empleat” que conté altres elements:
+Els elements que tenen assignats tipus simples tenen dades de caràcters, però no tenen elements fills o atributs.
+
+Els següents elements tenen tipus simple:
 
 ```xml
-    <employee>
-      <firstname>John</firstname>
-      <lastname>Smith</lastname>
-    </employee>
+<tamany>L<tamany>
+<comentari>va molt gran</comentari>
+<tamanysDisponibles>10 L 2 M</tamanysDisponibles>
 ```
 
-Per declarar l’element &lt;employee&gt; amb XSD:
+Per altra banda, els elements complexos poden tenir elements fills o atributs.
+
+Els següents elements tenen tipus complexe:
 
 ```xml
-    <xs:element name="employee">
+<tamany sistema="EU">L<tamany>
+<comentari>va <b>molt molt</b> gran</comentari>
+<tamanysDisponibles>
+  <size>10</size>
+  <size>2</size>
+</tamanysDisponibles>
+```
+
+Els atributs sempre tipus simple, doncs els atributs no poden tenir elements fills.
+
+
+Per declarar l’element &lt;tamanysDisponibles&gt; amb XSD:
+
+```xml
+    <xs:element name="tamanysDisponibles">
       <xs:complexType>
         <xs:sequence>
-          <xs:element name="firstname" type="xs:string"/>
-          <xs:element name="lastname" type="xs:string"/>
+          <xs:element maxOccurs="unbound" name="size" type="xs:integer"/>
         </xs:sequence>
       </xs:complexType>
     </xs:element>
 ```
+## 3.3.1 Tipus complexes
+
+El contingut d'un element són els caràcters de dades i elements fills dintre de les etiquetes. Hi ha __cuatre__ tipus de contingut per a tipus complexes: simple, element, mixed i buit. El tipus de contingut és independent dels atributs. És a dir tots els tipus de contingut poden tenir atributs o no.
+
+A continuació tenim un exemple de cadascun i com definir-los a XSD.
+
+```xml
+<!--1 -->
+<tamany sistema="EU">10</size>
+
+<!--2 -->
+<producte>
+  <numero>34D</numero>
+  <tamany>10</tamany>
+</producte>
+
+<!--3 -->
+<carta> Estimat <nomClient>Carles Puig</nomClient> ...</carta>
+
+<!--4 -->
+<color valor="blau"/>
+```
+
+Definicions amb xml
+
+
+
+
 ## 3.4. Indicadors
 
 Hi ha set indicadors a XML. Els indicadors especifiquen com s'utilitzen els elements dintre del document XML.
@@ -325,6 +397,8 @@ Exemples:
       </xs:complexType>
       </xs:element>
 ```
+
+Dintre d'aquests indicadors podem fer servir un valor numèric o __unbounded__ que indica un número il.limitat d'elements.
 
 ### 3.4.3. Indicadors de grup
 
