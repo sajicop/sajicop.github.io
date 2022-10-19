@@ -74,7 +74,9 @@ Existeixen molts elements HTML per donar format al nostre texte. Alguns dels mé
 * Efectes de texte (negreta, èmfasi, subratllat, ratllar): &lt;strong&gt;, &lt;em&gt;, &lt;ins&gt;, &lt;del&gt;
 * Resaltat de texte, subíndex, superíndex: &lt;mark&gt;&lt;sub&gt;&lt;sup&gt; H2O H&lt;sub>2&lt;/sub&gt;O
 
-* El resultat dels elements bàsics:
+
+
+El resultat dels elements bàsics seria:
 <p></p>
 
 <h1>Capcelera H1</h1>
