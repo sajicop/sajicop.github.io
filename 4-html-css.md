@@ -329,26 +329,23 @@ Els tipus d’elements que podem incloure en un formulari són:
 
 
 
-|Element                                                           | Significat |
+|Element                                                           | Significat                                                       |
 |------------------------------------------------------------------|-----------------------------------------------------------------|
-| <label for=”id_input”>Texte</label>                              | Etiqueta per a camp texte                                       |
-| <input type=”text”>                                              | Camp de texte                                                   |
-| <input type=”email”>                                             | Valida email: usuari@domini                                     |
-| <textarea>...</textarea>                                         | Área de texte major que input                                   |
-| <button type=”submit”></button>                                  | Envía el formulari al servidor                                  |  
-| <fieldset><legend></legend></fieldset>                           | Dibuixa un marc amb títol dels camps                            |
-| <input type=”radio”>                                             | Radio button                                                    |
-| <input type=”checkbox”>                                          | Checkbox                                                        |
-| <input type=”date”>                                              | Control amb selector de data                                    |
-| <input type=”file”>                                              | Control amb selector de arxius                                  |
-| <select><option selected=”selected”>O1</option>
-  <option>On</option>
-  </select>                                                        | Desplegable amb opcions predefinides. Atribut selected opcional.
-|<input type=”tel”> / type=”URL”> / type=”numeric”>                | Input amb validació                                                |
-| <input type="range" name="price" id="price" min="50000" 
-  max="500000" step="100" value="250000">                          | Crea un slider (control per filtrar preu màxim)                     |
-| <meter min="0" max="100" value="75" low="33" high="66" optimum="50">75</meter> | Control meter                                         |
-| <input type=”submit” / “reset” / “button”>                       | Envia al servidor / neteja formulari /personalitzable amb Javascipt |
+| &lt;label for=”id_input”&gt;Texte&lt;/label&gt;                              | Etiqueta per a camp texte                                       |
+| &lt;input type=”text”&gt;                                              | Camp de texte                                                   |
+| &lt;input type=”email”&gt;                                             | Valida email: usuari@domini                                     |
+| &lt;textarea&gt;...&lt;/textarea&gt;                                         | Área de texte major que input                                   |
+| &lt;button type=”submit”&gt;&lt;/button&gt;                                  | Envía el formulari al servidor                                  |  
+| &lt;fieldset&gt;&lt;legend&gt;&lt;/legend&gt;&lt;/fieldset&gt;                           | Dibuixa un marc amb títol dels camps                            |
+| &lt;input type=”radio”&gt;                                             | Radio button                                                    |
+| &lt;input type=”checkbox”&gt;                                          | Checkbox                                                        |
+| &lt;input type=”date”&gt;                                              | Control amb selector de data                                    |
+| &lt;input type=”file”&gt;                                              | Control amb selector de arxius                                  |
+| &lt;select&gt;&lt;option selected=”selected”&gt;O1&lt;/option&gt; &lt;option&gt;On&lt;/option&gt;&lt;/select&gt;  | Desplegable amb opcions predefinides. Atribut selected opcional.
+|&lt;input type=”tel”&gt; / type=”URL”&gt; / type=”numeric”&gt;                | Input amb validació                                                |
+| &lt;input type="range" name="price" id="price" min="50000" max="500000" step="100" value="250000"&gt;  | Crea un slider (control per filtrar preu màxim)                     |
+| &lt;meter min="0" max="100" value="75" low="33" high="66" optimum="50"&gt;75&lt;/meter&gt; | Control meter                                         |
+| &lt;input type=”submit” / “reset” / “button”&gt;                       | Envia al servidor / neteja formulari /personalitzable amb Javascipt |
 
 Més info:
 
@@ -362,8 +359,9 @@ HTML5 incorporta elements nous com &lt;video&gt;, que permet inserir un video di
 una pàgina web. Youtube i altres plataformes de video fan servir aquest element.
 Alguns elements propis de HTML5:
 
-<video>,<audio>, <figure> i <iframe>
+video, audio, figure i iframe
 
+```html
 <div>
  <svg height="300" width="800">
       <defs>
@@ -373,7 +371,7 @@ Alguns elements propis de HTML5:
         </linearGradient>
       </defs>
       <rect x="50" y="20" rx="20" ry="20" width="600" height="100" fill="url(#grad1)" style="fill:blue;stroke:darkblue;stroke-width:5;opacity:0.6" />
-<!--     <ellipse cx="100" cy="70" rx="85" ry="55" fill="url(#grad1)" /> -->
+    <ellipse cx="100" cy="70" rx="85" ry="55" fill="url(#grad1)" /> 
       <text fill="#ffffff" font-size="45" font-family="Verdana" x="50" y="86">&nbsp;Pagina Web Multimedia</text>
       Sorry, your browser does not support inline SVG.
     </svg>    
@@ -426,14 +424,12 @@ Alguns elements propis de HTML5:
     width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy">
   </iframe>  
 </div>
-
+```
 
 ## 4.10. HTML5: tags semàntics i contenidor
 
-Elements NO semàntics: <div> i <span>
-Aquests contenidors no aporten informació sobre el contingut.
-HTML5 incorpora uns 100 tags semàntics. Per ex: <nav> per incloure una barra
-de navegació.
+Elements NO semàntics: &lt;div&gt; i &lt;span&gt;. Aquests contenidors no aporten informació sobre el contingut. HTML5 incorpora uns 100 tags semàntics. 
+Per ex: &lt;nav&gt; per incloure una barra de navegació.
 
 ```html
   <article>
@@ -456,189 +452,245 @@ Escriu en un HTML l’estructura de les dues pàgines de la imatge amb elements 
 
 ## 4.11. Estils
 
-De moment hem vist elements HTML que permeten organitzar la informació mostrada. També podem aplicar estils a cadascun dels elements individualment.
-Per això fem servir el llenguatge CSS.
-La sintaxi es:
-<etiqueta style=”propietat:valor;”>
+De moment hem vist elements HTML que permeten organitzar la informació mostrada. També podem aplicar estils a cadascun dels elements individualment. Per això fem servir el llenguatge CSS. La sintaxi es:
 
+```html
+  <etiqueta style=”propietat:valor;”>
+```
 Per exemple, per establir el color de fons del cos de la web, fariem:
-<body style="background-color:powderblue;"> (nom del color o en
-hexadecimal)
+
+```html
+<body style="background-color:powderblue;"> (nom del color o en hexadecimal)
+```
+
 Per cambiar el color del text:
+
+```html
 <h1 style="color:blue;">This is a heading</h1>
 <p style="color:red;">This is a paragraph.</p>
+```
+
 Per cambiar familia de la font:
+
+```html
 <h1 style="font-family:verdana;">This is a heading</h1>
 <p style="font-family:courier;">This is a paragraph.</p>
+```
 
 ## 4.12. CSS
 
-CSS o Cascading Style Sheet, és un llenguatge per donar estil i presentar l’HTML. Mentre que el HTML conté el significat o contingut, CSS és la presentació del
-document. Els fulls d’estil no s’assemblen a HTML. El format per definir un element CSS és propietat:valor, on la propietat pot ser qualsevol característica del texte: color, tipus I tamany les fonts, posició de l’element, etc.
+CSS o Cascading Style Sheet, és un llenguatge per donar estil i presentar l’HTML. Mentre que el HTML conté el significat o contingut, CSS és la presentació del document. Els fulls d’estil no s’assemblen a HTML. El format per definir un element CSS és propietat:valor, on la propietat pot ser qualsevol característica del texte: color, tipus I tamany les fonts, posició de l’element, etc.
 
 ## 4.13. Com aplicar codi CSS a HTML?
 
 Fins ara quan hem desenvolupat una pàgina Web, ho hem fet amb etiquetes agrupades en un sol fitxer, el qual incloïa tant el contingut web (text, imatges, taules...) com el seu format (color i mida de la lletra, imatges de fons...).
 
 Això comporta uns problemes:
-• Els llocs web tenen normalment més d’una pagina. Si volem canviar l’estil ho hem de fer a cadascuna de les pàgines.
-• Les modificaciones sobre un lloc web acostumen a ser sobre el contingut, mantenint el format estàtic. Separar contingut i estil facilita el manteniment.
+* Els llocs web tenen normalment més d’una pagina. Si volem canviar l’estil ho hem de fer a cadascuna de les pàgines.
+* Les modificaciones sobre un lloc web acostumen a ser sobre el contingut, mantenint el format estàtic. Separar contingut i estil facilita el manteniment.
 
 Tenim el següent codi CSS que canvia els encapçalaments tipus h1, posant el text de color vermell i la mida de la lletra a 20 píxels:
 
-h1 {
-color: #ff0000;
-font-size: 20px;
-}
-Sintaxi:
-element_html {
-propietat: valor;
-propietat: valor;
-}
+```css
+  h1 {
+    color: #ff0000;
+    font-size: 20px;
+  }
+```
 
-Aquest format s’aplicarà a tots els elements h1 del web.
-Podem definir tantes regles com necessitem. Fins i tot, podem definir-ne diverses
-per a un mateix element (el resultat serà la suma de les regles).
+  Sintaxi:
+
+```css
+  element_html {
+    propietat: valor;
+    propietat: valor;
+  }
+```
+
+Aquest format s’aplicarà a tots els elements h1 del web. Podem definir tantes regles com necessitem. Fins i tot, podem definir-ne diverses per a un mateix element (el resultat serà la suma de les regles).
+
 Tenim tres formes d’aplicar CSS a HTML: inline, interna I externa:
-✔ A l’HTML, dins de l’etiqueta (inline).:
+
+* A l’HTML, dins de l’etiqueta (inline):
+```html
 <h1 style="color:#ff0000;background-color:#ffff00">
-Si una etiqueta ja té un estil predefinit (com és el cas de h1), el que estem
-fent és redefinir-lo. Només s’aplica a l’etiqueta en qüestió (no a totes!).
-✔ A la capcelera de la pàgina web (interna). Dintre de l’element <head>,
-afegim les etiquetes <style> ... </style>. Afecta a tots els elements del
-document.
-<!DOCTYPE html>
-<html>
-<head>
-<title>Ejemplo de estilo a nivel global</title>
-<style>
-h1 {
-color:#ff0000;
-background-color:#ffff00;
-}
-</style>
-</head>
-<body>
-<h1>Primer t&iacute;tol</h1>
-<h1>Segundo t&iacute;tol</h1>
-</body>
-</html>
-✔ En un fitxer extern. Al head, afegint l’etiqueta link amb la ubicació de
-l’arxiu (a href). Per defecte farem servir aquest mètode, permet tenir el
-codi separat i mantenir-lo més fàcilment:
-<!DOCTYPE html>
-<html>
-<head>
-<title>Ejemplo de estilo a nivel global</title>
-<link rel="StyleSheet" href="estils.css" type="text/css">
-</head>
-<body>
-<h1>Primer t&iacute;tol</h1>
-<h1>Segundo t&iacute;tol</h1>
-</body>
-</html>
-Pot ser que apliquem estils de les 3 formes diferents en el mateix document. En
-aquest cas, s’aplicarà seguint el següent ordre de prioritat (1 més prioritari, 3
-menys):
+```css
+
+Si una etiqueta ja té un estil predefinit (com és el cas de h1), el que estem fent és redefinir-lo. Només s’aplica a l’etiqueta en qüestió (no a totes!).
+
+* A la capcelera de la pàgina web (interna). Dintre de l’element <head>, afegim les etiquetes <style> ... </style>. Afecta a tots els elements del document.
+
+```html
+  <!DOCTYPE html>
+  <html>
+        <head>
+        <title>Ejemplo de estilo a nivel global</title>
+        <style>
+              h1 {
+                color:#ff0000;
+                background-color:#ffff00;
+              }
+        </style>
+      </head>
+      <body>
+        <h1>Primer t&iacute;tol</h1>
+        <h1>Segundo t&iacute;tol</h1>
+      </body>
+  </html>
+```
+
+* En un fitxer extern. Al head, afegint l’etiqueta link amb la ubicació de l’arxiu (a href). Per defecte farem servir aquest mètode, permet tenir el codi separat i mantenir-lo més fàcilment:
+
+```html
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>Ejemplo de estilo a nivel global</title>
+      <link rel="StyleSheet" href="estils.css" type="text/css">
+    </head>
+    <body>
+      <h1>Primer t&iacute;tol</h1>
+      <h1>Segundo t&iacute;tol</h1>
+    </body>
+  </html>
+```
+
+Pot ser que apliquem estils de les 3 formes diferents en el mateix document. En aquest cas, s’aplicarà seguint el següent ordre de prioritat (1 més prioritari, 3 menys):
+
 1. Element
 2. A la pàgina
 3. Fitxer extern
 
 ## 4.14. Selectors, propietats, valors.
 
-Mentre que a HTML tenim elements, a CSS tenim selectors. La major part
-d’elements HTML existeixen com a selectors, encara que CSS té selectors amb
-funcions avançades que no existeixen a HTML.
+Mentre que a HTML tenim elements, a CSS tenim selectors. La major part d’elements HTML existeixen com a selectors, encara que CSS té selectors amb funcions avançades que no existeixen a HTML.
+
 Exemple:
+
+```html
 body {
-font-size: 14px;
-color: navy;
+  font-size: 14px;
+  color: navy;
 }
-Pel selector body (tota la pàgina), existeixen les propietats font-size i color dintre
-del símbols { } que canviaran el color de fons a navy I el tamany de la font a
-14px, Apart de la unitat pixels (px), podem utilitzar altres: cm, mm, %, em, rem.
-Alguns colors estan predefinits però també es poden especificar de moltes
-formes:
+```
+
+Pel selector body (tota la pàgina), existeixen les propietats font-size i color dintre del símbols { } que canviaran el color de fons a navy I el tamany de la font a 14px, Apart de la unitat pixels (px), podem utilitzar altres: cm, mm, %, em, rem. Alguns colors estan predefinits però també es poden especificar de moltes formes:
+
 red
 rgb(255,0,0)
 rgb(100%,0%,0%)
 #ff0000 (Hexadecimal)
-Les propietats estan definides prèviament I no totes les propietats es poden
-aplicar a tots els elements. Aquí podeu trobar un llistat de totes les propietats:
+
+Les propietats estan definides prèviament I no totes les propietats es poden aplicar a tots els elements. Aquí podeu trobar un llistat de totes les propietats:
 https://www.w3schools.com/cssref/
-Apart dels selectors d’HTML, a CSS també podem crear els nostres propis
-selectors. Si tenim els següent codi HTML:
-<body>
-<p>Lorem ipsum dolor sit amet...</p>
-<p>Nunc sed lacus et est adipiscing accumsan...</p>
-<p>Class aptent taciti sociosqu ad litora...</p>
-</body>
-Com podem aplicar un estil únicament a un des paràgrafs (per exemple, al
-primer)?
-Utilitzant els selectors de classe o els selectors d’ID
+
+Apart dels selectors d’HTML, a CSS també podem crear els nostres propis selectors. Si tenim els següent codi HTML:
+
+```html
+  <body>
+    <p>Lorem ipsum dolor sit amet...</p>
+    <p>Nunc sed lacus et est adipiscing accumsan...</p>
+    <p>Class aptent taciti sociosqu ad litora...</p>
+  </body>
+```
+
+Com podem aplicar un estil únicament a un des paràgrafs (per exemple, al primer)? Utilitzant els selectors de classe o els selectors d’ID
 
 ## 4.15. Selecció per classe
 
 El selector per classe és un nom precedit per un punt (“.”). Afectarà a tots els elements de la mateixa classe:
+
 CSS:
-.p_vermell {
-color: red;
-}
+
+```css
+  .p_vermell {
+    color: red;
+  }
+```
+
 HTML:
+
+```html
 <body>
-<p class="p_vermell">Lorem ipsum dolor sit amet...</p>
-<p>Nunc sed lacus et <a href="#" class="p_vermell">est adipiscing</a>
-accumsan...</p>
-<p>Class aptent taciti <em class="p_vermell">sociosqu ad</em>
-litora...</p>
+  <p class="p_vermell">Lorem ipsum dolor sit amet...</p>
+  <p>Nunc sed lacus et <a href="#" class="p_vermell">est adipiscing</a>
+  accumsan...</p>
+  <p>Class aptent taciti <em class="p_vermell">sociosqu ad</em>
+  litora...</p>
 </body>
+```
+
 Formes avançades de selecció:
-Potser volem únicament que s’apliqui als <p> que tinguin definida la classe:
-p.p_vermell {
-color: red;
-}
-O aquells que siguin de la classe, i que siguin fills de <p>:
-p .p_vermell {
-color: red;
-}
-O a tots els elements <p> i els elements que siguin de la classe:
-p, .p_vermell {
-color: red;
-}
+
+Potser volem únicament que s’apliqui als &lt;p&gt; que tinguin definida la classe:
+
+```css
+  p.p_vermell {
+    color: red;
+  }
+```
+
+O aquells que siguin de la classe, i que siguin fills de &lt;p&gt;:
+
+```css
+  p .p_vermell {
+    color: red;
+  }
+```
+
+O a tots els elements &lt;p&gt; i els elements que siguin de la classe:
+
+```css
+  p, .p_vermell {
+    color: red;
+  }
+```
 
 ## 4.16. Selecció per ID
 
 El selector per classe és un nom precedit per un caràcter coixinet (“#”). Afectarà només a l’element que contingui aquell ID. NO ES POT REPETIR UN ID AL MATEIX DOCUMENT.
 El funcionament és similar al concepte classe:
 
-<body>
-<p>Lorem ipsum dolor sit amet...</p>
-<p id=”destacat”>Nunc sed lacus et est adipiscing accumsan...</p>
-<p>Class aptent taciti sociosqu ad litora...</p>
-</body>
+```html
+  <body>
+    <p>Lorem ipsum dolor sit amet...</p>
+    <p id=”destacat”>Nunc sed lacus et est adipiscing accumsan...</p>
+    <p>Class aptent taciti sociosqu ad litora...</p>
+  </body>
+```
 
 CSS:
-#destacat {
-color: red;
-}
+```css
+  #destacat {
+    color: red;
+  }
+```
+
 ## 4.17. Selectors pseudoclasses
 
-Els pseudoselectors serveixen per a aplicar un estil a un element HTML que es
-trobi en un estat concret. És molt útil amb els elements del tipus hipervincle: <a>
+Els pseudoselectors serveixen per a aplicar un estil a un element HTML que es trobi en un estat concret. És molt útil amb els elements del tipus hipervincle: <a>
+
 Sintaxi:
+```css
 selector:pseudo_classe {
-propietat: valor;
+  propietat: valor;
 }
+```
+
 Estats de <a>:
-• Sense visitar - link
-• Visitat - visited
-• El ratolí sobre l’enllaç, però sense fer click - hover
-• Amb el focus sobre l’enllaç - active
-Han d’estar definides seguint aquest ordre (no cal definir-les totes, però si en
-ordre).
+
+* Sense visitar - link
+* Visitat - visited
+* El ratolí sobre l’enllaç, però sense fer click - hover
+* Amb el focus sobre l’enllaç - active
+
+Han d’estar definides seguint aquest ordre (no cal definir-les totes, però si en ordre).
+
 Exemple:
+```css
 a:visited {
-color: red;
+  color: red;
 }
-Referències
-https://htmldog.com/guides/
+```
+
+[HTMLDog Gudes](https://htmldog.com/guides/)
