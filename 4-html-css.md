@@ -1,5 +1,28 @@
 #  Tema 4. HTML i CSS
 
+[taula de continguts generada des de https://ecotrust-canada.github.io/markdown-toc/]: #
+
+## Índex de continguts
+
+- [Tema 4. HTML i CSS](#tema-4-html-i-css)
+  * [4.1 Introducció a HTML](#41-introducci--a-html)
+  * [4.2. Demo](#42-demo)
+  * [4.3. Elements bàsics de formateig](#43-elements-b-sics-de-formateig)
+  * [4.4. Enllaços](#44-enlla-os)
+  * [4.5. Imatges](#45-imatges)
+  * [4.6. Llistes](#46-llistes)
+  * [4.7. Taules. Estructura bàsica.](#47-taules-estructura-b-sica)
+  * [4.8. Formularis](#48-formularis)
+  * [4.9. Altres elements: video, audio, pictures](#49-altres-elements--video--audio--pictures)
+  * [4.10. HTML5: tags semàntics i contenidor](#410-html5--tags-sem-ntics-i-contenidor)
+  * [4.11. Estils](#411-estils)
+  * [4.12. CSS](#412-css)
+  * [4.13. Com aplicar codi CSS a HTML?](#413-com-aplicar-codi-css-a-html-)
+  * [4.14. Selectors, propietats, valors.](#414-selectors--propietats--valors)
+  * [4.15. Selecció per classe](#415-selecci--per-classe)
+  * [4.16. Selecció per ID](#416-selecci--per-id)
+  * [4.17. Selectors pseudoclasses](#417-selectors-pseudoclasses)
+
 ## 4.1 Introducció a HTML
 
 HTML (HyperText Markup Language) és un llenguatge de marques que permet visualitzar documents a la Web.
