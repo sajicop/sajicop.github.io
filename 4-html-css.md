@@ -12,7 +12,7 @@ HTML5 es va llançar el 2014 i és la última versió del llenguatge.
 
 Dintre d’un document HTML podem trobar 3 llenguatges diferents:
 
-
+![Llenguatges Web](assets/img/html-css-js.png "Llenguatges Web")
 
 Javascript (JS) és un llenguatge de programació i permet la creació de pàgines web interactives.
 
