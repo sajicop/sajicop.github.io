@@ -4,7 +4,6 @@
 
 ## Índex de continguts
 
-- [Tema 4. HTML i CSS](#tema-4-html-i-css)
   * [4.1 Introducció a HTML](#41-introducci--a-html)
   * [4.2. Demo](#42-demo)
   * [4.3. Elements bàsics de formateig](#43-elements-b-sics-de-formateig)
