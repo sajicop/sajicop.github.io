@@ -288,25 +288,42 @@ Un exemple bàsic:
 
 Sortida:
 
+  <table>
+    <thead>
+      <tr>
+        <th>capcelera1</th>
+      <th>capcelera2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr> <!-- table row -->
+      <td>fila1 col1</td>
+      <td>fila1 col2</td>
+      </tr>
+    </tbody>
+  </table>
 
-L’element <table> permet definir la taula i establir alguns atributs bàsics com border-width. Podem donar estil a una taula (canviar el color de la capcelera,
-alternar color files, etc.) amb les fulles d’estil CSS, que veurem més endavant. L’element <thead> ens permet especificar els títols de les columnes i <th> és
-equivalent a <td>, és a dir conté les dades de la cel.la (table data). La resta de files s’han d’incloure dintre de l’etiqueta <tbody>.
-L’element <tr> obre una nova línia i dintre hi podem afegir tants elements <td> com volguem.
-Per últim també tenim l’etiqueta <tfooter> per afegir un peu de taula, per exemple per sumaritzar alguna de les columnes.
+
+L’element __table__ permet definir la taula i establir alguns atributs bàsics com border-width. Podem donar estil a una taula (canviar el color de la capcelera,
+alternar color files, etc.) amb les fulles d’estil CSS, que veurem més endavant. L’element __thead__ ens permet especificar els títols de les columnes i __th__ és
+equivalent a __td__, és a dir conté les dades de la cel.la (table data). La resta de files s’han d’incloure dintre de l’etiqueta __tbody__.
+L’element __tr__ obre una nova línia i dintre hi podem afegir tants elements __td__ com volguem.
+Per últim també tenim l’etiqueta __tfooter__ per afegir un peu de taula, per exemple per sumaritzar alguna de les columnes.
 
 ## 4.8. Formularis
 
 Els formularis són un dels elements HTML més complexos. Permeten recollir dades de l’usuari amb la incorporació de controls (input, radio button, dropdown, botons,
 etc. Amb l’ajuda d’un llenguatge de servidor (PHP, NodeJS) podem guardar-ho en una base de dades. L’esquema bàsic per a un formulari seria:
 
-<form action=”gestio-form.php” method=”post”>
-<label for=”name”>Nom</label>
-<input type=”text” id=”name”>
-...
-<input type=””>
-<button type=”submit”>Submit</button>
-</form>
+```html
+  <form action=”gestio-form.php” method=”post”>
+  <label for=”name”>Nom</label>
+  <input type=”text” id=”name”>
+  ...
+  <input type=””>
+  <button type=”submit”>Submit</button>
+  </form>
+```
 
 Els tipus d’elements que podem incloure en un formulari són:
 
@@ -346,7 +363,9 @@ Envia al servidor / neteja formulari /
 personalitzable amb Javascipt
 
 Més info:
+
 https://developer.mozilla.org/en-US/docs/Learn/Forms
+
 Element FORM: Mètode GET vs POST
 https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_for
 m_data
