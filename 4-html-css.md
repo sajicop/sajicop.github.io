@@ -4,7 +4,7 @@
 
 HTML (HyperText Markup Language) és un llenguatge de marques que permet visualitzar documents a la Web.
 
-Les etiquetes utilitzades a HTML, com per exemple "paràgraf" (<p>) o "taula" (<table>) no es mostren en el navegador, sino que indiquen com mostrar la informació.
+Les etiquetes utilitzades a HTML, com per exemple "paràgraf" (&lt;p&lt;) o "taula" (&lt;table&gt;) no es mostren en el navegador, sino que indiquen com mostrar la informació.
 
 L'estructura de HTML és semblant a XML: etiquetes, atributs, element arrel, etc... però el nom dels elements està establert, no ens els podem inventar. És a dir, HTML no és un metallenguatge i hem d'aprendre les etiquetes ja predefinides. 
 
@@ -19,20 +19,20 @@ Javascript (JS) és un llenguatge de programació i permet la creació de pàgin
 Estructura d’una pàgina HTML5:
 
 ```html
-<!DOCTYPE html>
-<html lang=”ES”>
-    <head>
-        <meta charset=”utf-8”>
-        <meta name=”viewport” content="width=device-width, initial-
-        scale=1.0">
-        <title></title>
-        <!-- scripts, css, meta -->
-    </head>
-    <body>
-        <h1>Això és un <b>titular</b> en HTML</h1>
-        <p>Aquest és el primer paràgraf.</p>
-    </body>
-</html>
+  <!DOCTYPE html>
+  <html lang=”ES”>
+      <head>
+          <meta charset=”utf-8”>
+          <meta name=”viewport” content="width=device-width, initial-
+          scale=1.0">
+          <title></title>
+          <!-- scripts, css, meta -->
+      </head>
+      <body>
+          <h1>Això és un <b>titular</b> en HTML</h1>
+          <p>Aquest és el primer paràgraf.</p>
+      </body>
+  </html>
 ```
 
 La primera linea indica que el document és un document HTML5. A continuació hem d’escriure l’element arrel (__html__) especificant l’idioma amb l’atribut lang.
