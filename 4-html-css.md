@@ -52,7 +52,7 @@ Instalar extensión Live Server per iniciar el navegador web des del codi font:
 Per veure el resultat:
 
 
-Més informació:
+Més informació:&lt:
 
 [Element Meta (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta)
 
@@ -63,33 +63,40 @@ Més informació:
 
 Existeixen molts elements HTML per donar format al nostre texte. Alguns dels més utilitzats són:
 
-* Capceleres: <h1></h1>
-              <h2></h2>
+* Capceleres: &lt;h1&gt;&lt;/h1&gt;
+              &lt;h2&gt;&lt;/h2&gt;
                ...
-              <h6></h6>
-* Paràgraf: <p></p>
-* Texte preformatejat: <pre></pre>
-* Forçar salt de línia o espai: </br> i &nbsp;
-* Línia horizontal: <hr>
-* Efectes de texte (negreta, èmfasi, subratllat, ratllar): <strong>, <em>, <ins>, <del>
-* Resaltat de texte, subíndex, superíndex: <mark><sub><sup> H2O => H<sub>2</sub>O
+              &lt;h6&gt;&lt;/h6&gt;
+* Paràgraf: &lt;p&gt;&lt;/p&gt;
+* Texte preformatejat: &lt;pre&gt;&lt;/pre&gt;
+* Forçar salt de línia o espai: &lt;/br&gt; i &nbsp;
+* Línia horizontal: &lt;hr&gt;
+* Efectes de texte (negreta, èmfasi, subratllat, ratllar): &lt;strong&gt;, &lt;em&gt;, &lt;ins&gt;, &lt;del&gt;
+* Resaltat de texte, subíndex, superíndex: &lt;mark&gt;&lt;sub&gt;&lt;sup&gt; H2O H&lt;sub>2&lt;/sub&gt;O
 
 * El resultat dels elements bàsics:
+<p></p>
 
-* <h1>Capcelera H1</h1>
+<h1>Capcelera H1</h1>
 <h2>Capcelera H2</h2>
 <h3>Capcelera H3</h3>
 <h4>Capcelera H4</h4>
 <h5>Capcelera H5</h5>
 <h6>Capcelera H6</h6>
 
+<p></p>
+
 <p>Això es un paràgraf a HTML</p>
+
+<p></p>
 
 <pre>
 Tu corazón, ya terciopelo ajado,
 llama a un campo de almendras espumosas
 mi avariciosa voz de enamorado.
 </pre>
+
+<p></p>
 
 Alguns efectes de texte bàsics com <strong>negreta</strong>, <em>èmfasi</em>, <ins>subratllat</ins> o <del>ratllar</del>, s'aconsegueixen amb les etiquetes strong, em, ins o del.
 
