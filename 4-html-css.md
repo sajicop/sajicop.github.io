@@ -521,13 +521,14 @@ Aquest format s’aplicarà a tots els elements h1 del web. Podem definir tantes
 Tenim tres formes d’aplicar CSS a HTML: inline, interna I externa:
 
 * A l’HTML, dins de l’etiqueta (inline):
+
 ```html
 <h1 style="color:#ff0000;background-color:#ffff00">
 ```
 
   Si una etiqueta ja té un estil predefinit (com és el cas de h1), el que estem fent és redefinir-lo. Només s’aplica a l’etiqueta en qüestió (no a totes!).
 
-* A la capcelera de la pàgina web (interna). Dintre de l’element <head>, afegim les etiquetes <style> ... </style>. Afecta a tots els elements del document.
+* A la capcelera de la pàgina web (interna). Dintre de l’element &lt;head&lt;, afegim les etiquetes &lt;style&lt; ... &lt;/style&lt;. Afecta a tots els elements del document.
 
 ```html
   <!DOCTYPE html>
