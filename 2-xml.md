@@ -95,7 +95,7 @@ L'estructura d'un document XML està formada pels següents tipus de nodes:
 
 ### Arrel. 
 
-Aquest element s'anomena node arrel i es designa com "/". Es fa servir principalment per recòrrer l'arbre XML i processar la resta de nodes.
+Aquest element s'anomena node arrel i es designa com "/". Es fa servir principalment per recòrrer l'arbre XML i per processar la resta de nodes.
 El node arrel només hi pot haver-hi un, i no té ni ascendents ni germans, només descendents.
 
 ### Elements. 
@@ -225,16 +225,16 @@ Omple la següent taula:
 | \<Código-Interno\> \</Código-interno\>          | | | 
 
 Elements vs Atributs
-Les dades poden ser emmagatzemades tant als elements com als atributs. Per exemple, podem veure els següents exemples:
+Les dades poden ser emmagatzemades tant als elements com als atributs. Els següents exemples contenen la mateixa informació:
 
-Ús d'atributs:
+Atributs:
 ```xml
     <person sex="female">
       <firstname>Anna</firstname>
       <lastname>Smith</lastname>
     </person>
 ```
-La mateixa informació fent servir elements:
+Elements
 ```xml
     <person>
       <sex>female</sex>
@@ -242,7 +242,7 @@ La mateixa informació fent servir elements:
       <lastname>Smith</lastname>
     </person>
 ```
-No hi ha regles per definir quan s'ha d'utilitzar un element o un atribut. No obstant, podem donar alguns consells generals.
+No hi ha regles per definir quan s'ha d'utilitzar un element o un atribut. No obstant, hi ha algunes pautes generals.
 
 Elements:
 

@@ -2,15 +2,17 @@
 
 ## 4.1 Introducció a HTML
 
-HTML és un llenguatge de marques (HyperText Markup Language) que permet visualitzar documents a la Web.
-Les etiquetes utilitzades a HTML, com per exemple “paràgraf” (<p>) o “taula” (<table>) no es mostren en el navegador. Indiquen com mostrar la informació.
-Funciona com XML: etiquetes, atributs, element arrel, etc... però el nom dels elements està establert, no ens els podem inventar.
+HTML (HyperText Markup Language) és un llenguatge de marques que permet visualitzar documents a la Web.
+
+Les etiquetes utilitzades a HTML, com per exemple "paràgraf" (<p>) o "taula" (<table>) no es mostren en el navegador, sino que indiquen com mostrar la informació.
+
+L'estructura de HTML és semblant a XML: etiquetes, atributs, element arrel, etc... però el nom dels elements està establert, no ens els podem inventar. És a dir, HTML no és un metallenguatge i hem d'aprendre les etiquetes ja predefinides. 
+
 HTML5 es va llançar el 2014 i és la última versió del llenguatge.
 
-Referències
-https://www.w3schools.com/xml/xml_dtd_el_vs_attr.asp
-https://www.xml.com/pub/a/2000/11/29/schemas/part1.html
 Dintre d’un document HTML podem trobar 3 llenguatges diferents:
+
+
 
 Javascript (JS) és un llenguatge de programació i permet la creació de pàgines web interactives.
 
@@ -33,28 +35,34 @@ Estructura d’una pàgina HTML5:
 </html>
 ```
 
-La primera linea indica que el document és un document HTML5. A continuació hem d’escriure l’element arrel (<html>) especificant l’idioma amb l’atribut lang.
-L’etiqueta <head> permet especificar algunes metadades adicionals sobre la pàgina web. Els elements que apareixen dintre de l’element <head> no surten al navegador. Dintre podem especificar el joc de caràcters que farem servir, el títol de la web (surt a la barra del navegador) i enllaços a diferents fitxers, com scripts, estils css, etc.
+La primera linea indica que el document és un document HTML5. A continuació hem d’escriure l’element arrel (__html__) especificant l’idioma amb l’atribut lang.
 
-L’etiqueta <body> representa el contingut de la pàgina i tot el que afegim en aquesta part sortirà al navegador.
+L’etiqueta __head__ permet especificar algunes metadades adicionals sobre la pàgina web. Els elements que apareixen dintre de l’element __head__ no surten al navegador. Dintre podem especificar el joc de caràcters que farem servir, el títol de la web (surt a la barra del navegador) i enllaços a diferents fitxers, com scripts, estils css, etc.
+
+L’etiqueta __body__ representa el contingut de la pàgina i tot el que afegim en aquesta part sortirà al navegador.
 
 ## 4.2. Demo
 
 Afegir snippet a Visual Studio Code
 https://code.visualstudio.com/docs/editor/emmet
+
+
 Instalar extensión Live Server per iniciar el navegador web des del codi font:
 
 Per veure el resultat:
+
+
 Més informació:
-Element Meta
-https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
-Html5 template complet
-https://www.sitepoint.com/a-basic-html5-template/
+
+[Element Meta (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta)
+
+[HTML5 template complet](https://www.sitepoint.com/a-basic-html5-template/)
 
 
 ## 4.3. Elements bàsics de formateig
 
-Existeixen molts elements HTML per donar format al nostre texte. Alguns dels mésutilitzats són:
+Existeixen molts elements HTML per donar format al nostre texte. Alguns dels més utilitzats són:
+
 * Capceleres: <h1></h1>
               <h2></h2>
                ...
@@ -66,10 +74,31 @@ Existeixen molts elements HTML per donar format al nostre texte. Alguns dels mé
 * Efectes de texte (negreta, èmfasi, subratllat, ratllar): <strong>, <em>, <ins>, <del>
 * Resaltat de texte, subíndex, superíndex: <mark><sub><sup> H2O => H<sub>2</sub>O
 
+* El resultat dels elements bàsics:
+
+* <h1>Capcelera H1</h1>
+<h2>Capcelera H2</h2>
+<h3>Capcelera H3</h3>
+<h4>Capcelera H4</h4>
+<h5>Capcelera H5</h5>
+<h6>Capcelera H6</h6>
+
+<p>Això es un paràgraf a HTML</p>
+
+<pre>
+Tu corazón, ya terciopelo ajado,
+llama a un campo de almendras espumosas
+mi avariciosa voz de enamorado.
+</pre>
+
+Alguns efectes de texte bàsics com <strong>negreta</strong>, <em>èmfasi</em>, <ins>subratllat</ins> o <del>ratllar</del>, s'aconsegueixen amb les etiquetes strong, em, ins o del.
+
+Podem <mark>resaltat de texte</mark> i crear subíndex i superíndex, com a H2O => H<sub>2</sub>O
+
 
 Més informació:
 
-https://developer.mozilla.org/es/docs/Learn/HTML/Introduction_to_HTML/
+[Introduction to HTML (Mozilla.org)](https://developer.mozilla.org/es/docs/Learn/HTML/Introduction_to_HTML/)
 
 Capítols:
 * HTML_text_fundamentals
@@ -77,51 +106,64 @@ Capítols:
 
 ## 4.4. Enllaços
 
-Els enllaços són un dels elements més importants, doncs fan que des de la web sigui navegable, és a dir, es puguin visitar altres webs clicant sobre enllaços, L’element <a> (ancla o “anchor”) fa que la web sigui navegable. Podem fer un enllaç a una URL externa, a un altre lloc de la mateixa pàgina o a una adreça de correu electrònic.
+Els enllaços són un dels elements més importants, doncs fan que des de la web sigui navegable, és a dir, es puguin visitar altres webs clicant sobre enllaços, L’element &lt;a&lt; (ancla o “anchor”) fa que la web sigui navegable. Podem fer un enllaç a una URL externa, a un altre lloc de la mateixa pàgina o a una adreça de correu electrònic.
 
 Enllaços a una url externa:
-
+```html
 <a href=”http://www.exemple.org”>texte de l’enllaç</a>
-Enllaç dins la mateixa pàgina.
+```
+
+També podem crear un enllaç dins la mateixa pàgina (per índex, referències,etc.).
+```html
 <h2 id="Mailing_address">Mailing address</h2>
-Escriu-nos a <a href="contacts.html#Mailing_address">mailing
-address</a>
+Escriu-nos a <a href="contacts.html#Mailing_address">mailing address</a>
 <a href=”#Mailing_address></a>
+```
+
+Inclús podem enllaçar a una adreça de correu (s’obre el gestor de correu per defecte):
+```html
+<a href="mailto:nowhere@mozilla.org">Envia email a cap lloc</a>
+```
 
 Atributs més comuns:
+
 * href: HyperText Reference
 * title: mostra una descripció quan es pasa el ratolí per sobre
 * target: “__blank” obre l’enllaç en una nova finestra
 
-Enllaç a una adreça de correu (s’obre el gestor per defecte):
-<a href="mailto:nowhere@mozilla.org">Envia email a cap lloc</a>
+
 
 Més info:
 
-Creating HyperLinks
-https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/
-Creating_hyperlinks
+[Creating HyperLinks](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks)
+
 
 ## 4.5. Imatges
 
 Un altre element molt important permet mostrar recursos gràfics a la web.
+
 Sintaxi:
+```html
 <img src=”images/dinosaur.jpg”
-alt="The head and torso of a dinosaur skeleton;
-it has a large head with long sharp teeth"
-width=”200” height=”400”
-title="A T-Rex on display in the Manchester Museum">
+     alt="The head and torso of a dinosaur skeleton; it has a large head with long sharp teeth"
+     width=”200” height=”400”
+     title="A T-Rex on display in the Manchester Museum">
+```
+
 La font pot ser una subcarpeta del servidor o una URL:
-<img src="/images/stickman.gif" alt="Stickman" width="24"
-height="39">
-<img src="https://www.w3schools.com/images/lamp.jpg" alt="Lamp"
-width="32" height="32">
+```html
+<img src="/images/stickman.gif" alt="Stickman" width="24" height="39">
+<img src="https://www.w3schools.com/images/lamp.jpg" alt="Lamp" width="32" height="32">
+```
+
 Imatge amb enllaç
+```html
 <a href="https://www.w3schools.com">
 <img src="w3html.gif" alt="W3Schools.com" width="100" height="132">
 </a>
+```
 
-Formats d’imatge admesos:
+L'element a admet els següents formats d’imatge:
 * JPG
 * PNG
 * GIF
@@ -215,30 +257,37 @@ proceso automatizado.</dd>
 
 L’estil de les vinyetes de les llistes es pot canviar amb CSS!
 
-ul {
-list-style-type: none;
-}
+```css
+  ul {
+  list-style-type: none;
+  }
+```
 
 ## 4.7. Taules. Estructura bàsica.
 
 Les taules ens permeten mostrar la informació en files I columnes. Fa uns anys es feia servir per posicionar el elements a la finestra del navegador. Actualment hi ha altres tècniques amb CSS per a posicionament d’elements.
 
 Un exemple bàsic:
-<table>
-<thead>
-<tr><th>capcelera1</th>
-<th>capcelera2</th>
-</tr>
-</thead>
-<tbody>
-<tr> <!-- table row -->
-<td>fila1 col1</td>
-<td>fila1 col2</td>
-</tr>
-</tbody>
-</table>
+
+```html
+  <table>
+    <thead>
+      <tr>
+        <th>capcelera1</th>
+      <th>capcelera2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr> <!-- table row -->
+      <td>fila1 col1</td>
+      <td>fila1 col2</td>
+      </tr>
+    </tbody>
+  </table>
+```
 
 Sortida:
+
 
 L’element <table> permet definir la taula i establir alguns atributs bàsics com border-width. Podem donar estil a una taula (canviar el color de la capcelera,
 alternar color files, etc.) amb les fulles d’estil CSS, que veurem més endavant. L’element <thead> ens permet especificar els títols de les columnes i <th> és
