@@ -327,56 +327,106 @@ etc. Amb l’ajuda d’un llenguatge de servidor (PHP, NodeJS) podem guardar-ho 
 
 Els tipus d’elements que podem incloure en un formulari són:
 
-Element Significat
-<label for=”id_input”>Texte</label> Etiqueta per a camp texte
-<input type=”text”> Camp de texte
-<input type=”email”> Valida email: usuari@domini
-<textarea>...</textarea> Área de texte major que input
-<button type=”submit”></button> Envía el formulari al servidor
-<fieldset><legend></legend></fieldset> Dibuixa un marc amb títol dels camps
-<input type=”radio”> Radio button
-<input type=”checkbox”> Checkbox
-<input type=”date”> Control amb selector de data
-<input type=”file”> Control amb selector de arxius
-<select>
-<option selected=”selected”>O1</option>
-..
-<option>On</option>
-</select>
-Desplegable amb opcions
-predefinides. Atribut selected
-opcional.
-<input type=”tel”> / type=”URL”> /
-type=”numeric”> Input amb validació
-<input type="range" name="price"
-id="price" min="50000" max="500000"
-step="100" value="250000">
-Crea un slider (control per filtrar preu
-màxim)
-<meter min="0" max="100" value="75"
-low="33" high="66"
-optimum="50">75</meter>
-Control meter
-<input type=”submit” / “reset” /
-“button”>
-Envia al servidor / neteja formulari /
-personalitzable amb Javascipt
+
+
+|Element                                                           | Significat |
+|------------------------------------------------------------------|-----------------------------------------------------------------|
+| <label for=”id_input”>Texte</label>                              | Etiqueta per a camp texte                                       |
+| <input type=”text”>                                              | Camp de texte                                                   |
+| <input type=”email”>                                             | Valida email: usuari@domini                                     |
+| <textarea>...</textarea>                                         | Área de texte major que input                                   |
+| <button type=”submit”></button>                                  | Envía el formulari al servidor                                  |  
+| <fieldset><legend></legend></fieldset>                           | Dibuixa un marc amb títol dels camps                            |
+| <input type=”radio”>                                             | Radio button                                                    |
+| <input type=”checkbox”>                                          | Checkbox                                                        |
+| <input type=”date”>                                              | Control amb selector de data                                    |
+| <input type=”file”>                                              | Control amb selector de arxius                                  |
+| <select><option selected=”selected”>O1</option>
+  <option>On</option>
+  </select>                                                        | Desplegable amb opcions predefinides. Atribut selected opcional.
+|<input type=”tel”> / type=”URL”> / type=”numeric”>                | Input amb validació                                                |
+| <input type="range" name="price" id="price" min="50000" 
+  max="500000" step="100" value="250000">                          | Crea un slider (control per filtrar preu màxim)                     |
+| <meter min="0" max="100" value="75" low="33" high="66" optimum="50">75</meter> | Control meter                                         |
+| <input type=”submit” / “reset” / “button”>                       | Envia al servidor / neteja formulari /personalitzable amb Javascipt |
 
 Més info:
 
-https://developer.mozilla.org/en-US/docs/Learn/Forms
+[Forms (Mozilla.org)](https://developer.mozilla.org/en-US/docs/Learn/Forms)
 
-Element FORM: Mètode GET vs POST
-https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_for
-m_data
+[Element FORM: Mètode GET vs POST](https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_form_data)
 
 ## 4.9. Altres elements: video, audio, pictures
 
-HTML5 incorporta elements nous com <video>, que permet inserir un video dins
+HTML5 incorporta elements nous com &lt;video&gt;, que permet inserir un video dins
 una pàgina web. Youtube i altres plataformes de video fan servir aquest element.
-Demo elements HTML5:
+Alguns elements propis de HTML5:
 
 <video>,<audio>, <figure> i <iframe>
+
+<div>
+ <svg height="300" width="800">
+      <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+          <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <rect x="50" y="20" rx="20" ry="20" width="600" height="100" fill="url(#grad1)" style="fill:blue;stroke:darkblue;stroke-width:5;opacity:0.6" />
+<!--     <ellipse cx="100" cy="70" rx="85" ry="55" fill="url(#grad1)" /> -->
+      <text fill="#ffffff" font-size="45" font-family="Verdana" x="50" y="86">&nbsp;Pagina Web Multimedia</text>
+      Sorry, your browser does not support inline SVG.
+    </svg>    
+</div>
+
+<div>
+<!-- HTML compatible video formats: mp4 webm ogg
+     https://es.wikipedia.org/wiki/WebM -->
+    <video width="320" height="240" controls
+            autoplay>
+    <source src ="tierra_noche_MP4_480_1_5MG.mp4">
+  </video>
+</div>    
+
+<div>
+    <video width="320" height="240" controls autoplay loop> 
+      <source src ="./vid/escena_animacion.mp4">
+      <track src="./vid/escena_animacion.srt" label="Ingles SRT" kind="subtitles" srclang="en">
+      <track src="./vid/escena_animacion.vtt" label="Ingles" kind="subtitles" srclang="en" default>
+      Video tag not supported. Download the video 
+      <a href="./vid/escena_animacion.mp4">here</a>.
+    </video>
+</div>
+
+<div>
+    <audio controls autoplay>
+      <source src="./vid/viper.mp3" type="audio/mp3">
+      <source src="./vid/viper.ogg" type="audio/ogg">
+      <p>Your browser doesn't support HTML5 audio. Here is a <a href="viper.mp3">link to the audio</a> instead.</p>
+    </audio>
+</div>
+
+<figure>
+    <img src="https://picsum.photos/600/400"
+         width="600" height="400"
+         alt="Esta es una foto aleatoria de picsum"
+    >
+    <figcaption>Foto aleatoria de picsum</figcaption>
+</figure>
+
+<div>
+    <iframe width="800" height="600" src="https://es.wikipedia.org/wiki/Rage_Against_the_Machine" 
+    title="Wikipedia Rage_Against_the_Machine" frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </iframe>
+</div>
+
+<div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d5918.938391083444!2d2.762264678464291!3d42.118837724998826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2ses!4v1638391807509!5m2!1ses!2ses" 
+    width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy">
+  </iframe>  
+</div>
+
 
 ## 4.10. HTML5: tags semàntics i contenidor
 
@@ -385,21 +435,24 @@ Aquests contenidors no aporten informació sobre el contingut.
 HTML5 incorpora uns 100 tags semàntics. Per ex: <nav> per incloure una barra
 de navegació.
 
-<article>
-<aside>
-<footer>
-<header>
-<section>
-<details>
-<summary>
-<main>
-<time>
+```html
+  <article>
+  <aside>
+  <footer>
+  <header>
+  <section>
+  <details>
+  <summary>
+  <main>
+  <time>
+```
 
-Activitat 10:
+**Activitat 10:**
 
 Escriu en un HTML l’estructura de les dues pàgines de la imatge amb elements semàntics.
-Més informació:
-https://www.w3schools.com/html/html5_semantic_elements.asp
+
+[HTML5 semantic elements](https://www.w3schools.com/html/html5_semantic_elements.asp)
+
 
 ## 4.11. Estils
 
@@ -432,6 +485,7 @@ Això comporta uns problemes:
 • Les modificaciones sobre un lloc web acostumen a ser sobre el contingut, mantenint el format estàtic. Separar contingut i estil facilita el manteniment.
 
 Tenim el següent codi CSS que canvia els encapçalaments tipus h1, posant el text de color vermell i la mida de la lletra a 20 píxels:
+
 h1 {
 color: #ff0000;
 font-size: 20px;
@@ -441,6 +495,7 @@ element_html {
 propietat: valor;
 propietat: valor;
 }
+
 Aquest format s’aplicarà a tots els elements h1 del web.
 Podem definir tantes regles com necessitem. Fins i tot, podem definir-ne diverses
 per a un mateix element (el resultat serà la suma de les regles).
