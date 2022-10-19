@@ -102,7 +102,7 @@ mi avariciosa voz de enamorado.
 
 Alguns efectes de texte bàsics com <strong>negreta</strong>, <em>èmfasi</em>, <ins>subratllat</ins> o <del>ratllar</del>, s'aconsegueixen amb les etiquetes strong, em, ins o del.
 
-Podem <mark>resaltat de texte</mark> i crear subíndex i superíndex, com a H2O => H<sub>2</sub>O
+Podem <mark>resaltar el texte</mark> i crear subíndex i superíndex, com a H2O => H<sub>2</sub>O
 
 
 Més informació:
@@ -523,7 +523,7 @@ Tenim tres formes d’aplicar CSS a HTML: inline, interna I externa:
 * A l’HTML, dins de l’etiqueta (inline):
 ```html
 <h1 style="color:#ff0000;background-color:#ffff00">
-```css
+```
 
 Si una etiqueta ja té un estil predefinit (com és el cas de h1), el que estem fent és redefinir-lo. Només s’aplica a l’etiqueta en qüestió (no a totes!).
 
