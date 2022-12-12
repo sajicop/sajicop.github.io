@@ -9,5 +9,8 @@
 
 ## UF2
 
+## [1. Conversió de documents: XSL]
+## [2. Emmagatzematge d’informació amb XML: Xpath i XQuery]
+## [3. Sindicació de continguts: RSS]
 
 
