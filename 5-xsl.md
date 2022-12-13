@@ -201,17 +201,178 @@ Quants discs aparèixen al fitxer html?
 
 [enlace w3c]: <> (https://www.w3schools.com/xml/tryxslt.asp?xmlfile=cdcatalog&amp;xsltfile=cdcatalog_ex1)
 
-* **xsl:for-each**.
+* **xsl:for-each**. Es fa servir per a recórrer els elements d'un document i realitzar una sèrie d'operacions amb els nodes. L'atribut select determina els elements que s'ha de recórrer. És equivalent a l'instrucció foreach dels llenguatges de programació.
 
-* **xsl:if**.
+La seva sintaxi es:
 
-* **xsl:sort**.
+```xml
+<xsl:for-each select="condicio">
+    <xsl:value-of select="..."/>
+</xsl:for-each>
+```
 
-* **xsl:choose**.
+Exercici: modifiqueu l'exercici anterior per mostrar tots els albums:
 
-* **xsl:output**.
+```xml
+<xsl:for-each select="catalog/cd">
+    <xsl:value-of select="title"/>
+    <xsl:value-of select="artist"/>
+</xsl:for-each>
+```
 
-* **xsl:include**.
+* **xsl:if**. Podem sel.leccionar la informació que mostrarà per pantalla en funció de les condicions que li indiquem. 
 
+Exemple
 
+```xml
+<xsl:if test="price&lt;=10 and Artist='Xavier Camunyes'">
+```
 
+Compte amb les cometes simples si el que volem és comparar cadenes. En la següent taula es resumeixen els símbols utilitzats per als operadors booleans:
+
+| Símbol        | Operador      | 
+| :------------ | :------------ | 
+| =             | Igual         | 
+| !=            | Distint       | 
+| &lt;          | menor que     | 
+| &gt;          | major que     | 
+| &lt; =        | menor o igual que     | 
+| &gt; =        | major o igual que     | 
+| and           | I lògic (&amp;&amp;)     | 
+| or           | O lògic (&#124;&#124;)     | 
+
+* **xsl:sort**. Ens permet ordenar la informació en funció del contingut d'un element. Té més opcions que la clàusula ORDER BY a SQL.
+
+La seva sintaxi seria:
+
+```xml
+<xsl:sort select="condició"/>
+```
+
+**Compte: xsl:sort no té etiqueta de tancament** 
+
+Els atributs (opcions) que té es mostren a la següent taula:
+
+| Atribut       |  Valor            | Significat    |
+| ------------- | -------------     | ------------- | 
+| select        | XPath Expression  | Especifica quin node o conjunt de nodes ordenar |
+| lang          | language-code     | Especifica quin llenguatge s'utilitza per a l'ordenació |
+| datatype      | text, number, qname | Especifica el tipus de dada que s'ordenarà. Per defecte és "texte" |
+| order         | ascending, descending | Especifica el tipus d'ordre. Per defecte es "ascending" |
+| caseorder     | upper-first, lower-first | Especifica si les lletres majúscules o minúscules s'ordenen en primer lloc |
+
+Exemple:
+
+```xml
+<xsl:for-each select="catalog/cd">
+    <xsl:sort select="artist" order="descending"/>
+    <tr>
+        <td><xsl:value-of select="title"/></td>
+        <td><xsl:value-of select="artist"/></td>
+    </tr>
+</xsl:for-each>
+```
+
+* **xsl:choose**. Element per a condicionar els resultats que permet establir múltiples condicions dintre del recorregut de l'arbre XML. És equivalent a l'instrucció **switch-case-default** dels llenguatges de programacio.
+
+La seva sintaxi seria:
+
+```xml
+<xsl:choose>
+    <xsl:when test="expressio_1">
+        tractament de les dades
+    </xsl:when>
+    <xsl:when test="expressio_2">
+        tractament de les dades
+    </xsl:when>
+    ...
+    <xsl:otherwise>
+        tractament de les dades
+    </xsl:otherwise>        
+</xsl:choose>
+```
+
+Exemple:
+```xml
+<xsl:for-each select="catalog/cd">
+    <tr>
+        <td><xsl:value-of select="title"/></td>
+
+        <xsl:choose>
+            <xsl:when test="price &amps;gt; 10">
+                <td bgcolor="#ff00ff"><xsl:value-of select="artist"/></td>
+            </xsl:when>
+
+            <xsl:otherwise test="price &amps;gt; 10">
+                <td><xsl:value-of select="artist"/></td>
+            </xsl:otherwise>
+        </xsl:choose>
+    </tr>
+</xsl:for-each>
+```
+
+* **xsl:output**. L'element output defineix el format de sortida del document XSL (XML, HTML o texte). És un element de nivell superior, per tant ha d'anar just sota l'element xsl:stylesheet o xsl:transform. Per exemple, el següent codi produeix un document XML com a sortida.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
+    ...
+    ...
+</xsl:stylesheet> 
+```
+
+* **xsl:include**. L'element include també és un element de nivell superior que inclou els continguts d'un full d'estils dintre d'un altre. Sintaxi:
+
+```xml
+<xsl:include href="URI">
+```
+
+## 5.6 Plantilles XSL.
+
+Fins ara hem aplicat la plantilla a tot el document, i per crear els diferents estils als elements feiem servir xsl:if o xsl:choose. Ara farem servir diferentes plantilles per a condicionar el contingut de cada element. 
+
+Exemple
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?> 
+    <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+        <xsl:template match="/">
+            <html>
+                <body>
+                    <h1>My CD Collection</h1>
+                    <xsl:apply-templates/>
+                </body>
+            </html>
+        </xsl:template>
+
+        <xsl:template match="catalog">
+            <h2>CD Catalog</h2>
+            <table>
+                <tr bgcolor="#887788">
+                <th>Title</th><th>Artist</th>
+                </tr>
+                <xsl:apply-templates select="cd"/>
+            </table>
+        </xsl:template>
+
+        <xsl:template match="cd">
+            <tr>
+                <xsl:apply-templates select="title"/>
+                <xsl:apply-templates select="artist"/>
+            </tr>
+        </xsl:template>
+
+        <xsl:template match="title">
+            <td bgcolor="DDEEDD">
+                <xsl:value-of select="."/>
+            </td>
+        </xsl:template>
+
+        <xsl:tempalte match="artist">
+            <td bgcolor="AABBAA">
+                <xsl:value-of select="."/>
+            </td>
+        </xsl:template>
+    </xsl:stylesheet>
+```
