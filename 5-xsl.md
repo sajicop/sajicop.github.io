@@ -197,7 +197,7 @@ Quants discs aparèixen al fitxer html?
   </html>
 </xsl:template>
 </xsl:stylesheet>
-´´´
+```
 
 [enlace w3c]: <> (https://www.w3schools.com/xml/tryxslt.asp?xmlfile=cdcatalog&amp;xsltfile=cdcatalog_ex1)
 
