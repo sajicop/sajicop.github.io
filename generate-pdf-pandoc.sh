@@ -3,3 +3,4 @@ pandoc 2-xml.md --pdf-engine=pdflatex -o assets/pdf/2-xml.pdf
 pandoc 3-xsd.md --pdf-engine=pdflatex -o assets/pdf/3-xsd.pdf 
 pandoc 3-xsd.md --pdf-engine=pdflatex -o assets/pdf/3-xsd.pdf
 pandoc 4-html-css.md --pdf-engine=pdflatex -o assets/pdf/4-html-css.pdf
+pandoc 5-xsl-xpath.md --pdf-engine=pdflatex -o assets/pdf/5-xsl-xpath.pdf

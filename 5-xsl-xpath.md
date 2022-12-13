@@ -4,6 +4,17 @@
 
 ## Índex de continguts
 
+  * [5.0 Introducció a la UF2.](#50-introducci--a-la-uf2)
+  * [5.1 Introducció a XSLT.](#51-introducci--a-xslt)
+  * [5.2 eXtensible Stylesheet Language (XSL)](#52-extensible-stylesheet-language--xsl-)
+  * [5.3 Fulls d'estil: CSS vs XSLT](#53-fulls-d-estil--css-vs-xslt)
+  * [5.4 Processadors XSLT](#54-processadors-xslt)
+    + [5.4.1. Crear full d'estil ben format](#541-crear-full-d-estil-ben-format)
+    + [5.4.2 Vincular un XSL al document XML](#542-vincular-un-xsl-al-document-xml)
+  * [5.4.3 Aplicar una plantilla al document XSL](#543-aplicar-una-plantilla-al-document-xsl)
+  * [5.5 Elements de plantilles més comuns.](#55-elements-de-plantilles-m-s-comuns)
+  * [5.6 Transformació de XML a XML (xsl-output)](#56-transformaci--de-xml-a-xml--xsl-output)
+  * [5.7 Plantilles XSL.](#56-plantilles-xsl)
 
 ## 5.0 Introducció a la UF2.
 
@@ -328,7 +339,11 @@ Exemple:
 <xsl:include href="URI">
 ```
 
-## 5.6 Plantilles XSL.
+## 5.6 Transformació de XML a XML (xsl:output)
+
+
+
+## 5.7 Plantilles XSL.
 
 Fins ara hem aplicat la plantilla a tot el document, i per crear els diferents estils als elements feiem servir xsl:if o xsl:choose. Ara farem servir diferentes plantilles per a condicionar el contingut de cada element. 
 
