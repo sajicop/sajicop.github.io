@@ -174,6 +174,7 @@ Quants discs aparèixen al fitxer html?
         <year>1988</year>
     </cd>
 </catalog>
+```
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
