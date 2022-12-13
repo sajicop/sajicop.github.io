@@ -18,6 +18,8 @@
 
 ## 5.0 Introducció a la UF2.
 
+![Resum UF2](assets/img/5-0-markup-languages-summary.png "Resum UF2")
+
 ## 5.1 Introducció a XSLT.
 
 En capítols anteriors hem vist que XML és un format relativament llegible, doncs es tracta de fitxers de texte pla i la informació està organitzada jeràrquicament. No obstant, com hem vist darrerament amb HTML, als humans els agrada visualitzar la informació col.locada en determinats formats que facin la lectura més agradable, com l'al.lineació, format del texte o els colors. 
