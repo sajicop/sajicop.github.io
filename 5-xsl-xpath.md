@@ -11,7 +11,7 @@
   * [5.4 Processadors XSLT](#54-processadors-xslt)
     + [5.4.1. Crear full d'estil ben format](#541-crear-full-d-estil-ben-format)
     + [5.4.2 Vincular un XSL al document XML](#542-vincular-un-xsl-al-document-xml)
-  * [5.4.3 Aplicar una plantilla al document XSL](#543-aplicar-una-plantilla-al-document-xsl)
+    + [5.4.3 Aplicar una plantilla al document XSL](#543-aplicar-una-plantilla-al-document-xsl)
   * [5.5 Elements de plantilles més comuns.](#55-elements-de-plantilles-m-s-comuns)
   * [5.6 Transformació de XML a XML (xsl-output)](#56-transformaci--de-xml-a-xml--xsl-output)
   * [5.7 Plantilles XSL.](#56-plantilles-xsl)
@@ -140,7 +140,7 @@ Per vincular el document XSL al document XML, afegim la següent declaració al 
 <?xml-stylesheet type=“text/xsl” href=“catalog.xsl”?>
 ```
 
-## 5.4.3 Aplicar una plantilla al document XSL
+### 5.4.3 Aplicar una plantilla al document XSL
 
 Dintre del document XSL afegirem un template per indicar sobre quins nodes del document XML volem actuar ("/" indica l'arrel del document).
 
