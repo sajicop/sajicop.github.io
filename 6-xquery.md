@@ -133,7 +133,7 @@ XQuery (XML Query) és a XML el que SQL a les BBDD relacionals. XQuery és compa
 
 XQuery 1.0 va ser desenvolupat pel grup de treball W3C i XPath 2.0 és un subconjunt de XQuery 1.0.
 
-XQuery és molt semblant a SQL, afegint-li estructures dels llenguatges de programació com for, return, etc. Aquestes estructures s'anomenen sentències FLOWR, és a dir For, Let, Where, Order by i Return.
+XQuery és molt semblant a SQL, afegint-li estructures dels llenguatges de programació com for, return, etc. Aquestes estructures s'anomenen sentències **FLOWR**, és a dir **For, Let, Where, Order by i Return**.
 
 Quan s'analitza el document XML es crea un arbre de nodes on tenim:
 
@@ -152,6 +152,11 @@ Per altra banda:
 * XQuery recorre dades jeràrquiques i SQL dades relacionals.
 * SQL permet eliminar i modificar dades, XQuery té dificultat a l'hora d'esborrar o editar dades.
 
-## 6.4. Introducció XQuery
+## 6.4. XQuery
 
+Algunes consideracions inicials:
 
+* És sensible a majúscules i minúscules com XML.
+* Els elements, atributs i variables han de tenir noms vàlids a XML.
+* Podem realitzar les consultes carregant un arxiu .xq a al gestor de BBDD XML.
+* Podem realitzar les consultes directament a l'interfície del SGDB-Jeràrquic com baseX, eXistDB, etc..
