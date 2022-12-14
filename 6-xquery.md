@@ -1,6 +1,6 @@
 # Tema 6: XQuery
 
-## 6.1 Introducció
+## 6.1. Introducció
 
 ### **6.1.1. Base de dades**
 
@@ -54,7 +54,7 @@ Anomenem B2B (Bussiness to Bussiness) a les transaccions comercials entre empres
 
 Per exemple, les empreses amb ERPs com SAP fan servir el document IDoc (Intermediate Document) que permet tranferir informació entre bases de dades. Un IDoc pot representar una factura, una comanda de vendes, una entrada al magatzem, una entrega, etc.
 
-## 6.2 Bases de dades XML
+## 6.2. Bases de dades XML
 
 
 Un document XML és pot considerar una base de dades (BBDD), doncs la informació està guardada de manera estructurada, és a dir organitzada o ordenada dintre del document. Podem dir que una base de dades XML (document) permet emmagatzemar dades en format XML (format estructurat).
@@ -63,7 +63,7 @@ Les operacions que normalment es poden fer amb una BBDD com inserir, modificar o
 
 Les bases de dades XML són una bona solució si la informació està estructurada de forma jeràrquica i necessitem un accés lleuger a la BBDD. Per actualitzar una columna a XML hem d'actualitzar tot el document XML. Per tant, si les dades són actualitzades molt freqüentment i els documents XML tenen moltes files (o registres) pot ser més eficients guardar les dades en una BBDD relacional. Per altra banda, si actualitzem documents petits i pocs documents al mateix temps, XML també pot ser eficient.
 
-### 6.2.1 Sistemes d'emmagatzematge de la informació mitjançant XML
+### 6.2.1. Sistemes d'emmagatzematge de la informació mitjançant XML
 
 Existeixen tres formes d'emmagatzemament de la informació mitjançant XML:
 
@@ -108,7 +108,7 @@ Comparativa de BBDD XML natives:
 | MarLogic      | Comercial     | C++               | No/Parcial/Si         | Propietari    | Si        | Si        |
 | Sedna         | Apache 2.0    | C++               | No/?/Si               | Si            | No        | ?         |
 
-## 6.3 SQL i XQuery
+## 6.3. SQL i XQuery
 
 SQL (Structured Query Language) és un llenguatge declaratiu (li indiquem les dades que volem, no com obtenir-les físicament del disc) que serveix per accedir i manipular BBDD relacionals:
 
@@ -131,6 +131,10 @@ La versió de SQL més utilitzada és la del 1993. Respecte a l'us amb XML:
 
 XQuery (XML Query) és a XML el que SQL a les BBDD relacionals. XQuery és compatible amb les següents tecnologies: XML, Namespaces, XSLT, XPath i XML Schema.
 
+XQuery 1.0 va ser desenvolupat pel grup de treball W3C i XPath 2.0 és un subconjunt de XQuery 1.0.
+
+XQuery és molt semblant a SQL, afegint-li estructures dels llenguatges de programació com for, return, etc. Aquestes estructures s'anomenen sentències FLOWR, és a dir For, Let, Where, Order by i Return.
+
 Quan s'analitza el document XML es crea un arbre de nodes on tenim:
 
 * Node arrel o "/": El primer node del document XML.
@@ -148,6 +152,6 @@ Per altra banda:
 * XQuery recorre dades jeràrquiques i SQL dades relacionals.
 * SQL permet eliminar i modificar dades, XQuery té dificultat a l'hora d'esborrar o editar dades.
 
-
+## 6.4. Introducció XQuery
 
 
