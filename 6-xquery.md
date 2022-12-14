@@ -1,3 +1,3 @@
 # Tema 6: XQuery
 
-## 6.1. Introducció
+## 6.1. Introducció 2
