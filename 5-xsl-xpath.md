@@ -324,7 +324,7 @@ Exemple:
 </xsl:for-each>
 ```
 
-* **xsl:output**. L'element output defineix el format de sortida del document XSL (XML, HTML o texte). És un element de nivell superior, per tant ha d'anar just sota l'element xsl:stylesheet o xsl:transform. Per exemple, el següent codi produeix un document XML com a sortida.
+* **xsl:output**. L'element output defineix el format de sortida del document XSL (XML, HTML o texte). És un element de nivell superior, per tant ha d'anar just sota l'element xsl:stylesheet o xsl:transform. Per exemple, el següent codi produeix un document XML com a sortida. Veure apartat 5.6 (transformació XML a XML)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -343,7 +343,71 @@ Exemple:
 
 ## 5.6 Transformació de XML a XML (xsl:output)
 
+La conversio de XML a XML és igual que en el cas de HTML però treient els elements html, body, etc i fent servir l'element output després de la declaració XML. Per crear atributs nous al XML, fem servir l'element xsl:attribute. Posem un exemple pràctic. Tenim el següent document XML:
 
+XML Original 
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<tienda>
+  <libro>
+    <titulo>Javascript coding</titulo>
+    <precio>20</precio>
+    <idioma>Castellà</idioma>
+  </libro>
+  <libro>
+    <titulo>XML the origin</titulo>
+    <precio>15</precio>
+    <idioma>Anglès</idioma>
+  </libro>
+</tienda>
+```
+
+A partir d'aquest document, volem crear un altre document XML amb les següents modificacions:
+
+* L'arrel del document es canvia per tienda2.0
+* L'idioma ha de ser un atribut de l'element libro
+* Creem un atribut nou a precio anomenat moneda amb valor Euro
+
+El document XSL de tranformació seria el següent:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output method="xml" indent="yes"/>
+  <xsl:template match="/">
+    <tienda2.0>
+      <xsl:for-each select="tienda/libro">
+        <libro>
+          <xsl:attribute name="idioma">
+            <xsl:value-of select="idioma"/>
+          </xsl:attribute>
+          <titulo><xsl:value-of select="titulo"/></titulo>
+          <precio>
+            <xsl:attribute name="moneda">Euro</xsl:attribute>
+            <xsl:value-of select="precio"/>	
+          </precio>
+        </libro>
+      </xsl:for-each>
+    </tienda2.0>  
+  </xsl:template>
+</xsl:stylesheet>
+```
+
+Resultat de la transformació:
+
+```xml
+<tienda2.0>
+   <libro idioma="Castellà">
+      <titulo>Javascript coding</titulo>
+      <precio moneda="Euro">20</precio>
+   </libro>
+   <libro idioma="Anglès">
+      <titulo>XML the origin</titulo>
+      <precio moneda="Euro">15</precio>
+   </libro>
+</tienda2.0>
+```
 
 ## 5.7 Plantilles XSL.
 
