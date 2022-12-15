@@ -4,17 +4,6 @@
 
 ## Índex de continguts
 
-  * [5.0 Introducció a la UF2.](#50-introducci--a-la-uf2)
-  * [5.1 Introducció a XSLT.](#51-introducci--a-xslt)
-  * [5.2 eXtensible Stylesheet Language (XSL)](#52-extensible-stylesheet-language--xsl-)
-  * [5.3 Fulls d'estil: CSS vs XSLT](#53-fulls-d-estil--css-vs-xslt)
-  * [5.4 Processadors XSLT](#54-processadors-xslt)
-    + [5.4.1. Crear full d'estil ben format](#541-crear-full-d-estil-ben-format)
-    + [5.4.2 Vincular un XSL al document XML](#542-vincular-un-xsl-al-document-xml)
-    + [5.4.3 Aplicar una plantilla al document XSL](#543-aplicar-una-plantilla-al-document-xsl)
-  * [5.5 Elements de plantilles més comuns.](#55-elements-de-plantilles-m-s-comuns)
-  * [5.6 Transformació de XML a XML (xsl-output)](#56-transformaci--de-xml-a-xml--xsl-output)
-  * [5.7 Plantilles XSL.](#56-plantilles-xsl)
 
 ## 5.0 Introducció a la UF2.
 
@@ -115,7 +104,7 @@ Podem treballar amb processadors off-line amb editors com __XML Copy Editor__, _
 
 ### 5.4.1. Crear full d'estil ben format
 
-La declaració d'un document XSL és la següent (són equivalents):
+La declaració d'un document XSL és la següent (són equivalents, normalment es fa servir xsl:stylesheet):
 
 ```xml
 <?xml version=“1.0” encoding=“UTF-8”?>
@@ -135,16 +124,48 @@ La declaració d'un document XSL és la següent (són equivalents):
 
 ### 5.4.2 Vincular un XSL al document XML
 
-Per vincular el document XSL al document XML, afegim la següent declaració al XML:
+Per vincular el document XSL al document XML, afegim la següent Processing Instruction (PI) al XML:
 
 ```xml
 <?xml version=“1.0” encoding=“UTF-8”?>
 <?xml-stylesheet type=“text/xsl” href=“catalog.xsl”?>
 ```
 
-### 5.4.3 Aplicar una plantilla al document XSL
+### 5.5 Creació de templates
 
-Dintre del document XSL afegirem un template per indicar sobre quins nodes del document XML volem actuar ("/" indica l'arrel del document).
+#### **Document d'exemple**
+
+Aquest és el document XML que farem servir per a la creació de plantilles:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<persones>
+  <persona naixement="1912" mort="1954">
+    <nom>
+      <primer_nom>Alan</primer_nom>
+      <cognom>Turing</cognom>
+    </nom>
+    <profesio>informàtic</profesio>
+    <profesio>matemàtic</profesio>
+    <profesio>criptògraf</profesio>
+  </persona>
+  <persona naixement="1903" mort="1957">
+    <nom>
+      <primer_nom>John</primer_nom>
+      <inicial_segon_nom>V</inicial_segon_nom>
+      <cognom>Neumann</cognom>
+    </nom>
+    <profesio>matematic</profesio>
+    <hobby>jugar a tenis</hobby>
+  </persona>
+</persones>
+```
+
+Dintre del document XSL afegirem un template o regles de plantilla per indicar quina salida volem a partir de l'entrada seleccionada. L'element **xsl:template** té dues parts:
+
+* Un atribut match que conté un patró que coincideix amb un o més nodes del document XML. Aquest patró está especificat en el llenguatge XPath. En aquest cas el símbol "/" indica l'arrel del document XML. Fixeu-vos que la sintaxi s'assembla deliveradament amb les rutes d'arxius del sistema operatiu Unix/Linux.
+
+* També conté una plantilla que s'executa quan coincideix el patró. Aquesta plantilla pot contenir part d'un document html, xml o caràcters de texte.
 
 ```xml
 <?xml version=“1.0” encoding=“UTF-8”?>
@@ -152,7 +173,7 @@ Dintre del document XSL afegirem un template per indicar sobre quins nodes del d
     <xsl:template match="/">
         <html>
             <body>
-                <h2>La meva col.leció de CDs</h2>
+                <h2>Personatges històrics de la informàtica</h2>
                 <!-- Aqui podem seleccionar elements XML i inserir-los al nostre HTML-->
             </body>
         </html>
@@ -160,7 +181,77 @@ Dintre del document XSL afegirem un template per indicar sobre quins nodes del d
 </xsl:stylesheet>
 ```
 
-## 5.5 Elements de plantilles més comuns.
+La coincidència de patró més sencilla és el nom d'un element. Si per exemple fem coincidir l'element **persona**, el següent exemple simplement escriu el texte ___Una persona___:
+
+```xml
+<?xml version="1.0"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+     
+  <xsl:template match="persona">Una Persona</xsl:template>
+     
+</xsl:stylesheet>
+```
+
+Hi ha dos elements coincidents anomenats persona, i cada vegada que el processador troba aquest element simplement escriu ```una persona```:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+     
+ Una Persona
+     
+ Una Persona
+```
+
+Una persona és texte pla, però també podem escriure elements de llenguatges de marques, com en l'exemple següent. L'única restricció és que com XSLT és un document XML ben format, el llenguatge de marques de sortida també ha d'estar ben format:
+
+```xml
+<?xml version="1.0"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+     
+  <xsl:template match="persona"><p>Una Persona</p></xsl:template>
+     
+</xsl:stylesheet>
+```
+Dona com a resultat:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+     
+  <p>Una Person</p>
+     
+  <p>Una Persona</p>
+```
+
+La majoria de les vegades, el que farem serà seleccionar elements del document d'entrada e inserir-los en el document de sortida. Un dels elements XSL més utilitzats es **xsl:value-of**, que obté el valor de texte del element del document XML origen. L'element que s'obté es selecciona amb l'atribut **select**, i l'atribut també conté una expressió XPath. Per escriure el nom de la persona fariem:
+
+```xml
+<?xml version="1.0"?>
+<xsl:stylesheet version="1.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+     
+  <xsl:template match="persona">
+    <p>
+      <xsl:value-of select="nom"/>
+    </p>
+  </xsl:template>
+</xsl:stylesheet>
+```
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+     
+  <p>
+      Alan
+      Turing
+    </p>
+     
+  <p>
+      John
+      V
+      Neumann
+    </p>
+```
+
+## 5.6 Elements de plantilles més comuns.
 
 Dintre de les nostres plantilles XSL podem utilitzar les següents instruccions de plantilla. Pertanyen al vocabulari XSLT definit a l'espai de noms XSL.
 
@@ -168,7 +259,7 @@ Els més utilitzats són:
 
 * **xsl:value-of**. Inserta el valor d'un element o atribut XML a la sortida resultant. Podem fer servir l'atribut select per seleccionar l'atribut o subelement el valor del qual s'utilitzarà.
 
-Exercici: copia els següents codis en dos fitxers de texte i fes la transformació amb el processador on-line. Respon a la següent pregunta: 
+**Exercici**: copia els següents codis en dos fitxers de texte i fes la transformació amb el processador on-line. Respon a la següent pregunta: 
 Quants discs aparèixen al fitxer html?
 
 ```xml
@@ -343,7 +434,7 @@ Exemple:
 <xsl:include href="URI">
 ```
 
-## 5.6 Transformació de XML a XML (xsl:output)
+## 5.7 Transformació de XML a XML (xsl:output)
 
 La conversio de XML a XML és igual que en el cas de HTML però treient els elements html, body, etc i fent servir l'element output després de la declaració XML. Per crear atributs nous al XML, fem servir l'element xsl:attribute. Posem un exemple pràctic. Tenim el següent document XML:
 
@@ -411,7 +502,7 @@ Resultat de la transformació:
 </tienda2.0>
 ```
 
-## 5.7 Plantilles XSL.
+## 5.8 Plantilles XSL.
 
 Fins ara hem aplicat la plantilla a tot el document, i per crear els diferents estils als elements feiem servir xsl:if o xsl:choose. Ara farem servir diferentes plantilles per a condicionar el contingut de cada element. 
 
