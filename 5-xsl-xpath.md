@@ -49,7 +49,7 @@ Document alumnes.xml
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type=“text/css” href="estilo.css"?>
+<?xml-stylesheet type="text/css" href="estil.css"?>
     <alumne>
         <nom>Marc</nom>
         <cognom>Màrquez</cognom>
@@ -64,21 +64,32 @@ Document alumnes.xml
     </alumne>    
 ```
 
-Document estilo.css
+Document estil.css
 
 ```css
 alumne {
-    text-align:center;
+    text-align: center;
 }
 nom {
-    font-weight:bold;
-    font-family:tahoma;
-    color:blue;
+    font-weight: bold;
+    font-family: tahoma;
+    color: blue;
 }
 cognom {
-    color:cyan;
+    color: cyan;
 }
 ```
+
+## 5.4 Versions de XSLT
+
+XSLT està inspirat en DSSSL, l'equivalent a XSLT en l'antic SGML. Actualment (2022), tenim tres versions:
+
+* **XSLT 1.0.** 1999. Desenvolupat pel W3C, juntament es va desenvolupar XSL-FO i XPath. Encara es fa servir bastant (2018) doncs és el més compatible amb els navegadors.
+
+* **XSLT 2.0.** 2007. Desenvolupat per Michael Kay, també desenvolupador de XQuery y Saxon XSLT. Com a novetats permet crear múltiples documents de sortida
+
+* **XSLT 3.0.** 2017. Millores per a la transformació de documents XML molt grans.
+
 
 ## 5.4 Processadors XSLT
 
@@ -94,17 +105,23 @@ El seu ús implica necessàriament els següents passos:
 
 El processador XSLT va llegint el document XML, processant node a node el XML i aplicant les transformacions necessàries definidas en las __templates rules__ del full XSLT. Los templates son un conjunto de reglas que se aplican cuando se encuentra alguno de los nodos especificados.
 
-Podem treballar amb processadors off-line amb editors com __XML Copy Editor__, __Visual Studio Code__ (aquest requereix un processador extern apart de una extensió) processadors en línia com:
+Podem treballar amb processadors off-line amb editors com __XML Copy Editor__, __Visual Studio Code__ (requereix d'un programa extern apart d'una extensió) processadors en línia com.
+
+**Processadors XSLT on-line:**
 
 * [XSL Transformation (XSLT) Online Toolz](https://www.online-toolz.com/tools/xslt-transformation.php "XSLT Transformation Online Tool")
 
 * [Free Online XSLT Transformer](https://www.freeformatter.com/xsl-transformer.html "Free Formatter")
 
-* [XSLT Saxon Processor](https://saxon.sourceforge.net/ "XSLT Saxon Processor") <-- requereix Java
+**Processadors off-line:**
+
+* [XSLT Saxon Processor](https://saxon.sourceforge.net/ "XSLT Saxon Processor"). Està basat en Java, per tant cal tenir insta.lat el JRE (inclòs en el JDK). És el que farem servir en aquesta UF. Veure Annex 1.
+
+* [Xalan](https://xml.apache.org/xalan-j/). Només suporta XSLT 1.0. També està basat en Java però el seu desenvolupament està estancat.
 
 ### 5.4.1. Crear full d'estil ben format
 
-La declaració d'un document XSL és la següent (són equivalents, normalment es fa servir xsl:stylesheet):
+La declaració d'un document XSL és la següent (són equivalents, normalment es fa servir **xsl:stylesheet**):
 
 ```xml
 <?xml version=“1.0” encoding=“UTF-8”?>
@@ -131,9 +148,9 @@ Per vincular el document XSL al document XML, afegim la següent Processing Inst
 <?xml-stylesheet type=“text/xsl” href=“catalog.xsl”?>
 ```
 
-### 5.5 Creació de templates
+## 5.5 Creació de templates
 
-#### **Document d'exemple**
+### **Document d'exemple**
 
 Aquest és el document XML que farem servir per a la creació de plantilles:
 
@@ -236,19 +253,19 @@ La majoria de les vegades, el que farem serà seleccionar elements del document 
   </xsl:template>
 </xsl:stylesheet>
 ```
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-     
-  <p>
-      Alan
-      Turing
-    </p>
-     
-  <p>
-      John
-      V
-      Neumann
-    </p>
+<p>
+    Alan
+    Turing
+</p>
+    
+<p>
+    John
+    V
+    Neumann
+</p>
 ```
 
 ## 5.6 Elements de plantilles més comuns.
@@ -328,7 +345,7 @@ Exercici: modifiqueu l'exercici anterior per mostrar tots els albums:
 
 * **xsl:if**. Podem sel.leccionar la informació que mostrarà per pantalla en funció de les condicions que li indiquem. 
 
-Exemple
+Exemple:
 
 ```xml
 <xsl:if test="price&lt;=10 and Artist='Xavier Camunyes'">
@@ -417,7 +434,7 @@ Exemple:
 </xsl:for-each>
 ```
 
-* **xsl:output**. L'element output defineix el format de sortida del document XSL (XML, HTML o texte). És un element de nivell superior, per tant ha d'anar just sota l'element xsl:stylesheet o xsl:transform. Per exemple, el següent codi produeix un document XML com a sortida. Veure apartat 5.6 (transformació XML a XML)
+* **xsl:output**. L'element output defineix el format de sortida del document XSL (XML, HTML o texte). És un element de nivell superior, per tant ha d'anar just sota l'element xsl:stylesheet o xsl:transform. Si no especifiquem aquest element, per defecte XSLT enten que estem creant un arxiu HTML. Per exemple, el següent codi produeix un document XML com a sortida. Veure apartat 5.6 (transformació XML a XML)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -550,3 +567,38 @@ Exemple
         </xsl:template>
     </xsl:stylesheet>
 ```
+
+## Annex 1. Instalació Saxon SXLT en Visual Studio.
+
+Per tal de processar els nostres documents XML i generar una sortida amb XSLT necessitem un processador. Per instal.lar el processador Saxon SXLT a Visual Studio Code:
+
+1. Descarregar l'última versió de **Saxon Home Edition (Saxon-HE)** des de la pàgina oficial: [Saxon SXLT and XQuery Processor](https://saxon.sourceforge.net/#F11HE). No cal descarregar ni els exemples ni el codi font. 
+
+2. Descomprimir el contingt en una carpeta del vostre equip, p. ex. c:\Saxon a Windows o /users/home/usuari/Saxon a Linux.
+
+3. Instal.leu l'extensió **XSLT/XPath for Visual Studio Code** per a Visual Studio Code.
+
+![Saxon SXLT VS Code](assets/img/saxonSXLT-visual-studio-code.png "Saxon SXLT VS Code")
+
+4. Aneu a la configuració. Premeu **F1** a Visual Studio i escriviu Preferencias: **Abrir Configuracion (IU)**. A buscar escriviu **XSLT** i canvieu els següents paràmetres:
+  
+* Desmarqueu Enable Saxon-JS tasks (i comproveu que Enable Saxon tasks està marcada). Ompliu la ruta amb el processador Saxon que heu descarregat, p. ex. /home/salva/Saxon/saxon-he-11.4.jar.
+
+![Saxon SXLT Config](assets/img/saxon-SXLT-config.png "Saxon SXLT Config")
+
+Això només ho hem de fer un cop. Ara anem a configurar una tasca de compilació per especificar els arxius origen i destí de la nostra conversió.
+
+1. Premem F1 i escrivim **"Configure default build task"**. La primera vegada no tindrem cap i ens demanarà configurarl-la. Seleccionem "xslt: Saxon Transform (New)" i ens crearà un arxiu de configuració tasks.json. Omplim amb els paràmetres necessàris:
+
+* **xsltFile** posem el nom del nostre arxiu XSL
+* **xmlSource** podem el nom del origen XML
+* **resultPath** escrivim el nom del fitxer de sortida (normalment XML).
+
+![Tasca JSON Visual Studio](assets/img/saxon-json-task.png "Tasca JSON Visual Studio")
+
+2. Per fer la conversió, hem de buscar dos arxius tant XML com XSL que siguin correctes. Per assegurar-nos, podem probar la nostra conversió amb un processador on-line. Premem **F1** i escrivim **"Run Build Task"**. Si tot ha anat bé, a la nostra carpeta tindrem un arxiu nou amb la transformació feta.
+  
+
+Més informació:
+
+* [Running SXLT](https://deltaxml.github.io/vscode-xslt-xpath/run-xslt.html)

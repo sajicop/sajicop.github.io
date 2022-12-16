@@ -105,7 +105,7 @@ Comparativa de BBDD XML natives:
 | :------------ | :------------ | :-------:         | :------:              | :-----:       | :------:  | :----:    |
 | BaseX         | BSD           | Java              | Si/Si/Si              | Si            | Si        | Si        |
 | eXist         | GNU LGPL      | Java              | Parcial/Parcial/Si    | Propietari    | Si        | Si        |
-| MarLogic      | Comercial     | C++               | No/Parcial/Si         | Propietari    | Si        | Si        |
+| MarkLogic      | Comercial     | C++               | No/Parcial/Si         | Propietari    | Si        | Si        |
 | Sedna         | Apache 2.0    | C++               | No/?/Si               | Si            | No        | ?         |
 
 ## 6.3. SQL i XQuery
