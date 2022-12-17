@@ -568,6 +568,10 @@ Exemple
     </xsl:stylesheet>
 ```
 
+## 5.9 XPath
+
+
+
 ## Annex 1. Instalació Saxon SXLT en Visual Studio.
 
 Per tal de processar els nostres documents XML i generar una sortida amb XSLT necessitem un processador. Per instal.lar el processador Saxon SXLT a Visual Studio Code:
