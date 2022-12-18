@@ -5,11 +5,11 @@
 ## Índex de continguts
 
 
-## 5.0 Introducció a la UF2.
+## 5.0 Resums UF2
 
 ![Resum UF2](assets/img/5-0-markup-languages-summary.png "Resum UF2")
 
-## 5.1 Introducció a XSLT.
+## 5.1 Introducció a XSLT
 
 En capítols anteriors hem vist que XML és un format relativament llegible, doncs es tracta de fitxers de texte pla i la informació està organitzada jeràrquicament. No obstant, com hem vist darrerament amb HTML, als humans els agrada visualitzar la informació col.locada en determinats formats que facin la lectura més agradable, com l'al.lineació, format del texte o els colors. 
 
@@ -94,6 +94,9 @@ XSLT està inspirat en DSSSL, l'equivalent a XSLT en l'antic SGML. Actualment (2
 ## 5.4 Processadors XSLT
 
 Un processador XSLT permet llegir un document XSL i a partir de les regles de transformació sobre un document XML, permet generar un altre document formatejat tipus XML, HTML o texte.
+
+<img src="assets/img/5-4xlst-processor-diagram.png" height="438" width="231">
+
 
 El seu ús implica necessàriament els següents passos:
 
@@ -570,9 +573,113 @@ Exemple
 
 ## 5.9 XPath
 
+XPath és un llenguatge no XML que permet recórrer i seleccionar els nodes d'un document XML. XPath es fa servir a XSLT dintre de l'atribut **select** de les plantilles i també és un subconjunt de XQuery. XQuery es pot veure com un XPath amb sentències dels llenguatges de programació. 
+
+Farem servir el següent exemple per indicar els nodes seleccionats amb XPath:
+
+```xml
+<?xml version="1.0" encoding="windows-1250"?>
+<classe>
+  <estudiant id = "393">
+  <nom>Daniel</nom>
+  <cognoms>Pi Gran</cognoms>
+  <nota>85</nota>
+  <aficions>
+    <aficio>Lectura</aficio>
+    <aficio>Cinema</aficio>
+  </aficions>
+  <naixement>
+    <dia>3</dia>
+    <mes>5</mes>
+    <any>1990</any>
+  </naixement>
+  </estudiant>
+  <estudiant id = "493">
+  <nom>Vanessa</nom>
+  <cognoms>Pou Salat</cognoms>
+  <nota>95</nota>
+  <aficions>
+    <aficio>Lectura</aficio>
+    <aficio>Esport</aficio>
+    <aficio>Cinema</aficio>
+  </aficions>
+    <naixement>
+    <dia>3</dia>
+    <mes>1</mes>
+    <any>1995</any>
+  </naixement>
+  </estudiant>
+  <estudiant id = "593">
+    <nom>Xavier</nom>
+    <cognoms>Fuster Cantó</cognoms>
+    <nota>90</nota>
+    <aficions>
+      <aficio>Esport</aficio>
+      <aficio>Cinema</aficio>
+    </aficions>
+    <naixement>
+      <dia>5</dia>
+      <mes>5</mes>
+      <any>1989</any>
+  </naixement>
+  </estudiant>
+</classe>
+```
+
+A XPath hi ha 7 tipus de nodes:
+
+* El **node document** o **node arrel** (un per document). A XPath el node arrel conté tot el document, no només l'arrel del document XML. El node arrel conté almenys un fill, l'arrel del document XML. També conté els comentaris del document XML, les instruccions de processament (PI)-comencen per &lt;?-. El node arrel s'especifica mitjantçant el simbol /.
+
+* Els **nodes element**. Tots els elements del document XML es poden seleccionar amb XPath. Per seleccionar el contingut dels elements &lt;nom&gt;. a xslt fem servir <xsl:value-of select="nom">. El valor de l'element és la concatenació del texte de tots els elements nom que hi ha al document i tots els seus fills.
+
+* **nodes atribut**. Tot element atribut té un element pare, però no succeeix a l'inrevés. Els elements fills d'un node son el texte, els subelements i els comentaris però no els atributs. Per seleccionar un atribut, fem servir l'operador @. Per exemple, per seleccionar l'atribut id de l'element estudiant, l'expressió XPath seria /classe/estudiant/@id
+
+* **nodes de text**. Contenen el texte d'un element XML. Les entitats es resolen abans d'enviar el node a XPath.
+
+* **nodes comentaris**. Contenen tot el texte entre els caracters &lt;!-- i --&gt;.
+
+* **nodes de processament d'instruccions (PI)**. Contenen tot el texte entre els caracters &lt;? ?&gt; (sense incloure ?&gt;).
+
+* **nodes espai de noms**. No es fan servir gairebé mai als fulls XSLT. Existeixen per a benefici del processador XLST.
+
+Un dels usos més comuns de XPath és crear rutes de localització. Per exemple, el patró **/classe/estudiant/aficions** descriu l'ubicació dintre del XML que volem processar.
+
+Les rutes poden ser absolutes o relatives (si ja hem seleccionat una prèviament). Les rutes absolutes comencen pel simbol /.
+
+## 5.9.1 Predicats
+
+Els predicats són filtres que restringeixen els nodes seleccionats per una expressió XPath. Les condicions s'expressen amb claudàtors. Alguns exemples:
+
+| Expressió                                   | Significat                                                          |
+|:--------------------------------------------|:--------------------------------------------------------------------|
+| /classe/estudiant[nom="Daniel"]              | Retorna totes les dades de l’estudiant de nom Daniel en format XML. |
+| /classe/estudiant[nom="Daniel"]/naixement    | Retorna la data de naixement de l’estudiant de nom Daniel en format XML. |
+| /classe/estudiant[@id<500]                   | Retorna les dades en format XML de tots els estudiants amb id més petit que 500.|
+| /classe/estudiant[aficions/aficio="Lectura"]/nom | Retorna en format XML els noms de tots els estudiants aficionats a la lectura. |
+| /classe/estudiant[aficions/aficio="Lectura"]/nom/string() | Retorna els noms (sense el format XML) de tots els estudiants aficionats a la lectura. |
+| /classe/estudiant[nota>90 or @id<400]/nom/string() | Retorna el nom (sense format XML) de tots els alumnes amb una nota major a 90 o un identificador inferior a 400. |
+| /classe/estudiant[nom="Daniel" or nota>90]/nom/string() | Retorna el nom (sense format XML) de tots els alumnes anomenats Daniel o amb una nota superior a 90. |
+| /classe/estudiant[naixement/mes=5 and naixement/any<1990]/nom/string() | Retorna el nom (sense format XML) de tots els alumnes nascuts el mes de maig i abans de 1990 |
+
+## 5.9.2 Funcions
+
+Conjuntament amb els predicats es poden utilitzar funcions. Per exemple:
+
+* count(x): compta el nombre d’elements d’x; x és un camí XPath absolut o relatiu. En el segon cas, sol indicar un element o un atribut d’un node.
+
+*  string(): passen a cadena de caràcters l’element o atribut; es posa a continuació de l’últim element de l’expressió XPath.
+
+Exemples d’utilització d’aquestes funcions:
+
+| Expressió                                   | Significat                                                          |
+|:--------------------------------------------|:--------------------------------------------------------------------|
+| count(/classe/estudiant)                    | A l’exemple, retorna 3, ja que només hi ha 3 estudiants. |
+| /classe/estudiant/aficions/count(aficio)    | A l’exemple retorna 2 3 2, que és el nombre d’aficions de cadascun dels estudiants. |
+| /classe/estudiant/nom/string()              | A l’exemple retorna Daniel Vanessa Xavier que són els noms de cadascun dels estudiants (sense /string() retornava el mateix, però cada nom anava delimitat per <nom>... </nom> |
+| /classe/estudiant/@id/string()              | A l’exemple retorna 393 493 593, que són els identificadors de cadascun dels estudiants (sense /string() retornava el mateix, però entre comets i precedit del text id= ) |
 
 
-## Annex 1. Instalació Saxon SXLT en Visual Studio.
+## Annex 1. Instalació Saxon SXLT a Visual Studio.
 
 Per tal de processar els nostres documents XML i generar una sortida amb XSLT necessitem un processador. Per instal.lar el processador Saxon SXLT a Visual Studio Code:
 

@@ -160,3 +160,214 @@ Algunes consideracions inicials:
 * Els elements, atributs i variables han de tenir noms vàlids a XML.
 * Podem realitzar les consultes carregant un arxiu .xq a al gestor de BBDD XML.
 * Podem realitzar les consultes directament a l'interfície del SGDB-Jeràrquic com baseX, eXistDB, etc..
+* Per processar els arbres dels nodes d'un document XQuery utilitza XPath.
+
+**Extracció de dades**:
+
+* Per extreure totes les dades d'un document: 
+
+Local:
+```xquery
+  doc("ruta_a_l’arxiu/nom_arxiu.xml")
+```
+URL:
+```xquery
+  doc("http://adreça_del_document")
+```
+
+Exemple: pel document “catalog.xml” emplaçat a la mateixa arrel:
+```xquery
+  doc("catalog.xml")
+```
+* Per accedir a un o un conjunt de nodes:
+```xquery
+doc("ruta_a_l’arxiu/nom_arxiu.xml")Xpath
+```
+Exemple: per accedir a TOTS els cd’s del document catalog.xml:
+```xquery
+  doc("catalog.xml")/catalog/cd
+```
+
+**Comparació**
+
+Mitjançant operadors de comparació en els elements i els
+arguments d’un arbre. Utilitzem XPath.
+
+```xquery
+doc("document.xml")//element_de_cerca[element_filtre="argument"]
+```
+Exemple:
+
+```xquery
+doc("catalog.xml")//catalog/cd [price>=10]
+```
+
+**Comparació de strings**
+
+```xquery
+doc("catalog.xml") //catalog/cd[./artist eq "Bob Dylan"]
+```
+
+[Operadors XPath (w3schools)](https://www.w3schools.com/xml/xpath_operators.asp)
+
+## 6.5. Expressions FLWOR
+
+FLWOR és un acronim de "For, Let, Where, Order by, Return". És una més potent que les vistes amb XPath per seleccionar nodes.
+
+* **For** - selecciona una seqüència de nodes, guardant-los en una variable.
+* **Let** - Uneix una seqüència a una variable, és opcional.
+* **Where** - Filtra els nodes guardats a la variable del *for* o del *let*
+* **Order by** - Ordena els nodes
+* **Return** - Que retorna (s'evalua una vegada per cada node)
+
+Utilitza variables amb el simbol dòlar ($).
+
+Aquestes dues expressions XPath i FLWOR són equivalents:
+
+XPath
+
+```xquery
+doc("catalog.xml")//catalog/cd[price>=10]/artist
+```
+FLWOR
+
+```xquery
+for $cd in doc(“catalog.xml”)//catalog/cd
+  where $cd/price<=10
+  return $cd/artist
+
+```
+
+Comparació SQL i FLWOR
+
+```sql
+SELECT ...columnes...
+  FROM ...taules...                 ===>
+  WHERE ...condició_columnes...
+```
+
+```sql
+SELECT ...nodes...
+  FROM ...catalog.xml...            ===>
+  WHERE ...condició_nodes...
+```
+
+```xquery
+for $var
+  in (...catalog.xml...)...nodes...
+  where ...condició_nodes (amb $var)...
+```
+
+**FOR**
+
+En aquest cas es mostra els artistes que tenen un cd amb un preu
+superior a 10 i més petit a 15.
+
+```xquery
+for $cd in doc(“catalog.xml”)//catalog/cd
+  where $cd[price>10] and $cd[price<15]“
+  return $cd/artist
+```
+
+**LET**
+
+Podem assignar una nova variable, per mostrar els resultats.
+
+```xquery
+for $cd in doc(“catalog.xml”)//catalog/cd
+let $n:=$cd/artist
+where $cd/price<10
+return $n
+```
+
+**RETURN**
+Si volem tornar més d’un valor podem fer:
+
+```xquery
+return $cd/(artist/name, Title)
+```
+o
+```xquery
+let $Titulo:=$cd/Titile
+let $nomArtis:=$cd/artist/name
+let $codigo:=$cd/artist/cod_Artist
+return concat($Titulo, “ “, $nomArtis,” “,$codigo)
+```
+
+**ORDER**
+
+En aquest cas ordenem els artistes per nom.
+```xquery
+order by $variable [ascending, descending]
+```
+
+```xquery
+for $a in doc("catalog.xml")//catalog/cd/artist
+  order by $a descending
+  return $a
+```
+
+## De FLWOR a HTML
+
+Podem realitzar consultes i guardar els resultats en format HTML. Ho podem fer tant amb expressions XQuery com clàusules FLWOR.
+
+Indicarem la part del codi FLWOR entre claus “{“ “}”.
+
+Si volem afegir, per exemple, codi CSS utilitzarem {{ i }}, en la declaració CSS, en compte d’una sola { i }.
+
+```xquery
+<ul>
+{
+for $x in doc(“catalog.xml")//catalog/cd/artist
+  order by $x
+  return <li>{$x}</li>
+}
+</ul>
+```
+
+Exemple complert:
+
+XQuery
+```xquery
+<html>
+  <head>
+    <title>Prova XQuery</title>
+  </head>
+  <body>
+    <ul>
+      {
+      for $x in doc(“catalog.xml")//catalog/cd/artist
+        return <li>{$x}</li>
+      }
+    </ul>
+  </body>
+</html>
+```
+
+HTML
+```html
+<html>
+  <head>
+    <title>Prova XQuery</title>
+  </head>
+  <body>
+    <ul>
+      <li><artist>Bob Dylan</artist></li>
+      <li><artist>Bonnie Tyler</artist></li>
+      <li><artist>Dolly Parton</artist></li>
+    </ul>
+  </body>
+</html>
+```
+
+Per imprimir només el nom de l'element, enlloc d'escriure 
+```xquery
+return <li>{$x}</li>
+```
+posem
+
+```xquery
+return <li>{data($x)}</li>
+```
+
+## 6.6. Actualització de dades amb XQuery
