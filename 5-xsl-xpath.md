@@ -251,13 +251,49 @@ La majoria de les vegades, el que farem serà seleccionar elements del document 
     </p>
 ```
 
+#### 5.5.1 Selecció d'atributs a XSLT
+
+Per seleccionar atributs del document origen, fem servir el símbol **@** a l'expressió XPath dintre de l'element que volem seleccionar. Tenint en compte el document anterior, tenim el següent full XSLT:
+
+```xml
+<?xml version="1.0"?>
+<xsl:stylesheet version="1.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+     
+  <xsl:template match="persones">
+    <html>
+      <head>
+        <title>Personatges històrics de la informàtica</title>
+      </head>
+      <body>
+        <table>
+          <tr>
+            <td><xsl:value-of match="persona/nom"/></td>
+            <td><xsl:value-of match="persona/nom/@naixement"/></td>
+            <td><xsl:value-of match="persona/nom/@mort"/></td>
+         </tr>
+        </table>
+      </body>
+    </html>
+  </xsl:template>
+</xsl:stylesheet>  
+  
+```
+El resultat seria el següent:
+
+```html
+<
+```
+
 ## 5.6 Elements de plantilles més comuns.
 
 Dintre de les nostres plantilles XSL podem utilitzar les següents instruccions de plantilla. Pertanyen al vocabulari XSLT definit a l'espai de noms XSL.
 
 Els més utilitzats són:
 
-* **xsl:value-of**. Inserta el valor d'un element o atribut XML a la sortida resultant. Podem fer servir l'atribut select per seleccionar l'atribut o subelement el valor del qual s'utilitzarà.
+## **xsl:value-of**. 
+
+Inserta el valor d'un element o atribut XML a la sortida resultant. Podem fer servir l'atribut select per seleccionar l'atribut o subelement el valor del qual s'utilitzarà.
 
 **Exercici**: copia els següents codis en dos fitxers de texte i fes la transformació amb el processador on-line. Respon a la següent pregunta: 
 Quants discs aparèixen al fitxer html?
@@ -307,7 +343,8 @@ Quants discs aparèixen al fitxer html?
 
 [enlace w3c]: <> (https://www.w3schools.com/xml/tryxslt.asp?xmlfile=cdcatalog&amp;xsltfile=cdcatalog_ex1)
 
-* **xsl:for-each**. Es fa servir per a recórrer els elements d'un document i realitzar una sèrie d'operacions amb els nodes. L'atribut select determina els elements que s'ha de recórrer. És equivalent a l'instrucció foreach dels llenguatges de programació.
+##  **xsl:for-each**. 
+Es fa servir per a recórrer els elements d'un document i realitzar una sèrie d'operacions amb els nodes. L'atribut select determina els elements que s'ha de recórrer. És equivalent a l'instrucció foreach dels llenguatges de programació.
 
 La seva sintaxi es:
 
@@ -326,7 +363,8 @@ Exercici: modifiqueu l'exercici anterior per mostrar tots els albums:
 </xsl:for-each>
 ```
 
-* **xsl:if**. Podem sel.leccionar la informació que mostrarà per pantalla en funció de les condicions que li indiquem. 
+## **xsl:if**. 
+Podem sel.leccionar la informació que mostrarà per pantalla en funció de les condicions que li indiquem. 
 
 Exemple
 
@@ -379,7 +417,8 @@ Exemple:
 </xsl:for-each>
 ```
 
-* **xsl:choose**. Element per a condicionar els resultats que permet establir múltiples condicions dintre del recorregut de l'arbre XML. És equivalent a l'instrucció **switch-case-default** dels llenguatges de programacio.
+## **xsl:choose**. 
+Element per a condicionar els resultats que permet establir múltiples condicions dintre del recorregut de l'arbre XML. És equivalent a l'instrucció **switch-case-default** dels llenguatges de programacio.
 
 La seva sintaxi seria:
 
@@ -417,7 +456,8 @@ Exemple:
 </xsl:for-each>
 ```
 
-* **xsl:output**. L'element output defineix el format de sortida del document XSL (XML, HTML o texte). És un element de nivell superior, per tant ha d'anar just sota l'element xsl:stylesheet o xsl:transform. Per exemple, el següent codi produeix un document XML com a sortida. Veure apartat 5.6 (transformació XML a XML)
+## **xsl:output**. 
+L'element output defineix el format de sortida del document XSL (XML, HTML o texte). És un element de nivell superior, per tant ha d'anar just sota l'element xsl:stylesheet o xsl:transform. Per exemple, el següent codi produeix un document XML com a sortida. Veure apartat 5.6 (transformació XML a XML)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -428,7 +468,8 @@ Exemple:
 </xsl:stylesheet> 
 ```
 
-* **xsl:include**. L'element include també és un element de nivell superior que inclou els continguts d'un full d'estils dintre d'un altre. Sintaxi:
+## **xsl:include**. 
+L'element include també és un element de nivell superior que inclou els continguts d'un full d'estils dintre d'un altre. Sintaxi:
 
 ```xml
 <xsl:include href="URI">
