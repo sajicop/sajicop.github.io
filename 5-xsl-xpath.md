@@ -5,11 +5,11 @@
 ## Índex de continguts
 
 
-## 5.0 Introducció a la UF2.
+## 5.0 Resums UF2
 
 ![Resum UF2](assets/img/5-0-markup-languages-summary.png "Resum UF2")
 
-## 5.1 Introducció a XSLT.
+## 5.1 Introducció a XSLT
 
 En capítols anteriors hem vist que XML és un format relativament llegible, doncs es tracta de fitxers de texte pla i la informació està organitzada jeràrquicament. No obstant, com hem vist darrerament amb HTML, als humans els agrada visualitzar la informació col.locada en determinats formats que facin la lectura més agradable, com l'al.lineació, format del texte o els colors. 
 
@@ -49,7 +49,7 @@ Document alumnes.xml
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type=“text/css” href="estilo.css"?>
+<?xml-stylesheet type="text/css" href="estil.css"?>
     <alumne>
         <nom>Marc</nom>
         <cognom>Màrquez</cognom>
@@ -64,25 +64,39 @@ Document alumnes.xml
     </alumne>    
 ```
 
-Document estilo.css
+Document estil.css
 
 ```css
 alumne {
-    text-align:center;
+    text-align: center;
 }
 nom {
-    font-weight:bold;
-    font-family:tahoma;
-    color:blue;
+    font-weight: bold;
+    font-family: tahoma;
+    color: blue;
 }
 cognom {
-    color:cyan;
+    color: cyan;
 }
 ```
+
+## 5.4 Versions de XSLT
+
+XSLT està inspirat en DSSSL, l'equivalent a XSLT en l'antic SGML. Actualment (2022), tenim tres versions:
+
+* **XSLT 1.0.** 1999. Desenvolupat pel W3C, juntament es va desenvolupar XSL-FO i XPath. Encara es fa servir bastant (2018) doncs és el més compatible amb els navegadors.
+
+* **XSLT 2.0.** 2007. Desenvolupat per Michael Kay, també desenvolupador de XQuery y Saxon XSLT. Com a novetats permet crear múltiples documents de sortida
+
+* **XSLT 3.0.** 2017. Millores per a la transformació de documents XML molt grans.
+
 
 ## 5.4 Processadors XSLT
 
 Un processador XSLT permet llegir un document XSL i a partir de les regles de transformació sobre un document XML, permet generar un altre document formatejat tipus XML, HTML o texte.
+
+<img src="assets/img/5-4xlst-processor-diagram.png" height="438" width="231">
+
 
 El seu ús implica necessàriament els següents passos:
 
@@ -94,17 +108,23 @@ El seu ús implica necessàriament els següents passos:
 
 El processador XSLT va llegint el document XML, processant node a node el XML i aplicant les transformacions necessàries definidas en las __templates rules__ del full XSLT. Los templates son un conjunto de reglas que se aplican cuando se encuentra alguno de los nodos especificados.
 
-Podem treballar amb processadors off-line amb editors com __XML Copy Editor__, __Visual Studio Code__ (aquest requereix un processador extern apart de una extensió) processadors en línia com:
+Podem treballar amb processadors off-line amb editors com __XML Copy Editor__, __Visual Studio Code__ (requereix d'un programa extern apart d'una extensió) processadors en línia com.
+
+**Processadors XSLT on-line:**
 
 * [XSL Transformation (XSLT) Online Toolz](https://www.online-toolz.com/tools/xslt-transformation.php "XSLT Transformation Online Tool")
 
 * [Free Online XSLT Transformer](https://www.freeformatter.com/xsl-transformer.html "Free Formatter")
 
-* [XSLT Saxon Processor](https://saxon.sourceforge.net/ "XSLT Saxon Processor") <-- requereix Java
+**Processadors off-line:**
+
+* [XSLT Saxon Processor](https://saxon.sourceforge.net/ "XSLT Saxon Processor"). Està basat en Java, per tant cal tenir insta.lat el JRE (inclòs en el JDK). És el que farem servir en aquesta UF. Veure Annex 1.
+
+* [Xalan](https://xml.apache.org/xalan-j/). Només suporta XSLT 1.0. També està basat en Java però el seu desenvolupament està estancat.
 
 ### 5.4.1. Crear full d'estil ben format
 
-La declaració d'un document XSL és la següent (són equivalents, normalment es fa servir xsl:stylesheet):
+La declaració d'un document XSL és la següent (són equivalents, normalment es fa servir **xsl:stylesheet**):
 
 ```xml
 <?xml version=“1.0” encoding=“UTF-8”?>
@@ -131,9 +151,9 @@ Per vincular el document XSL al document XML, afegim la següent Processing Inst
 <?xml-stylesheet type=“text/xsl” href=“catalog.xsl”?>
 ```
 
-### 5.5 Creació de templates
+## 5.5 Creació de templates
 
-#### **Document d'exemple**
+### **Document d'exemple**
 
 Aquest és el document XML que farem servir per a la creació de plantilles:
 
@@ -236,19 +256,19 @@ La majoria de les vegades, el que farem serà seleccionar elements del document 
   </xsl:template>
 </xsl:stylesheet>
 ```
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-     
-  <p>
-      Alan
-      Turing
-    </p>
-     
-  <p>
-      John
-      V
-      Neumann
-    </p>
+<p>
+    Alan
+    Turing
+</p>
+    
+<p>
+    John
+    V
+    Neumann
+</p>
 ```
 
 #### 5.5.1 Selecció d'atributs a XSLT
@@ -366,7 +386,7 @@ Exercici: modifiqueu l'exercici anterior per mostrar tots els albums:
 ## **xsl:if**. 
 Podem sel.leccionar la informació que mostrarà per pantalla en funció de les condicions que li indiquem. 
 
-Exemple
+Exemple:
 
 ```xml
 <xsl:if test="price&lt;=10 and Artist='Xavier Camunyes'">
@@ -456,8 +476,7 @@ Exemple:
 </xsl:for-each>
 ```
 
-## **xsl:output**. 
-L'element output defineix el format de sortida del document XSL (XML, HTML o texte). És un element de nivell superior, per tant ha d'anar just sota l'element xsl:stylesheet o xsl:transform. Per exemple, el següent codi produeix un document XML com a sortida. Veure apartat 5.6 (transformació XML a XML)
+* **xsl:output**. L'element output defineix el format de sortida del document XSL (XML, HTML o texte). És un element de nivell superior, per tant ha d'anar just sota l'element xsl:stylesheet o xsl:transform. Si no especifiquem aquest element, per defecte XSLT enten que estem creant un arxiu HTML. Per exemple, el següent codi produeix un document XML com a sortida. Veure apartat 5.6 (transformació XML a XML)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -591,3 +610,146 @@ Exemple
         </xsl:template>
     </xsl:stylesheet>
 ```
+
+## 5.9 XPath
+
+XPath és un llenguatge no XML que permet recórrer i seleccionar els nodes d'un document XML. XPath es fa servir a XSLT dintre de l'atribut **select** de les plantilles i també és un subconjunt de XQuery. XQuery es pot veure com un XPath amb sentències dels llenguatges de programació. 
+
+Farem servir el següent exemple per indicar els nodes seleccionats amb XPath:
+
+```xml
+<?xml version="1.0" encoding="windows-1250"?>
+<classe>
+  <estudiant id = "393">
+  <nom>Daniel</nom>
+  <cognoms>Pi Gran</cognoms>
+  <nota>85</nota>
+  <aficions>
+    <aficio>Lectura</aficio>
+    <aficio>Cinema</aficio>
+  </aficions>
+  <naixement>
+    <dia>3</dia>
+    <mes>5</mes>
+    <any>1990</any>
+  </naixement>
+  </estudiant>
+  <estudiant id = "493">
+  <nom>Vanessa</nom>
+  <cognoms>Pou Salat</cognoms>
+  <nota>95</nota>
+  <aficions>
+    <aficio>Lectura</aficio>
+    <aficio>Esport</aficio>
+    <aficio>Cinema</aficio>
+  </aficions>
+    <naixement>
+    <dia>3</dia>
+    <mes>1</mes>
+    <any>1995</any>
+  </naixement>
+  </estudiant>
+  <estudiant id = "593">
+    <nom>Xavier</nom>
+    <cognoms>Fuster Cantó</cognoms>
+    <nota>90</nota>
+    <aficions>
+      <aficio>Esport</aficio>
+      <aficio>Cinema</aficio>
+    </aficions>
+    <naixement>
+      <dia>5</dia>
+      <mes>5</mes>
+      <any>1989</any>
+  </naixement>
+  </estudiant>
+</classe>
+```
+
+A XPath hi ha 7 tipus de nodes:
+
+* El **node document** o **node arrel** (un per document). A XPath el node arrel conté tot el document, no només l'arrel del document XML. El node arrel conté almenys un fill, l'arrel del document XML. També conté els comentaris del document XML, les instruccions de processament (PI)-comencen per &lt;?-. El node arrel s'especifica mitjantçant el simbol /.
+
+* Els **nodes element**. Tots els elements del document XML es poden seleccionar amb XPath. Per seleccionar el contingut dels elements &lt;nom&gt;. a xslt fem servir <xsl:value-of select="nom">. El valor de l'element és la concatenació del texte de tots els elements nom que hi ha al document i tots els seus fills.
+
+* **nodes atribut**. Tot element atribut té un element pare, però no succeeix a l'inrevés. Els elements fills d'un node son el texte, els subelements i els comentaris però no els atributs. Per seleccionar un atribut, fem servir l'operador @. Per exemple, per seleccionar l'atribut id de l'element estudiant, l'expressió XPath seria /classe/estudiant/@id
+
+* **nodes de text**. Contenen el texte d'un element XML. Les entitats es resolen abans d'enviar el node a XPath.
+
+* **nodes comentaris**. Contenen tot el texte entre els caracters &lt;!-- i --&gt;.
+
+* **nodes de processament d'instruccions (PI)**. Contenen tot el texte entre els caracters &lt;? ?&gt; (sense incloure ?&gt;).
+
+* **nodes espai de noms**. No es fan servir gairebé mai als fulls XSLT. Existeixen per a benefici del processador XLST.
+
+Un dels usos més comuns de XPath és crear rutes de localització. Per exemple, el patró **/classe/estudiant/aficions** descriu l'ubicació dintre del XML que volem processar.
+
+Les rutes poden ser absolutes o relatives (si ja hem seleccionat una prèviament). Les rutes absolutes comencen pel simbol /.
+
+## 5.9.1 Predicats
+
+Els predicats són filtres que restringeixen els nodes seleccionats per una expressió XPath. Les condicions s'expressen amb claudàtors. Alguns exemples:
+
+| Expressió                                   | Significat                                                          |
+|:--------------------------------------------|:--------------------------------------------------------------------|
+| /classe/estudiant[nom="Daniel"]              | Retorna totes les dades de l’estudiant de nom Daniel en format XML. |
+| /classe/estudiant[nom="Daniel"]/naixement    | Retorna la data de naixement de l’estudiant de nom Daniel en format XML. |
+| /classe/estudiant[@id<500]                   | Retorna les dades en format XML de tots els estudiants amb id més petit que 500.|
+| /classe/estudiant[aficions/aficio="Lectura"]/nom | Retorna en format XML els noms de tots els estudiants aficionats a la lectura. |
+| /classe/estudiant[aficions/aficio="Lectura"]/nom/string() | Retorna els noms (sense el format XML) de tots els estudiants aficionats a la lectura. |
+| /classe/estudiant[nota>90 or @id<400]/nom/string() | Retorna el nom (sense format XML) de tots els alumnes amb una nota major a 90 o un identificador inferior a 400. |
+| /classe/estudiant[nom="Daniel" or nota>90]/nom/string() | Retorna el nom (sense format XML) de tots els alumnes anomenats Daniel o amb una nota superior a 90. |
+| /classe/estudiant[naixement/mes=5 and naixement/any<1990]/nom/string() | Retorna el nom (sense format XML) de tots els alumnes nascuts el mes de maig i abans de 1990 |
+
+## 5.9.2 Funcions
+
+Conjuntament amb els predicats es poden utilitzar funcions. Per exemple:
+
+* count(x): compta el nombre d’elements d’x; x és un camí XPath absolut o relatiu. En el segon cas, sol indicar un element o un atribut d’un node.
+
+*  string(): passen a cadena de caràcters l’element o atribut; es posa a continuació de l’últim element de l’expressió XPath.
+
+Exemples d’utilització d’aquestes funcions:
+
+| Expressió                                   | Significat                                                          |
+|:--------------------------------------------|:--------------------------------------------------------------------|
+| count(/classe/estudiant)                    | A l’exemple, retorna 3, ja que només hi ha 3 estudiants. |
+| /classe/estudiant/aficions/count(aficio)    | A l’exemple retorna 2 3 2, que és el nombre d’aficions de cadascun dels estudiants. |
+| /classe/estudiant/nom/string()              | A l’exemple retorna Daniel Vanessa Xavier que són els noms de cadascun dels estudiants (sense /string() retornava el mateix, però cada nom anava delimitat per <nom>... </nom> |
+| /classe/estudiant/@id/string()              | A l’exemple retorna 393 493 593, que són els identificadors de cadascun dels estudiants (sense /string() retornava el mateix, però entre comets i precedit del text id= ) |
+
+
+## Annex 1. Instalació Saxon SXLT a Visual Studio.
+
+Per tal de processar els nostres documents XML i generar una sortida amb XSLT necessitem un processador. Per instal.lar el processador Saxon SXLT a Visual Studio Code:
+
+1. Descarregar l'última versió de **Saxon Home Edition (Saxon-HE)** des de la pàgina oficial: [Saxon SXLT and XQuery Processor](https://saxon.sourceforge.net/#F11HE). No cal descarregar ni els exemples ni el codi font. 
+
+2. Descomprimir el contingt en una carpeta del vostre equip, p. ex. c:\Saxon a Windows o /users/home/usuari/Saxon a Linux.
+
+3. Instal.leu l'extensió **XSLT/XPath for Visual Studio Code** per a Visual Studio Code.
+
+![Saxon SXLT VS Code](assets/img/saxonSXLT-visual-studio-code.png "Saxon SXLT VS Code")
+
+4. Aneu a la configuració. Premeu **F1** a Visual Studio i escriviu Preferencias: **Abrir Configuracion (IU)**. A buscar escriviu **XSLT** i canvieu els següents paràmetres:
+  
+* Desmarqueu Enable Saxon-JS tasks (i comproveu que Enable Saxon tasks està marcada). Ompliu la ruta amb el processador Saxon que heu descarregat, p. ex. /home/salva/Saxon/saxon-he-11.4.jar.
+
+![Saxon SXLT Config](assets/img/saxon-SXLT-config.png "Saxon SXLT Config")
+
+Això només ho hem de fer un cop. Ara anem a configurar una tasca de compilació per especificar els arxius origen i destí de la nostra conversió.
+
+1. Premem F1 i escrivim **"Configure default build task"**. La primera vegada no tindrem cap i ens demanarà configurarl-la. Seleccionem "xslt: Saxon Transform (New)" i ens crearà un arxiu de configuració tasks.json. Omplim amb els paràmetres necessàris:
+
+* **xsltFile** posem el nom del nostre arxiu XSL
+* **xmlSource** podem el nom del origen XML
+* **resultPath** escrivim el nom del fitxer de sortida (normalment XML).
+
+![Tasca JSON Visual Studio](assets/img/saxon-json-task.png "Tasca JSON Visual Studio")
+
+2. Per fer la conversió, hem de buscar dos arxius tant XML com XSL que siguin correctes. Per assegurar-nos, podem probar la nostra conversió amb un processador on-line. Premem **F1** i escrivim **"Run Build Task"**. Si tot ha anat bé, a la nostra carpeta tindrem un arxiu nou amb la transformació feta.
+  
+
+Més informació:
+
+* [Running SXLT](https://deltaxml.github.io/vscode-xslt-xpath/run-xslt.html)
