@@ -302,7 +302,20 @@ Per seleccionar atributs del document origen, fem servir el símbol **@** a l'ex
 El resultat seria el següent:
 
 ```html
-<
+ <html>
+      <head>
+        <title>Personatges històrics de la informàtica</title>
+      </head>
+      <body>
+        <table>
+          <tr>
+            <td>Alan Turing</td>
+            <td>1912</td>
+            <td>1954</td>
+         </tr>
+        </table>
+      </body>
+    </html>
 ```
 
 ## 5.6 Elements de plantilles més comuns.
