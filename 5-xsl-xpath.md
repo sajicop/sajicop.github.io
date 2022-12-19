@@ -289,8 +289,8 @@ Per seleccionar atributs del document origen, fem servir el símbol **@** a l'ex
         <table>
           <tr>
             <td><xsl:value-of match="persona/nom"/></td>
-            <td><xsl:value-of match="persona/nom/@naixement"/></td>
-            <td><xsl:value-of match="persona/nom/@mort"/></td>
+            <td><xsl:value-of match="persona/@naixement"/></td>
+            <td><xsl:value-of match="persona/@mort"/></td>
          </tr>
         </table>
       </body>
