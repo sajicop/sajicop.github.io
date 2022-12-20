@@ -110,9 +110,9 @@ Comparativa de BBDD XML natives:
 
 ## 6.3. SQL i XQuery
 
-SQL (Structured Query Language) és un llenguatge declaratiu (li indiquem les dades que volem, no com obtenir-les físicament del disc) que serveix per accedir i manipular BBDD relacionals:
+SQL (Structured Query Language) és un llenguatge declaratiu. A diferència dels llenguatges imperatius, li indiquem les dades que volem, no com obtenir-les físicament del disc. SQL serveix per accedir i manipular BBDD relacionals:
 
-Operacions CRUD:
+Concretament, les operacions CRUD són:
 
 * Creació i eliminació de taules
 * Inserció, modificació i eliminació de registres.
@@ -371,3 +371,102 @@ return <li>{data($x)}</li>
 ```
 
 ## 6.6. Actualització de dades amb XQuery
+
+Encara que XQuery permet seleccionar dades, la versió XQuery 1.0 no té funcions per insertar, esborrar o actualitzar dades d'un XML. Patrick Lehti va desenvolupar un sistema per possibilitar aquestes funcions, encara que el consorci W3C, posteriorment, va proposar l'extensió XQUF (XQuery Update Facilites) que ja està implementada a partir de la versió 7.1 de BaseX. La versió que farem servir de BaseX és la 9.0.1 (2022), així que farem servir la implementació XQUF.
+
+En els exemples que mostrarem a continuació **element** és un fragment XML i **ubicació** és una expressió XPath.
+
+### 6.1 Insercio d'un element
+
+La sintaxi general amb XQUF és:
+
+**insert node** element {**into** | **as first into** | **as last into** | **before** | **after**} ubicació
+
+S'ha d'especificar un dels elements que van dintre de les claus:
+
+* into: l'element s'insereix dins dins l'element especificat, al final dels fills actuals (depen de l'implementació).
+* as first into / as last into: l'element s'insereix dins de l'element especificat, al principi o al final respectivament dels fills actuals.
+* before / after: l'element s'insereix abans o després de l'element especificat per la ubicació.
+
+Exemple (veure XML exemple de l'apartat 5.9):
+
+Afegir l'afició "gastronomia" a l'estudiant amb id = 393 al final de les seves aficions
+
+```xquery
+insert node <aficio>Gastronomia</aficio> as last into /classe/estudiant[@id="393"]/aficions
+```
+L'atribut id pot anar o sense cometes
+
+### 6.2 Esborrat d'un element
+
+La sintaxi amb XQUF és:
+
+**delete node** ubicacio
+
+Exemple:
+
+Suprimir l'afició lectura de l'estudiant amb id = 393
+
+```xquery
+delete node /classe/estudiant[@id="393"]/aficions/aficio[.="Lectura"]
+```
+El punt fa referència al node actual, és a dir a una afició.
+
+L'atribut id pot anar o no sense cometes
+
+La versió amb llenguatge FLWOR seria:
+
+```xquery
+for $a in /classe/estudiant[@id="393"]/aficions/aficio[.="Lectura"] 
+return delete node $a
+```
+
+### 6.3 Modificar un element
+
+En el cas de modificació, podem modificar l'element sencer o el contingut de l'element especificat.
+
+La sintaxi amb XQUF per modificar l'element:
+
+**replace node** ubicació **with** element
+
+Modificar un element:
+
+Exemple: canviar el nom de l’estudiant amb id = 393 per Dani (es diu Daniel).
+
+```xquery
+replace node /classe/estudiant[@id="393"]/nom with <nom>Dani</nom>
+```
+Per altra banda, la sintaxi per modificar el valor de l'element:
+
+**replace value of node** ubicació **with** element
+
+```xquery
+replace value of node /classe/estudiant[@id="393"]/nom with "Dani"
+```
+
+La versió replace node amb FLWOR seria:
+
+```xquery
+for $n in /classe/estudiant[@id="393"]/nom 
+return replace node $n with <nom>Dani</nom>
+```
+
+### 6.4 Restriccions per a la modificació massiva.
+
+Als apartats anteriors, el paràmetre ubicacio no sempre pot fer referència a més d'un element. A continuació es mostren les restriccions per a cada sentencia.
+
+|sentencia            |restricció          |
+|---------------------|-----------------   |
+|insert node          |un unic element     |
+|delete node          |un o varis elements |
+|replace node         |un unic element     |
+|replace value of node|un unic element     |
+
+Amb FLWOR podem fer moficacions massives, cosa que amb XQUF sense FLWOR no podem. Per modificar massivament nodes (replace node) fariem el següent:
+
+Exemple: Substituir l'afició "Esport" per "Basquet" a tots els alumnes:
+
+for $a in /classe/estudiant/aficions/aficio[.="Esport"] 
+return replace node $a with <aficio>Basquet</aficio>
+
+

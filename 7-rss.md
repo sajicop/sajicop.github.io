@@ -33,3 +33,6 @@ Actualment les versions més populars de RSS son les següents:
 * Atom http://atomenabled.org/ que està guanyant popularitat.
 
 ## 7.2 Format d'un document RSS
+
+A continuació veurem el format d'un document RSS 2.0 que és el més utilitzat.
+
