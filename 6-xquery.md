@@ -470,3 +470,7 @@ for $a in /classe/estudiant/aficions/aficio[.="Esport"]
 return replace node $a with <aficio>Basquet</aficio>
 
 
+### 6.5 Enllaços d'interés
+
+[XQuery Update - BaseX Documentation](https://docs.basex.org/wiki/XQuery_Update)
+

@@ -32,7 +32,66 @@ Actualment les versions més populars de RSS son les següents:
 
 * Atom http://atomenabled.org/ que està guanyant popularitat.
 
-## 7.2 Format d'un document RSS
+## 7.2 Arquitectura de RSS
+
+Arquitectura general dels lectors de RSS o agregadors de continguts.
+
+![Arquitectura RSS](/assets/img/7-1arquitectura-RSS.drawio.png)
+
+## 7.3 Lectors RSS
+
+Existeixen diferents lectors RSS, també anomenats agregadors de notícies, per a les diferents plataformes.
+
+|Nom lector     | Plataformes               |Gratuit        |
+|---------------|---------------------------|---------------|
+|Feedly         | Android                   |Si             |
+|Inoreader      | Android, Windows, Linux   |Si, premium    |
+|NewsBlur       | Android                   |Si             |
+|Pocket         | Android                   |Si, premium    |
+|Feedreader     | Web, Windows, Linux       |Si             |
+|QuiteRSS       | Windows, Linux            |Si             |
+|Tiny Tiny RSS  | Docker                    |Si             |
+
+
+## 7.4 Format d'un document RSS
 
 A continuació veurem el format d'un document RSS 2.0 que és el més utilitzat.
 
+```xml
+<?xml version="1.0"?>
+<rss version="2.0">
+  <channel>
+    <title>Título del canal</title>
+    <link>https://www.ejemplo.com/</link>
+    <description>Descripción del canal</description>
+    <item>
+      <title>Título del artículo</title>
+      <link>https://www.ejemplo.com/articulo</link>
+      <description>Descripción del artículo</description>
+      <pubDate>Mon, 21 Dec 2020 12:34:56 GMT</pubDate>
+    </item>
+    <item>
+      <title>Título del segundo artículo</title>
+      <link>https://www.ejemplo.com/segundo-articulo</link>
+      <description>Descripción del segundo artículo</description>
+      <pubDate>Mon, 21 Dec 2020 12:34:56 GMT</pubDate>
+      <enclosure url="https://www.ejemplo.com/imagen.jpg" type="image/jpeg" length="12345" />
+    </item>
+  </channel>
+</rss>
+```
+
+La descripció dels elements més importants és la següent:
+
+* rss: l'arrel de l'arxiu RSS, que indica la versió que fem servir. 
+* channel: un arxiu pot contenir més d'un canal encara que normalmente només farem servir un. Hi ha elements de canal i elements d'item. Els elements de canal inclouen informació general sobre la pàgina web, com el títol, la descripció, etc.
+* link: enllaç de la pàgina web
+* description: descripció de la pàgina web
+* item: cadascun dels artícles publicats al canal. Conté els elements title, link i description novament.
+* pubDate: data de publicació de l'article
+* enclosure: permet afegir una imatge per un dels articles. Conté els atributs url (adreça de la imatge), type (el tipus MIME, és a dir el format de la imatge) i length (el tamany de la imatge en bytes). Aquest element és opcional i només es compatible amb la versió 2.0 de RSS.
+
+## 7.5 Enllaços d'interés
+
+* [The Rise and Demise of RSS](https://twobithistory.org/2018/12/18/rss.html)
+* [Google Trends - RSS](https://trends.google.es/trends/explore?date=all&q=rss)
