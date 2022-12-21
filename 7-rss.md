@@ -83,13 +83,13 @@ A continuació veurem el format d'un document RSS 2.0 que és el més utilitzat.
 
 La descripció dels elements més importants és la següent:
 
-* rss: l'arrel de l'arxiu RSS, que indica la versió que fem servir. 
-* channel: un arxiu pot contenir més d'un canal encara que normalmente només farem servir un. Hi ha elements de canal i elements d'item. Els elements de canal inclouen informació general sobre la pàgina web, com el títol, la descripció, etc.
-* link: enllaç de la pàgina web
-* description: descripció de la pàgina web
-* item: cadascun dels artícles publicats al canal. Conté els elements title, link i description novament.
-* pubDate: data de publicació de l'article
-* enclosure: permet afegir una imatge per un dels articles. Conté els atributs url (adreça de la imatge), type (el tipus MIME, és a dir el format de la imatge) i length (el tamany de la imatge en bytes). Aquest element és opcional i només es compatible amb la versió 2.0 de RSS.
+* **rss**: l'arrel de l'arxiu RSS, que indica la versió que fem servir. 
+* **channel**: un arxiu pot contenir més d'un canal encara que normalmente només farem servir un. Hi ha elements de canal i elements d'item. Els elements de canal inclouen informació general sobre la pàgina web, com el títol, la descripció, etc.
+* **link**: enllaç de la pàgina web
+* **description**: descripció de la pàgina web
+* **item**: cadascun dels artícles publicats al canal. Conté els elements title, link i description novament.
+* **pubDate**: data de publicació de l'article
+* **enclosure**: permet afegir una imatge per un dels articles. Conté els atributs url (adreça de la imatge), type (el tipus MIME, és a dir el format de la imatge) i length (el tamany de la imatge en bytes). Aquest element és opcional i només es compatible amb la versió 2.0 de RSS.
 
 ## 7.5 Enllaços d'interés
 

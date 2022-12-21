@@ -10,8 +10,7 @@
 + 1.2 Generació dinàmica de pàgines web.
 + 1.3 Llenguatges de programació en entorn servidor.
 + 1.4 Integració amb els servidors web.
-+ 1.5 Llenguatges de programació en entorn servidor.
-+ 1.6 Integració amb els llenguatges de marques.
++ 1.5 Integració amb els llenguatges de marques.
 + 1.7 Eines de programació.
 
 ### 2. Escriu sentències executables per un servidor web reconeixent i aplicant procediments d’integració del codi en llenguatges de marques.
@@ -44,4 +43,19 @@
 + 4.5 Adaptacions a webs existents.
 + 4.6 Proves i depuració.
 
-## 9.2 Instalació de PHP a Linux
+## Annex 1. Instal.lació entorn de desenvolupament
+
+Per a crear el nostre entorn de desenvolupament, necessitarem principalment dues eines.
+
+* **Servidor web** (Apache2) que enviarà peticions a PHP per crear pàgines dinàmiques.
+* El **llenguatge de programació PHP** incrustat en pàgines HTML.
+
+Per a instal.lar aquest programari, ho podem fer individualment en cadascuna de les nostres màquines, però és molt probable que cadascun tingui un sistema operatiu diferent, altre software que afecti al funcionament del servidor, etc. per tant cal crear un entorn de programació homogeni. A sobre Apache es fa servir típicament a Linux. 
+
+Per tal de crear aquest entorn, utilitzarem la tècnica de virtualització amb Virtualbox, que ens permet tenir un S.O. virtual sobre el nostre hardware. Per automatitzar la instal.lació les màquines virtuals utilitzarem Vagrant. **Vagrant** permet automatitzar la instal.lació i configuracio de màquines vituals.
+
+Per tant, els passos aseguir per a tenir el nostre entorn de desenvolupament serien:
+
+* Descarregar [VirtualBox](https://www.virtualbox.org/wiki/Downloads "VirtualBox Downloads") e instal.lar-ho. 
+* Descarregar [Vagrant](https://developer.hashicorp.com/vagrant/downloads) e instal.lar-ho.
+
