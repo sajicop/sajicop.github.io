@@ -2,7 +2,7 @@
 
 ## Índex de continguts
 
-## 9.1 Resultats d'aprenentatge i continguts
+## 9.0 Resultats d'aprenentatge i continguts
 
 ### 1. Selecciona les arquitectures i tecnologies de programació web en entorn servidor, analitzant les seves capacitats i les característiques pròpies.
 1. Selecció d’arquitectures i eines de programació:
@@ -42,6 +42,9 @@
 + 4.4 Autenticació d’usuaris.
 + 4.5 Adaptacions a webs existents.
 + 4.6 Proves i depuració.
+
+## 9.1 Introducció. Model de programació en entorn client/servidor. Llenguatges de programació en entorn servidor
+
 
 ## 9.2 Programació bàsica amb PHP
 
@@ -98,7 +101,7 @@ PHP internament fa la conversió de les variables d'un tipus a un altre. De tote
 |**int**               | **Escalar**    | **Enter**                |
 |**float**             | **Escalar**    | **Decimal**              |
 |**bool**              | **Escalar**    | **Valor booleà**         |
-|string                | Escalar        | Cadena de caràcters      |
+|**string**            | **Escalar**    | **Cadena de caràcters**  |
 |array                 | Compost        | Col.lecció de valors     |
 |object                | Compost        | Tipus de dades definit per l'usuari |
 |resource              | Especial       | Recurs extern            |
@@ -152,6 +155,383 @@ echo $myDefined;    // ok
 echo $myUndefined;  // error 
 ```
 
+**String**
+
+Un string o cadena és una sèrie de caràcters que s'emmagatzemen a una variable. Exemple:
+
+```php
+$cadena = 'Hola';
+```
+
+Les cadenes tenen dos operadors: l'operador de concatenació (.) i l'operador concatenació més assignació (.=). Exemple:
+
+```php
+$cadena = 'Hola';
+$cadena = $cadena . 'mundo';
+
+echo $cadena; // treu la cadena 'Hola mundo'
+
+$hola = 'Hola';
+$mon = ' mon';
+$hola .= $mon;
+
+echo $hola; // treu la cadena 'Hola mundo'
+```
+
+Les cadenes a PHP es poden delimitar de vàries formes, amb cometes simples ('') o cometes dobles (""). La diferència és que amb les cometes dobles les variables que aparèixen dintre es processen, mentre que amb cometes simples no.
+
+Exemple:
+
+```php
+$mon = 'món';
+echo "Hola $mon"; // "Hola món"
+echo 'Hola $mon'; // "Hola $mon"
+```
+
+### 9.2.3 Tipus de dades compostes
+
+Els arrays o vectors s'utilitzen per guardar una col.lecció de valors en una única variable. Els arrays a PHP consisteixen en una sèrie de parelles clau-valor. La clau pot ser:
+
+**Enter (array numèric)**
+
+Els arrays numèrics guarden cada element de l'array amb un índex numèric. Un array numèric es crea amb el constructor `array`. Per exemple:
+
+```php
+$array = array(1, 2, 3);
+```
+
+Alternativament, podem utilitzar claudàtors per inicialitzar l'array.
+
+```php
+$array = [1, 2, 3];
+```
+
+Per accedir a cadascuna de les posicions de l'array, comencem des de l'index 0 indicant l'índex dintre dels claudàtors. Per exemple:
+
+```php
+$array[0] = 1;
+$array[1] = 2;
+$array[2] = 3;
+```
+
+A diferència d'altres llenguatges com Java, el número d'elements d'un array és gestionat automàticament. Per tant, la següent instrucció seria correcta:
+
+```php
+$array = array(1, 2, 3);
+
+$array[3] = 4; //array definit amb 3 posicions, però no dona error
+```
+
+També podem omitir l'index per afegir un nou element, PHP l'afegeix al final:
+
+```php
+$array = array(1, 2, 3);
+
+$array[] = 4; // equivalent $array[3] = 4
+```
+
+**String (array associatiu)**
+
+En aquest tipus d'array la clau es de tipus `String`. Exemple:
+
+```php
+$array = array('un' => 'a', 'dos' => 'b', 'tres' => 'c');
+```
+
+Els elements en un array associatiu es referencien fent servir el nom de l'element. No es poden referenciar amb un índex numèric.
+
+```php
+$b['un'] = 'a';
+$b['dos'] = 'b';
+$b['tres'] = 'c';
+
+echo $b['un'] . $b['dos'] . $b['tres']; // "abc"
+```
+
+**Una combinació dels dos (mixed array)**
+
+Podem combinar els dos tipus d'elements en un array, fent servir la notació fletxa (`=>`) per especificar els elements numèrics.
+
+```php
+$array = array(0 => 1, 'foo' => 'bar');
+```
+
+Hem d'accedir als elements fent servir les mateixes claus.
+
+```php
+echo $d[0] . $d['foo']; // "1bar"
+```
+
+### 9.2.4 Condicionals
+
+Les sentencies condicionals ens permeten executar un bloc de codi -un conjunt d'instruccions- depenent d'una o vàries condicions. El següent bloc de codi dintre de les claus només s'executa si l'expressió que hi ha entre parèntesis s'evalua a vertadera.
+
+```php
+$x = 1;
+
+if ($x == 1) {
+  echo 'x és 1';
+}
+```
+
+L'expressió `if` es completa amb `else` per comprovar altres condicions.
+
+```php
+if ($x == 1)
+  echo 'x és 1';
+elseif ($x == 2)
+  echo 'x és 2';
+else
+  echo 'x és una altra cosa (diferent de 1 i de 2)';
+```
+
+Les claus són opcionals sempre que hi hagi només una instrucció dintre del block. 
+
+### 9.2.4 Bucles
+
+Hi ha quatre estructures de bucles a PHP. Aquestes estructures repeteixen una sèrie d'instruccions mentre es compleixi una o vàries condicions.
+
+**While**
+
+El codi dintre de les claus es repeteix fins que la condició s'evalua falsa. És possible que el bloc d'instruccions no s'avalui cap vegada.
+
+Exemple:
+
+```php
+$i = 0;
+
+while ($i < 10) { 
+  echo $i++; // Imprimeix els numeros del 0 al 9 
+} 
+```
+
+**Do-While**
+
+El codi dintre de les claus es repeteix fins que la condició s'evalua falsa. Él bloc d'instruccions s'avalua com a mínim una vegada i la condició s'avalua al final.
+
+Exemple:
+
+```php
+$i = 0;
+
+do { 
+  echo $i++; // Imprimeix els numeros del 0 al 9 
+} while ($i < 10); 
+```
+
+**For**
+
+El bloc de codi s'executa un número definit de vegades. El **primer paràmetre** inicialitza la variable associada al bucle, normalment un contador. 
+
+El **segon paràmetre** indica el número de vegades que s'executarà el bloc de codi.
+
+El **tercer paràmetre** incrementa el contador i s'executa després del bloc de codi.
+
+Exemple:
+
+```php
+for ($i = 0; $i < 10; $i++) { 
+  echo $i; // Imprimeix els numeros del 0 al 9 
+} 
+```
+
+**Foreach**
+
+L'estructura foreach proporciona una forma fàcil per iterar arrays.
+
+Exemple:
+```php
+$array = array(1,2,3);
+
+foreach ($array as $element) {
+  echo $element; // Imprimeix "123"
+}
+```
+
+Per iterar sobre arrays associatius, foreach proporciona un métode per obtenir tant els noms de les claus com dels valors. Exemple:
+
+```php
+$array = array('one' => 1, 'two' => 2);
+
+foreach ($array as $clau => $valor) {
+  echo "$clau = $valor "; // Imprimeix "one = 1 two = 2 "
+}
+```
+
+### 9.2.5 Funcions
+
+Les funcions són blocs de codi que només s'executen quan es criden. La creació de funcions està dividida en dues parts:
+
+* Es **defineix la funció**. Permet definir els paràmetres d'entrada (és a dir les dades que se li passen quan les cridem), els valor de retorn (el valor que la funció calcula i retorna al programa principal) i les instruccions que conformen el bloc de codi i realitzen una tasca definida. Les funcions es creen amb la paraula clau `function`:
+
+  ```php
+  function suma_enters($a, $b) {
+    return $a + $b;
+  }
+  ```
+
+  Algunes consideracions:
+  * Els nom de les funcions es **case-insensitive**. És a dir suma_enters, Suma_Enters i SUMA_ENTERS són la mateixa funció.
+  * Els paramètres formals (els que surten a la definició) no tenen tipus.
+  * Podem assignar valors per defecte, per exemple:
+
+    ```php
+    function suma_enters($a, $b = 3) {
+      return $a + $b;
+    }
+    ```
+  * El paràmetre de retorn `return` és opcional. En aquest cas, la funció retorna el valor `null`. 
+
+* Es **crida a la funció**. Des d'altra part del programa, es crida a la funció, el que fa es executar el bloc de codi de la funció amb els paràmetres reals.
+
+  ```php
+    $suma = suma_enters(3, 4) //suma val 7
+  ```
+
+  Si la funció té parámetres opcionals, el nombre de paràmetres a la trucada pot variar. En l'exemple anterior, podriem fer:
+
+  ```php
+    $suma = suma_enters(3) // $a = 3 $b = 3 -> suma val 6
+  ```
+
+## 9.3. Recuperació i processament de dades des d'un formulari web
+
+Fins ara hem vist les caracterìstiques del llenguatge PHP equivalents a qualsevol altre llenguatge de programació de propòsit general (com Java o Python). Encara que podem utilitzar PHP des de la línea de comandes amb l'ordre `php arxiu.php`, en general tant l'entrada de dades com la sortida la farem mitjançant HTML. Per a recollir dades de l'usuari, farem servir els formularis HTML. Quan un formulari s'envia a una pàgina PHP, les dades enviades estan disponibles per aquell script PHP.
+
+Tenim el següent formulari HTML:
+
+```html
+<?php // myform.php ?>
+<!doctype html>
+<html>
+  <body>
+    <form action="mypage.php" method="post">
+      <input type="text" name="myString">
+      <input type="submit">
+    </form>
+  </body>
+</html>
+```
+L'element HTML form té dos atributs obligatoris:
+
+* **action**: especifica l'script PHP que s'executarà quan el formulari s'enviï.
+* **method**: especifica el mètode per enviar la informació. El mètode pot ser GET o POST. 
+
+A continuació veurem l'script `mypage.php` amb cadascun dels dos mètodes.
+
+**POST**
+
+Amb aquest mètode, les dades estan disponibles en l'array `$_POST`. Aquesta variable està predefinida al nostre sistema i es un array **superglobal** que veurem a continuació. El valor de l'atribut `name` de l'element `input` del formulari es converteix en una clau d'aquest array.
+
+```html
+<?php // mypage.php ?>
+<!doctype html>
+<html>
+  <body>
+    <?php echo $_POST['myString']; ?>
+  </body>
+</html>
+```
+
+Amb el mètode post, les dades enviades des del formulari **no** són visibles a la URL de la pàgina, tal com sí passa amb el mètode **GET**. 
+
+**GET**
+
+Amb aquest mètode, les dades estan disponibles a l'array `$_GET`.  
+
+```html
+<?php // mypage.php ?>
+<!doctype html>
+<html>
+  <body>
+    <?php echo $_GET['myString']; ?>
+  </body>
+</html>
+```
+
+Una petició GET codifica els paràmetres del formulari a la URL en el que s'anomena la cadena de búsqueda. La cadena de búsqueda és tot el que surt després de l'interrogant (?). En l'exemple que vé, seria `myString=Foo+Bar`.
+
+Aquest métode permet passar variables entre pàgines, per exemple amb enllaços HTML. Suposem el següent exemple, on enviem una cadena de texte entre dos pàgines web.
+
+```html
+<?php // sender.php ?>
+<!doctype html>
+<html>
+  <body>
+    <a href="receiver.php?myString=Foo+Bar">link</a>  
+  </body>
+</html>
+```
+
+Quan fem click en l'enllaç, l'script `receiver.php` pot accedir a les dades que li han passat:
+
+```html
+<?php // receiver.php ?>
+<!doctype html>
+<html>
+  <body>
+    <?php echo $_GET['myString']; // Imprimeix "Foo Bar" ?>
+    <a href="sender.php">Retorna a sender.php</a> 
+  </body>
+</html>
+```
+
+### **9.3.1. Arrays superglobals**
+
+  Com hem vist, hi ha una sèrie d'arrays associatius disponibles als nostres scripts PHP. Aquests arrays es coneixen com superglobals, perquè estan disponibles en qualsevol pàgina web i àmbit. Hi ha nou variables superglobals, algunes de les quals veurem en el capítol posterior.
+
+  | Nom       | Conté                                                        |
+  |-----------|--------------------------------------------------------------|
+  |$GLOBALS   | Totes les variables globals, incloent les superglobals       |
+  |$_GET      | Les variables enviades amb una petició HTTP GET              |
+  |$_POST     | Les variables enviades amb una petició HTTP POST             |
+  |$_FILES    | Les variables enviades amb una petició HTTP POST pujada arxiu |
+  |$_COOKIE   | Les variables enviades amb galetes HTTP (següent capítol)    |
+  |$_SESSION  | Les variables guardades a una sessió d'usuari (següent capítol) |
+  |$_REQUEST  | Les variables $_GET, $_POST i possiblement $_COOKIE          |
+  |$_SERVER   | Informació sobre el servidor web i les peticions fetes a ell |
+  |$_ENV      | Totes les variables d'entorn guardades pel servidor          |
+
+  Els valors de $_GET, $_POST, $_COOKIE, $_SERVER i $_ENV es poden veure a la sortida generada per la funció de PHP phpinfo(). Aquesta funció també mostra els ajustaments generals de l'arxiu php.ini així com altra informació relacionada amb PHP (extensions habilitades, informació sobre el servidor, etc.).
+
+### **9.3.2. Informació del servidor**
+
+L'array `$_SERVER` conté un munt d'informació útil sobre el servidor web. A continuació tenim una llista completa:
+
+| Nom               | Descripció                                                            | Exemple
+|-----------        |-----------------------------------------------------------------------|----------------------------------------------|
+|PHP_SELF           | Conté el nom de l'script actual,                                      | `/magatzem/carret_compra.php`                |
+|SERVER_SOFTWARE    | Una cadena que identifica el servidor                                 | `Apache/1.3.33 (Unix) mod_perl/1.26 PHP/8.1` |
+|SERVER_NAME        | El nombre de host, alias DNS o adreça IP del servidor web.            | `www.exemple.com`                             |
+|GATEWAY_INTERFACE  | La versió de l'estàndar CGI que es segueix                            | `CGI/1.1`                                     |
+|SERVER_PROTOCOL    | Nom i revisió del protocol HTTP                                       | `HTTP/1.1`                                    |
+|SERVER_PORT        | El número de port a on la petició HTTP s'ha enviat                    | `80`                                          |
+|REQUEST_METHOD     | El mètode utilitzar per obtenir el document                           | `GET`                                         |
+|PATH_INFO          | Elements extra enviats a la URL                                       | `/list/users`                                 |
+|PATH_TRANSLATED    | El valor de PATH_INFO, traduït a una ruta del servidor p. ex          | `/home/httpd/htdocs/list/users`               |
+|SCRIPT_NAME        | la ruta URL a la pagina actual, útil per scripts autoreferenciables.  | `/~me/menu.php`                               |
+|QUERY_STRING       | Tot el que hi va després de ? a la URL                                | `nom=Quim+edat=35`                            |
+|REMOTE_HOST        | El nom de l'equip de la màquina que ha demanat la pàgina              | `host1.exemple.com`                           |
+|REMOTE_ADDR        | Una cadena que conté l'adreça IP de la màquina que fa la petició.     | `192.168.0.250`                               |
+|AUTH_TYPE          | Tipus d'autenticació per protegir la pàgina, si aquesta està protegida| `basic`                                       |
+|REMOTE_USER        | Usuari amb el que el client s'ha autenticat,                          | `Quim`                                        |
+
+### **9.3.3. Pàgines autoprocessades**
+
+### **9.3.4. Càrrega de fitxers**
+
+## 9.4 Funcionalits web
+
+### 9.4.1 Sessions
+
+
+### 9.4.2 Galetes (cookies)
+
+
+### 9.4.3 Seguretat: usuaris, perfils, rols. Galetes.
+
+
+
 ## Annex 1. Instal.lació entorn de desenvolupament
 
 Per a crear el nostre entorn de desenvolupament, necessitarem principalment dues eines.
@@ -171,16 +551,16 @@ Per tant, els passos aseguir per a tenir el nostre entorn de desenvolupament ser
 
 * Vagrant és una eina de linea de comandes. Per confirmar que la tenim instal.lada, obrim la linea de comandes (**CMD** a Windows o **Terminal** a Linux) i escrivim **vagrant -v**. Ens hauria de sortir algo així:
 
-```bash
-$ vagrant -v
-Vagrant 2.3.4
-```
+  ```bash
+  $ vagrant -v
+  Vagrant 2.3.4
+  ```
 * Per començar a utilitzar la nostra MV amb Linux + Apache2 (servidor web) + PHP, farem un desplegament automàtic. Per tal de començar, crearem un directori on emmagatzemarem la nostra configuració vagrant.
 
-```bash
-$ mkdir vagrant
-$ cd vagrant
-```
+  ```bash
+  $ mkdir vagrant
+  $ cd vagrant
+  ```
 * Una vegada dintre del directori, hem de crear dos arxius de texte i un directori:
     * **Vagrantfile**. Aquest arxiu conté la configuració de la nostra màquina virtual (nom de la màquina, RAM reservada, IP del nostre servidor, etc.).
     * **bootstrap.sh**. Aquest arxiu conté l'aprovisionament de la màquina virtual, és a dir la configuració necessària per instal.lar el servidor web i PHP. Aquest script s'executa des de l'arxiu Vagrantfile.
@@ -188,50 +568,51 @@ $ cd vagrant
 
 * El contingut de l'arxiu **Vagrantfile**:
 
-```
-Vagrant.configure("2") do |config|
-  config.vm.box = "debian/bullseye64"
-  config.vm.hostname = "apache2php-server"
-  config.vm.synced_folder "html/", "/var/www/html"
-  config.vm.network "private_network", ip: "192.168.56.10"
-  config.vm.network "forwarded_port", guest: 80, host: 80
-  config.vm.provision "shell", path: "bootstrap.sh"
+  ```v
+  Vagrant.configure("2") do |config|
+    config.vm.box = "debian/bullseye64"
+    config.vm.hostname = "apache2php-server"
+    config.vm.synced_folder "html/", "/var/www/html"
+    config.vm.network "private_network", ip: "192.168.56.10"
+    config.vm.network "forwarded_port", guest: 80, host: 80
+    config.vm.provision "shell", path: "bootstrap.sh"
 
-  config.vm.provider "virtualbox" do |v|
-    v.name = "apache2php-server"
-    v.memory = "1024"
-    v.cpus = 1
+    config.vm.provider "virtualbox" do |v|
+      v.name = "apache2php-server"
+      v.memory = "1024"
+      v.cpus = 1
+    end
   end
-end
-```
+  ```
+
 Aquí podem veure tota la informació sobre la nostra MV: v.memory (RAM), config.vm.network (tipus de xarxa i IP), etc. És pot canviar algun paràmetre si la MV no funcionés bé però recomanem mantenir-los.
 
 * El contingut de l'arxiu **bootstrap.sh**:
 
-```bash
-#!/usr/bin/env bash
+  ```bash
+  #!/usr/bin/env bash
 
-apt update
-apt install apache2 -y
+  apt update
+  apt install apache2 -y
 
-# Install php8 on Debian official https://packages.sury.org/php/README.txt
-apt install apt-transport-https lsb-release ca-certificates curl -y
-curl -sSLo /usr/share/keyrings/deb.sury.org-php.gpg https://packages.sury.org/php/apt.gpg
-sh -c 'echo "deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
-apt update && apt upgrade
+  # Install php8 on Debian official https://packages.sury.org/php/README.txt
+  apt install apt-transport-https lsb-release ca-certificates curl -y
+  curl -sSLo /usr/share/keyrings/deb.sury.org-php.gpg https://packages.sury.org/php/apt.gpg
+  sh -c 'echo "deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
+  apt update && apt upgrade
 
-# Versió actual i suportada PHP 8.1 fins finals 2024
-apt install php8.1 -y
+  # Versió actual i suportada PHP 8.1 fins finals 2024
+  apt install php8.1 -y
 
-# Extensions PHP (no obligatòries)
-apt install php8.1-{cli,common,xml,curl,mbstring,zip,bz2} -y
-```
+  # Extensions PHP (no obligatòries)
+  apt install php8.1-{cli,common,xml,curl,mbstring,zip,bz2} -y
+  ```
 
 * Guardem els dos arxius i executem la comanda per arrencar la nostra MV:
 
-```
-vagrant up 
-```
+  ```
+  vagrant up 
+  ```
 
 * A continuació fa un procés que processa els dos fitxers que acabem de crear. Concretament:
 
@@ -239,16 +620,18 @@ vagrant up
     * Crea la MV amb els paràmetres que li hem indicat, habilita la xarxa a la MV per poder conectar-nos i comparteix les carpetes de la MV amb el nostre equip perquè podem treballar remotament i la nostra informació no es perdi
     * Aprovisiona la MV, és a dir instal.la el software necessari per començar a programar amb PHP. Aquesta part només la fa la primera vegada.
 
-A partir d'aqui ja tenim l'entorn preparat i podriem obrir **Visual Studio Code** per desenvolupar els nostres scripts amb PHP. Una vegada hem acabat de programar, el procediment seria el següent.
+* A partir d'aqui ja tenim l'entorn preparat i podriem obrir **Visual Studio Code** per desenvolupar els nostres scripts amb PHP. Una vegada hem acabat de programar, el procediment seria el següent.
 
-```
-vagrant halt
-```
-Aquesta comanda para la màquina virtual, per torna a començar, hem d'accedir al directori que hem creat (on tenim Vagrantfile) i tornar a executar ```vagrant up```.
+  ```
+  vagrant halt
+  ```
+
+  Aquesta comanda para la màquina virtual, per torna a començar, hem d'accedir al directori que hem creat (on tenim Vagrantfile) i tornar a executar ```vagrant up```.
+
+**Altres comandes**
 
 Si en algun moment la nostra MV deixés de funcionar correctament, podem executar ```vagrant destroy```. Aquesta comanda esborra la MV i la seva definició a Virtualbox, però els nostres arxius estaran guardats al directori html. A continuació tornariem a fer ```vagrant up```.
 
 Per conectar-nos a la MV, des de el directori on és Vagrantfile, executem ```vagrant ssh```. Allà podrem comprovar si els nostres serveis estan funcionant correctament o realitzar qualsevol modificació a la MV.
 
 Finalment, per comprovar que tot ha anat correctament, hauriem de crear un arxiu html de prova (Hello World) i anar a la adreça http://192.168.56.10 al nostre navegador.
-
