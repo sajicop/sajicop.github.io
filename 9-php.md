@@ -524,6 +524,11 @@ L'array `$_SERVER` conté un munt d'informació útil sobre el servidor web. A c
 
 ### 9.4.1 Sessions
 
+Una sessió és el període que hi ha entre que obrim una aplicació i la tanquem. Normalment obrim l'aplicació, treballem amb ella, fem canvis, i després la tanquem. Durant aquest període l'aplicació sap qui som, quan obrim l'aplicació i quan la tamquem (per exemple, quan iniciem sessió a Windows o a Linux). A internet hi ha un problema doncs el protocol no manté l'estat.
+
+HTTP és un protocol stateless (no manté l'estat). Això vol dir que cada petició que es fa al servidor web és independent de les anteriors. És a dir cada petició es una parella de petició resposta independent de les altres. Aixó es contraposa a altres protocols d'internet com FTP. Amb FTP establim una sessió on l'usuari defineix una sèrie de paràmetres que són valid per a tota la sessió (directori de treball, mode de transferència, etc). 
+
+Per solventar aquest problema, el servidor web ens proporciona les variables de sessió. PHP té suport incorporat per a les sessions. 
 
 ### 9.4.2 Galetes (cookies)
 
