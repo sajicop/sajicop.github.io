@@ -10,9 +10,13 @@
 ## UF2
 
 ## [5. Conversió de documents: XSL](5-xsl-xpath.md) ([pdf](assets/pdf/5-xsl-xpath.pdf))
-## [6. Emmagatzematge d’informació amb XML: Xpath i XQuery](6-xquery.md) 
-## [7. Sindicació de continguts: RSS](7-rss.md)
+## [6. Emmagatzematge d’informació amb XML: Xpath i XQuery](6-xquery.md) ([pdf](assets/pdf/6-xquery.pdf)) 
+## [7. Sindicació de continguts: RSS](7-rss.md) ([pdf](assets/pdf/7-rss.pdf))
 
 ## UF3
 
-## [8. ERPs](8-erps.md)
+## [8. ERPs](8-erps.md) ([pdf](assets/pdf/8-erps.pdf))
+
+## UF4
+
+## [9. PHP](9-php.md) ([pdf](assets/pdf/9-php.pdf))
