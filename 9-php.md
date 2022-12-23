@@ -43,6 +43,115 @@
 + 4.5 Adaptacions a webs existents.
 + 4.6 Proves i depuració.
 
+## 9.2 Programació bàsica amb PHP
+
+### 9.2.1 Comentaris
+
+PHP permet diferents notacions per a la inserció de comentaris, dues provenen de C++ i l'altra de Perl o Bash.
+
+Per tal de fer un comentari d'una sola linea podem utilitzar els símbols // o #. Per comentaris multilinea fem servir els símbols /* per indicar l'inici del comentari i */ per indicar el final. Un exemple:
+
+```php
+<?php
+// això és un commentari d'una sola línea
+
+# això també és un commentari d'una sola línea
+
+/* comentari
+multilinea */
+
+?>
+```
+
+### 9.2.2 Variables
+
+Les variables a PHP comencen per el símbol dolar ($) seguides d'un identificador, que és el nom de la variable. Per exemple:
+
+```php
+$laMevaVariable = 1;
+```
+En l'exemple anterior, a la variable `$laMevaVariable` li assignem el valor `1`.
+
+Les variables poden tenir qualsevol nom, només han de seguir unes regles senzilles:
+
+* Una variable comença pel símbol `$`, seguit del nom de la variable.
+* Han de començar per una lletra o el caracter subratllat `_`.
+* No poden començar per un número.
+* Només poden contenir caràcters alfanumérics i el caracter subratllat `_`.
+* Són case-sensitive ($numero i $Numero són variables diferents).
+* No hi ha una convenció per a les variables amb vàries paraules: alguns frameworks fan servir camelCase (`$laMevaVariable`) i altres el caracter subratllat (`$la_meva_variable`). Decidiu una convenció i feu-la servir al llarg dels vostres programes.
+
+### 9.2.2.1 Tipatge de dades
+
+PHP és un llenguatge no tipat (o débilment), al igual que Javascript i a diferència de Java. Això vol dir que no hem d'especificar un tipus de dades a l'hora de definir una variable. Podem assignar un valor enter a una variable i després assignar-li un valor en decimal (float).
+
+```php
+$laMevaVariable = 1;
+$laMevaVariable = 1.5;
+```
+
+PHP internament fa la conversió de les variables d'un tipus a un altre. De totes formes és important conéixer els tipus de dades amb els que treballa internament. Són els següents (els que estan en negreta són els que veurem a continuació).
+
+
+|Tipus de dades        | Categoria      | Descripció               |
+|----------------------|----------------|--------------------------|
+|**int**               | **Escalar**    | **Enter**                |
+|**float**             | **Escalar**    | **Decimal**              |
+|**bool**              | **Escalar**    | **Valor booleà**         |
+|string                | Escalar        | Cadena de caràcters      |
+|array                 | Compost        | Col.lecció de valors     |
+|object                | Compost        | Tipus de dades definit per l'usuari |
+|resource              | Especial       | Recurs extern            |
+|callable              | Especial       | Funció o mètode          |
+|mixed                 | Especial       | Qualsevol tipus          |
+|**null**              | **Especial**   | **Cap valor**            |
+
+**Enter**
+
+Els números enters es podem especificar en diferents bases:
+
+```php
+$myInt = 1234; // numero decimal (base 10)
+$myInt = 0b10; // numbero binari (2 en decimal)
+$myInt = 0123; // numero octal  (83 en decimal)
+$myInt = 0x1A; // numero hexadecimal (26 en decimal)
+```
+Els enters en PHP són sempre amb signe (podem emmagatzemar números negatius).
+
+**Float**
+
+Els números en coma flotant emmagatzemen números reals. És poden especificar amb notació decimal o exponencial:
+
+```php
+$myFloat = 1.234;
+$myFloat = 3e2;   // 3*10^2 = 300
+```
+
+**Bool**
+
+Les variables booleanes representen un valor booleà, que és un valor que només pot ser vertader o fals.
+
+```php
+$myBool = true;
+```
+
+**Null**
+
+Null s'utilitza per representar una variable sense valor.
+
+```php
+$myNull = null; // variable establerta a null
+```
+
+A PHP 8, les variables s'han de definir (inicialitzar) abans d'usar-les, sino donarà error.
+
+```php
+// PHP 8
+$myDefined = null;
+echo $myDefined;    // ok
+echo $myUndefined;  // error 
+```
+
 ## Annex 1. Instal.lació entorn de desenvolupament
 
 Per a crear el nostre entorn de desenvolupament, necessitarem principalment dues eines.
