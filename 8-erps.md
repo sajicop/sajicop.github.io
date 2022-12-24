@@ -25,7 +25,7 @@ El sistema ERP més utilitzat a nivell empresarial és SAP. SAP és una empresa 
 
 Tal com hem comentat, un ERP controla diversos processos de negoci, modelant cadascuna de les fases de cada departament de l'empresa. Els principals mòduls són els següents. Els mòduls es poden dividir en dos tipus, mòduls financers i mòduls logístics.
 
-![Mòduls d'un ERP](/assets/img/8-2-SAP-R3-modules.jpg)
+![Mòduls d'un ERP](assets/img/8-2-SAP-R3-modules.jpg)
 
 ### 8.2.1. Finances
 
@@ -72,7 +72,7 @@ Un CRM (Customer relationship management) o gestor de relacions amb els clients 
 
 * El **servei postvenda** o d'atenció al client: Els CRM proporcionen a l'empresa la informació necessària permetent que aquesta ofereixi un servei d'atenció al client i postvenda de nivell superior.
 
-![Gestió de processos amb CRM](/assets/img/8-1-CRM.jpg)
+![Gestió de processos amb CRM](assets/img/8-1-CRM.jpg)
 
 Un dels sistemes CRM més coneguts és Siebel, una empresa nordamericana fundada el 1993. El 2005 va ser adquirida per Oracle, el gran rival de SAP.
 

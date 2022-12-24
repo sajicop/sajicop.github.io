@@ -6,7 +6,7 @@
 
 En aquesta unitat veurem el llenguatge de programació PHP, que és pot insertar en el codi del llenguatge de marques HTML. Les pàgines web es poden accedir en local, és a dir podem obrir un arxiu html amb el nostre navegador i visualitzar-ho. No obstant, aquest no és l'escenari més comú. Les aplicacions web fan servir el model client/servidor que veurem a continuació. El funcionament d'aquesta arquitectura és el següent:
 
-![Arquitectura client servidor](/assets/img/9-1-arquitectura-client-servidor.png)
+![Arquitectura client servidor](assets/img/9-1-arquitectura-client-servidor.png)
 
 Els components d'aquesta arquitectura són:
 
@@ -15,7 +15,7 @@ Són dispositius que fan peticions des d'un **navegador** amb una interfície we
 
 A continuació podem veure quins són els navegadors més utilitzats:
 
-![Navegadors més populars](/assets/img/9-1-most-popular-browsers-in-2022.webp)
+![Navegadors més populars](assets/img/9-1-most-popular-browsers-in-2022.png)
 
 [Usage share of web browsers (wikipedia)](https://en.wikipedia.org/wiki/Usage_share_of_web_browsers#Summary_tables)
 
@@ -36,7 +36,7 @@ Per exemple:
 ### **Servidor web**
 Un servidor conté un servei (programa que està sempre en execució) que rep les peticions dels clients, localitza els recursos demanats i els retorna als clients. Els recursos demanats normalment es troben dins del mateix servidor web, per exemple, una pàgina html dins el directori arrel del servidor.
 
-![Web Server share](/assets/img/9-1-web-server-share.png)
+![Web Server share](assets/img/9-1-web-server-share.png)
 Font: [w3techs.com](https://w3techs.com/technologies/overview/web_server)
 
 En aquest unitat farem servir el servidor web Apache. És un servidor web de codi obert llençat el 1995 i el més utilitzat durant molts anys. Apache té un disseny modular, de manera que pot ser ampliat amb altres funcionalitats que poden ser activades independentment del nucli. Darrerament Nginx s'ha popularitzat com a alternativa a Apache, creat pel enginyer rus Igor Sysoev el 2004.
@@ -78,7 +78,7 @@ També es llença Node.js (2009) com a alternativa a PHP.
 
 Les pàgines web dinàmiques, a diferència de les webs estàtiques es generen sota demanda. El contingut d'una web dinàmica canvia segons l'hora del dia, l'usuari, etc. mentre que una web estàtica (per exemple una wiki o un blog) està pensada per a la publicació de continguts estàtics. 
 
-![Server Side Scripting](/assets/img/9-php-Client-Server-transp.png)
+![Server Side Scripting](assets/img/9-php-Client-Server-transp.png)
 
 A una pàgina web dinàmica, la petició arriba al servidor web. Aquest comprova si el contingut ha de ser generat dinàmicament i en aquest cas li passa la petició al processador de scripts de servidor (l'interpret PHP). Aquest genera el codi HTML dinàmicament i li retorna la pàgina web al servidor web, que la transmet al client.
 

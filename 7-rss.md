@@ -36,7 +36,7 @@ Actualment les versions més populars de RSS son les següents:
 
 Arquitectura general dels lectors de RSS o agregadors de continguts.
 
-![Arquitectura RSS](/assets/img/7-1arquitectura-RSS.drawio.png)
+![Arquitectura RSS](assets/img/7-1arquitectura-RSS.drawio.png)
 
 ## 7.3 Lectors RSS
 

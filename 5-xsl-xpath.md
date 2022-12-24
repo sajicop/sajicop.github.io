@@ -738,7 +738,7 @@ Per tal de processar els nostres documents XML i generar una sortida amb XSLT ne
 
 1. Descarregar l'última versió de **Saxon Home Edition (Saxon-HE)** des de la pàgina oficial: [Saxon SXLT and XQuery Processor](https://saxon.sourceforge.net/#F11HE). No cal descarregar ni els exemples ni el codi font. 
 
-2. Descomprimir el contingt en una carpeta del vostre equip, p. ex. c:\Saxon a Windows o /users/home/usuari/Saxon a Linux.
+2. Descomprimir el contingt en una carpeta del vostre equip, p. ex. c:Saxon a Windows o /users/home/usuari/Saxon a Linux.
 
 3. Instal.leu l'extensió **XSLT/XPath for Visual Studio Code** per a Visual Studio Code.
 

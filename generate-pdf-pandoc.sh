@@ -4,3 +4,7 @@ pandoc 3-xsd.md --pdf-engine=pdflatex -o assets/pdf/3-xsd.pdf
 pandoc 3-xsd.md --pdf-engine=pdflatex -o assets/pdf/3-xsd.pdf
 pandoc 4-html-css.md --pdf-engine=pdflatex -o assets/pdf/4-html-css.pdf
 pandoc 5-xsl-xpath.md --pdf-engine=pdflatex -o assets/pdf/5-xsl-xpath.pdf
+pandoc 6-xquery.md --pdf-engine=pdflatex -o assets/pdf/6-xquery.pdf
+pandoc 7-rss.md --pdf-engine=pdflatex -o assets/pdf/7-rss.pdf
+pandoc 8-erps.md --pdf-engine=pdflatex -o assets/pdf/8-erps.pdf
+pandoc 9-php.md --pdf-engine=pdflatex -o assets/pdf/9-php.pdf
