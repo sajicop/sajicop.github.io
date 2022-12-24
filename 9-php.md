@@ -46,13 +46,14 @@
 ## 9.1 Introducció. Model de programació en entorn client/servidor. Llenguatges de programació en entorn servidor
 
 
+
 ## 9.2 Programació bàsica amb PHP
 
 ### 9.2.1 Comentaris
 
 PHP permet diferents notacions per a la inserció de comentaris, dues provenen de C++ i l'altra de Perl o Bash.
 
-Per tal de fer un comentari d'una sola linea podem utilitzar els símbols // o #. Per comentaris multilinea fem servir els símbols /* per indicar l'inici del comentari i */ per indicar el final. Un exemple:
+Per tal de fer un comentari d'una sola linea podem utilitzar els símbols `//` o `#`. Per comentaris multilinea fem servir els símbols /* per indicar l'inici del comentari i */ per indicar el final. Un exemple:
 
 ```php
 <?php
@@ -78,10 +79,9 @@ En l'exemple anterior, a la variable `$laMevaVariable` li assignem el valor `1`.
 Les variables poden tenir qualsevol nom, només han de seguir unes regles senzilles:
 
 * Una variable comença pel símbol `$`, seguit del nom de la variable.
-* Han de començar per una lletra o el caracter subratllat `_`.
-* No poden començar per un número.
-* Només poden contenir caràcters alfanumérics i el caracter subratllat `_`.
-* Són case-sensitive ($numero i $Numero són variables diferents).
+* Han de començar per una lletra o el caracter subratllat `_`, no poden començar per un número.
+* Només poden contenir caràcters alfanumérics (a-z,A-Z,0-9) i el caracter subratllat `_`.
+* Són case-sensitive (`$numero` i `$Numero` són variables diferents).
 * No hi ha una convenció per a les variables amb vàries paraules: alguns frameworks fan servir camelCase (`$laMevaVariable`) i altres el caracter subratllat (`$la_meva_variable`). Decidiu una convenció i feu-la servir al llarg dels vostres programes.
 
 ### 9.2.2.1 Tipatge de dades
@@ -93,7 +93,7 @@ $laMevaVariable = 1;
 $laMevaVariable = 1.5;
 ```
 
-PHP internament fa la conversió de les variables d'un tipus a un altre. De totes formes és important conéixer els tipus de dades amb els que treballa internament. Són els següents (els que estan en negreta són els que veurem a continuació).
+PHP internament fa la conversió de les variables d'un tipus a un altre. De totes formes és important conéixer els tipus de dades amb els que treballa internament. Són els següents (els que estan en negreta són els que veurem en aquest tema).
 
 
 |Tipus de dades        | Categoria      | Descripció               |
@@ -102,7 +102,7 @@ PHP internament fa la conversió de les variables d'un tipus a un altre. De tote
 |**float**             | **Escalar**    | **Decimal**              |
 |**bool**              | **Escalar**    | **Valor booleà**         |
 |**string**            | **Escalar**    | **Cadena de caràcters**  |
-|array                 | Compost        | Col.lecció de valors     |
+|**array**             | **Compost**    | **Col.lecció de valors** |
 |object                | Compost        | Tipus de dades definit per l'usuari |
 |resource              | Especial       | Recurs extern            |
 |callable              | Especial       | Funció o mètode          |
@@ -114,10 +114,10 @@ PHP internament fa la conversió de les variables d'un tipus a un altre. De tote
 Els números enters es podem especificar en diferents bases:
 
 ```php
-$myInt = 1234; // numero decimal (base 10)
-$myInt = 0b10; // numbero binari (2 en decimal)
-$myInt = 0123; // numero octal  (83 en decimal)
-$myInt = 0x1A; // numero hexadecimal (26 en decimal)
+  $myInt = 1234; // numero decimal (base 10)
+  $myInt = 0b10; // numbero binari (2 en decimal)
+  $myInt = 0123; // numero octal  (83 en decimal)
+  $myInt = 0x1A; // numero hexadecimal (26 en decimal)
 ```
 Els enters en PHP són sempre amb signe (podem emmagatzemar números negatius).
 
@@ -126,8 +126,8 @@ Els enters en PHP són sempre amb signe (podem emmagatzemar números negatius).
 Els números en coma flotant emmagatzemen números reals. És poden especificar amb notació decimal o exponencial:
 
 ```php
-$myFloat = 1.234;
-$myFloat = 3e2;   // 3*10^2 = 300
+  $myFloat = 1.234;
+  $myFloat = 3e2;   // 3*10^2 = 300
 ```
 
 **Bool**
@@ -135,7 +135,7 @@ $myFloat = 3e2;   // 3*10^2 = 300
 Les variables booleanes representen un valor booleà, que és un valor que només pot ser vertader o fals.
 
 ```php
-$myBool = true;
+  $myBool = true;
 ```
 
 **Null**
@@ -143,16 +143,16 @@ $myBool = true;
 Null s'utilitza per representar una variable sense valor.
 
 ```php
-$myNull = null; // variable establerta a null
+  $myNull = null; // variable establerta a null
 ```
 
 A PHP 8, les variables s'han de definir (inicialitzar) abans d'usar-les, sino donarà error.
 
 ```php
-// PHP 8
-$myDefined = null;
-echo $myDefined;    // ok
-echo $myUndefined;  // error 
+  // PHP 8
+  $myDefined = null;
+  echo $myDefined;    // ok
+  echo $myUndefined;  // error 
 ```
 
 **String**
@@ -160,14 +160,14 @@ echo $myUndefined;  // error
 Un string o cadena és una sèrie de caràcters que s'emmagatzemen a una variable. Exemple:
 
 ```php
-$cadena = 'Hola';
+  $cadena = 'Hola';
 ```
 
-Les cadenes tenen dos operadors: l'operador de concatenació (.) i l'operador concatenació més assignació (.=). Exemple:
+Les cadenes tenen dos operadors: l'operador de concatenació `.` i l'operador concatenació més assignació `.=`. Exemple:
 
 ```php
-$cadena = 'Hola';
-$cadena = $cadena . 'mundo';
+  $cadena = 'Hola';
+  $cadena = $cadena . 'mundo';
 
 echo $cadena; // treu la cadena 'Hola mundo'
 
@@ -285,7 +285,7 @@ else
   echo 'x és una altra cosa (diferent de 1 i de 2)';
 ```
 
-Les claus són opcionals sempre que hi hagi només una instrucció dintre del block. 
+Les claus són opcionals sempre que hi hagi només una instrucció dintre del bloc. 
 
 ### 9.2.4 Bucles
 
@@ -298,11 +298,11 @@ El codi dintre de les claus es repeteix fins que la condició s'evalua falsa. É
 Exemple:
 
 ```php
-$i = 0;
+  $i = 0;
 
-while ($i < 10) { 
-  echo $i++; // Imprimeix els numeros del 0 al 9 
-} 
+  while ($i < 10) { 
+    echo $i++; // Imprimeix els numeros del 0 al 9 
+  } 
 ```
 
 **Do-While**
@@ -312,11 +312,11 @@ El codi dintre de les claus es repeteix fins que la condició s'evalua falsa. É
 Exemple:
 
 ```php
-$i = 0;
+  $i = 0;
 
-do { 
-  echo $i++; // Imprimeix els numeros del 0 al 9 
-} while ($i < 10); 
+  do { 
+    echo $i++; // Imprimeix els numeros del 0 al 9 
+  } while ($i < 10); 
 ```
 
 **For**
@@ -330,9 +330,9 @@ El **tercer paràmetre** incrementa el contador i s'executa després del bloc de
 Exemple:
 
 ```php
-for ($i = 0; $i < 10; $i++) { 
-  echo $i; // Imprimeix els numeros del 0 al 9 
-} 
+  for ($i = 0; $i < 10; $i++) { 
+    echo $i; // Imprimeix els numeros del 0 al 9 
+  } 
 ```
 
 **Foreach**
@@ -341,21 +341,21 @@ L'estructura foreach proporciona una forma fàcil per iterar arrays.
 
 Exemple:
 ```php
-$array = array(1,2,3);
+  $array = array(1,2,3);
 
-foreach ($array as $element) {
-  echo $element; // Imprimeix "123"
-}
+  foreach ($array as $element) {
+    echo $element; // Imprimeix "123"
+  }
 ```
 
 Per iterar sobre arrays associatius, foreach proporciona un métode per obtenir tant els noms de les claus com dels valors. Exemple:
 
 ```php
-$array = array('one' => 1, 'two' => 2);
+  $array = array('one' => 1, 'two' => 2);
 
-foreach ($array as $clau => $valor) {
-  echo "$clau = $valor "; // Imprimeix "one = 1 two = 2 "
-}
+  foreach ($array as $clau => $valor) {
+    echo "$clau = $valor "; // Imprimeix "one = 1 two = 2 "
+  }
 ```
 
 ### 9.2.5 Funcions
@@ -401,16 +401,16 @@ Fins ara hem vist les caracterìstiques del llenguatge PHP equivalents a qualsev
 Tenim el següent formulari HTML:
 
 ```html
-<?php // myform.php ?>
-<!doctype html>
-<html>
-  <body>
-    <form action="mypage.php" method="post">
-      <input type="text" name="myString">
-      <input type="submit">
-    </form>
-  </body>
-</html>
+  <?php // myform.php ?>
+  <!doctype html>
+  <html>
+    <body>
+      <form action="mypage.php" method="post">
+        <input type="text" name="myString">
+        <input type="submit">
+      </form>
+    </body>
+  </html>
 ```
 L'element HTML form té dos atributs obligatoris:
 
@@ -424,13 +424,13 @@ A continuació veurem l'script `mypage.php` amb cadascun dels dos mètodes.
 Amb aquest mètode, les dades estan disponibles en l'array `$_POST`. Aquesta variable està predefinida al nostre sistema i es un array **superglobal** que veurem a continuació. El valor de l'atribut `name` de l'element `input` del formulari es converteix en una clau d'aquest array.
 
 ```html
-<?php // mypage.php ?>
-<!doctype html>
-<html>
-  <body>
-    <?php echo $_POST['myString']; ?>
-  </body>
-</html>
+  <?php // mypage.php ?>
+  <!doctype html>
+  <html>
+    <body>
+      <?php echo $_POST['myString']; ?>
+    </body>
+  </html>
 ```
 
 Amb el mètode post, les dades enviades des del formulari **no** són visibles a la URL de la pàgina, tal com sí passa amb el mètode **GET**. 
@@ -440,13 +440,13 @@ Amb el mètode post, les dades enviades des del formulari **no** són visibles a
 Amb aquest mètode, les dades estan disponibles a l'array `$_GET`.  
 
 ```html
-<?php // mypage.php ?>
-<!doctype html>
-<html>
-  <body>
-    <?php echo $_GET['myString']; ?>
-  </body>
-</html>
+  <?php // mypage.php ?>
+  <!doctype html>
+  <html>
+    <body>
+      <?php echo $_GET['myString']; ?>
+    </body>
+  </html>
 ```
 
 Una petició GET codifica els paràmetres del formulari a la URL en el que s'anomena la cadena de búsqueda. La cadena de búsqueda és tot el que surt després de l'interrogant (?). En l'exemple que vé, seria `myString=Foo+Bar`.
@@ -454,29 +454,70 @@ Una petició GET codifica els paràmetres del formulari a la URL en el que s'ano
 Aquest métode permet passar variables entre pàgines, per exemple amb enllaços HTML. Suposem el següent exemple, on enviem una cadena de texte entre dos pàgines web.
 
 ```html
-<?php // sender.php ?>
-<!doctype html>
-<html>
-  <body>
-    <a href="receiver.php?myString=Foo+Bar">link</a>  
-  </body>
-</html>
+  <?php // sender.php ?>
+  <!doctype html>
+  <html>
+    <body>
+      <a href="receiver.php?myString=Foo+Bar">link</a>  
+    </body>
+  </html>
 ```
 
 Quan fem click en l'enllaç, l'script `receiver.php` pot accedir a les dades que li han passat:
 
 ```html
-<?php // receiver.php ?>
-<!doctype html>
-<html>
-  <body>
-    <?php echo $_GET['myString']; // Imprimeix "Foo Bar" ?>
-    <a href="sender.php">Retorna a sender.php</a> 
-  </body>
-</html>
+  <?php // receiver.php ?>
+  <!doctype html>
+  <html>
+    <body>
+      <?php echo $_GET['myString']; // Imprimeix "Foo Bar" ?>
+      <a href="sender.php">Retorna a sender.php</a> 
+    </body>
+  </html>
+```
+### **9.3.1. Funcions per testejar existència/valor**
+
+Hi ha una sèrie de funcions molt utilitzades per comprobar l'entrada proporcionada per l'usuari. Les variables s'han de comprobar abans d'utilitzar-les.
+
+**Isset**
+`isset($nom_variable)` retorna true si la variable existeix i se li ha assignat un valor diferent de null.
+
+```php
+  isset($a); // false
+  $a = 10;
+  isset($a); // true
+  $a = null;
+  isset($a); // false
+```
+**Empty**
+`empty($nom_variable)` retorna true si la variable està buida (té valor null, 0, false o cadena buida) o no existeix. 
+
+```php
+  empty($b); // true
+  $b = false;
+  empty($b); // true
 ```
 
-### **9.3.1. Arrays superglobals**
+**Is_null**
+`is_null($nom_variable)` retorna true si la variable està establerta a null. A partir de PHP8, is_null retorna TypeError si la variable no e
+
+```php
+  $c = null;
+  is_null($c); // true
+  $c = 10;
+  is_null($c); // false
+  is_null($d); // Type error
+```
+
+**unset**
+Una altra funcio útil es `unset($nom_variable)`, que esborra el valor de la variable de l'àmbit actual. Una funció o una pàgina defineix un àmbit on les variables només són vàlides en el seu àmbit.
+
+```php
+$e = 10;
+unset($e); // esborrar $e
+```
+
+### **9.3.2. Arrays superglobals**
 
   Com hem vist, hi ha una sèrie d'arrays associatius disponibles als nostres scripts PHP. Aquests arrays es coneixen com superglobals, perquè estan disponibles en qualsevol pàgina web i àmbit. Hi ha nou variables superglobals, algunes de les quals veurem en el capítol posterior.
 
@@ -494,7 +535,7 @@ Quan fem click en l'enllaç, l'script `receiver.php` pot accedir a les dades que
 
   Els valors de $_GET, $_POST, $_COOKIE, $_SERVER i $_ENV es poden veure a la sortida generada per la funció de PHP phpinfo(). Aquesta funció també mostra els ajustaments generals de l'arxiu php.ini així com altra informació relacionada amb PHP (extensions habilitades, informació sobre el servidor, etc.).
 
-### **9.3.2. Informació del servidor**
+### **9.3.3. Informació del servidor**
 
 L'array `$_SERVER` conté un munt d'informació útil sobre el servidor web. A continuació tenim una llista completa:
 
@@ -516,9 +557,40 @@ L'array `$_SERVER` conté un munt d'informació útil sobre el servidor web. A c
 |AUTH_TYPE          | Tipus d'autenticació per protegir la pàgina, si aquesta està protegida| `basic`                                       |
 |REMOTE_USER        | Usuari amb el que el client s'ha autenticat,                          | `Quim`                                        |
 
-### **9.3.3. Pàgines autoprocessades**
+### **9.3.4. Pàgines autoprocessades**
 
-### **9.3.4. Càrrega de fitxers**
+Podem crear una pàgina PHP que generi un formulari i després el processi. Una forma de saber si mostrar el formulari és comprobar si algun dels paràmetres del formulari existeix. El següent exemple mostra un formulari que calcula el IMC (Index de Massa Corporal) i envia les dades amb mètode GET. Utilitza la presència de paràmetes per determinar què fer.
+
+```php
+<html>
+  <head> <title>Càlcul IMC</title> </head>
+  <body>
+    <?php
+      if (isset ( $_GET ['pes'] ) && isset ( $_GET ['alcada'] )) {
+        $pes = $_GET ['pes'];
+        $alcada = $_GET ['alcada'];
+      } else {
+        $pes = null;
+        $alcada = null;
+      }
+      if (is_null($pes) || is_null($alcada)) {
+        ?>
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET">
+          <label for="name">Pes (kg): </label>      <input type="text" id="pes" name="pes" /><br />
+          <label for="alcada">Alçada (m): </label>  <input type="text" id="alcada" name="alcada" /><br />
+          <input type="submit" value="Calcula el meu IMC!" />
+        </form>
+      <?php
+      } else {
+        $imc = $pes / ($alcada*$alcada);
+        printf ( "L'IMC és %.2f", $imc );
+      }
+    ?>
+  </body>
+</html>
+```
+
+### **9.3.5. Càrrega de fitxers**
 
 ## 9.4 Funcionalits web
 
@@ -528,13 +600,59 @@ Una sessió és el període que hi ha entre que obrim una aplicació i la tanque
 
 HTTP és un protocol stateless (no manté l'estat). Això vol dir que cada petició que es fa al servidor web és independent de les anteriors. És a dir cada petició es una parella de petició resposta independent de les altres. Aixó es contraposa a altres protocols d'internet com FTP. Amb FTP establim una sessió on l'usuari defineix una sèrie de paràmetres que són valid per a tota la sessió (directori de treball, mode de transferència, etc). 
 
-Per solventar aquest problema, el servidor web ens proporciona les variables de sessió. PHP té suport incorporat per a les sessions. 
+Per solventar aquest problema, el servidor web ens proporciona les variables de sessió. PHP té suport incorporat per a les sessions. Per crear una sessió a PHP, fem servir la funció `session_start()`. Aquesta funció s'ha d'executar abans de treure cap sortida per pantalla (per exemple amb `echo`). Una vegada hem creat la sessió, podem guardar dades com el nom d'usuari o el número de visites amb l'array superglobal $_SESSION[].
+
+index.php
+```php
+  <?php 
+  session_start();
+
+  //guardem l'usuari de la sessió. Aquest usuari pot venir d'una BBDD
+  $_SESSION['user'] = 'admin';
+  ?>
+  <html>
+    <head>
+        <title>PHP Session Demo</title>
+    </head>
+    <body>
+        <a href="perfil.php">Anar al perfil</a>
+    </body>
+  </html>
+```
+
+perfil.php
+```php
+  <?php 
+  session_start();
+
+  if (isset($_SESSION['user'])) {
+      echo "<p>Benvingut <strong>" . $_SESSION['user'] . "</strong></p>";
+  }
+
+  //La caducitat d'una sessió ve definida a session.cache_expire a l'arxiu php.ini
+  $caducitat = session_cache_expire();
+  echo "<p>Caducitat de la sesió: $caducitat minuts.</p>";
+
+  //Algunes dades de la sessió
+  echo "<p>SID de la sessio: " session_id() . "</p>";              //SID de la sessió
+  echo "<p>Nom de la sessio: " session_name() . "</p>";            //Nom de la sessió
+  echo "<p><a href=\"index.php\">Retornar a l'index</a></p>";
+  echo "<p><a href=\"logout.php\">Sortid de la sessió</a></p>";
+  ?>
+```
+Per sortir de la sessió, hem de crear una altra pàgina amb la funció `session_destroy()`:
+
+logout.php
+```php
+  <?php  
+  session_start();                //ens assegurem que usem la mateixa sessió
+  session_destroy();              //destruir la sessió
+  header("location:perfil.php"); //redirecció a "perfil.php" després de logout.
+  exit();
+  ?>
+```
 
 ### 9.4.2 Galetes (cookies)
-
-
-### 9.4.3 Seguretat: usuaris, perfils, rols. Galetes.
-
 
 
 ## Annex 1. Instal.lació entorn de desenvolupament
