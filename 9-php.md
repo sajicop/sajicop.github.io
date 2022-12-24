@@ -2,52 +2,117 @@
 
 ## Índex de continguts
 
-## 9.0 Resultats d'aprenentatge i continguts
+## 9.0 Introducció. Model de programació en entorn client/servidor. Llenguatges de programació en entorn servidor
 
-### 1. Selecciona les arquitectures i tecnologies de programació web en entorn servidor, analitzant les seves capacitats i les característiques pròpies.
-1. Selecció d’arquitectures i eines de programació:
-+ 1.1 Models de programació en entorns client/servidor.
-+ 1.2 Generació dinàmica de pàgines web.
-+ 1.3 Llenguatges de programació en entorn servidor.
-+ 1.4 Integració amb els servidors web.
-+ 1.5 Integració amb els llenguatges de marques.
-+ 1.7 Eines de programació.
+En aquesta unitat veurem el llenguatge de programació PHP, que és pot insertar en el codi del llenguatge de marques HTML. Les pàgines web es poden accedir en local, és a dir podem obrir un arxiu html amb el nostre navegador i visualitzar-ho. No obstant, aquest no és l'escenari més comú. Les aplicacions web fan servir el model client/servidor que veurem a continuació. El funcionament d'aquesta arquitectura és el següent:
 
-### 2. Escriu sentències executables per un servidor web reconeixent i aplicant procediments d’integració del codi en llenguatges de marques.
+![Arquitectura client servidor](/assets/img/9-1-arquitectura-client-servidor.png)
 
-2. Inserció de codi en pàgines web:
-+ 2.1 Obtenció del llenguatge de marques per mostrar al client.
-+ 2.2 Tecnologies associades: PHP, ASP, JSP, miniaplicacions de servidors (servlets), entre altres.
-+ 2.3 Etiquetes per inserció de codi.
-+ 2.4 Tipus de dades. Conversions entre tipus de dades. Sintaxi del llenguatge. Sentències.
-+ 2.5 Variables.
+Els components d'aquesta arquitectura són:
 
-### 3. Escriu blocs de sentències embeguts en llenguatges de marques, seleccionant i utilitzant les estructures de programació.
+### **Client**
+Són dispositius que fan peticions des d'un **navegador** amb una interfície web al servidor. Fan servir el protocol HTTP que envia una resposta novament al client. Per fer les peticions web es fan servir les URL. Una **URL** és una adreça que conté les dades necessàries per localitzar un recurs en un servidor i que aquest li retorni la informació que necessita. Conté per exemple la IP o nom del del domini (per exemple google.com) per identificar l'equip a Internet, i la ruta dintre del servidor on localitzar el recurs que es demana.
 
-3. Programació basada en llenguatges de marques amb codi encastat:
-+ 3.1 Preses de decisió.
-+ 3.2 Bucles.
-+ 3.3 Tipus de dades compostes.
-+ 3.4 Funcions.
-+ 3.5 Recuperació i utilització d’informació provinent del client web.
-+ 3.6 Processament de la informació introduïda en un formulari.
-+ 3.7 Comentaris.
+A continuació podem veure quins són els navegadors més utilitzats:
 
-### 4. Desenvolupa aplicacions web embegudes en llenguatges de marques analitzant i incorporant funcionalitats segons especificacions.
+![Navegadors més populars](/assets/img/9-1-most-popular-browsers-in-2022.webp)
 
-4. Desenvolupament d’aplicacions web utilitzant codi encastat:
-+ 4.1 Manteniment de l’estat.
-+ 4.2 Galetes (cookíes).
-+ 4.3 Seguretat: usuaris, perfils, rols. Galetes.
-+ 4.4 Autenticació d’usuaris.
-+ 4.5 Adaptacions a webs existents.
-+ 4.6 Proves i depuració.
+[Usage share of web browsers (wikipedia)](https://en.wikipedia.org/wiki/Usage_share_of_web_browsers#Summary_tables)
 
-## 9.1 Introducció. Model de programació en entorn client/servidor. Llenguatges de programació en entorn servidor
+El format d'una URL és el següent
 
+`protocol://domini.tld:port/ruta_recurs/recurs`
+
+Per exemple:
+
+`http://ioc.xtec.cat:80/campus/login/index.php` 
+
+* **Protocol**: El protocol que es farà servir per la comunicació client-servidor. Normalment serà http o https (HTTP segur), però poden ser altres.
+* **Domini**: Nom DNS de l'equip on es troba servidor web. TLD o Top level domain és un domini de nivell superior (.com, .net, .org, etc.)
+* **Port**: El port on el servidor Web està escoltant. Per defecte, si no s'especifica és el 80. Per connexió HTTPS és fa servir el 443.
+* **Ruta** fins al recurs: correspon a la ruta fins a la carpeta dins del servidor web on es troba el recurs (campus/login/).
+* **Recurs**: és el recurs o fitxer que demanem al servidor.
+
+### **Servidor web**
+Un servidor conté un servei (programa que està sempre en execució) que rep les peticions dels clients, localitza els recursos demanats i els retorna als clients. Els recursos demanats normalment es troben dins del mateix servidor web, per exemple, una pàgina html dins el directori arrel del servidor.
+
+![Web Server share](/assets/img/9-1-web-server-share.png)
+Font: [w3techs.com](https://w3techs.com/technologies/overview/web_server)
+
+En aquest unitat farem servir el servidor web Apache. És un servidor web de codi obert llençat el 1995 i el més utilitzat durant molts anys. Apache té un disseny modular, de manera que pot ser ampliat amb altres funcionalitats que poden ser activades independentment del nucli. Darrerament Nginx s'ha popularitzat com a alternativa a Apache, creat pel enginyer rus Igor Sysoev el 2004.
+
+### **Altres serveis**
+
+A vegades un servidor pot demanar dades a un altre servidor. Per exemple, un servidor web pot demanar un llistat de productes a una base de dades per processar-lo abans d'enviar-lo al client.
+
+## 9.1 Llenguatges de scripting
+
+Breu història de la web.
+
+**1990-1995**
+
+La [primera pàgina web](http://info.cern.ch/hypertext/WWW/TheProject.html) és van crear al 1991. Els webs només contenien texte i enllaços, sense imatges o contingut multimèdia. Les webs eren completament estàtiques, és a dir no hi havia cap interacció més enllà dels enllaços per navegar a una altra pàgina. Sense animacions, popups, estils o contigut gràfic. 
+
+En aquesta època van aparèixer els primers llocs web. Javascript és va crear el 1995. 
+
+**1996-2000**
+
+La primera versió de CSS (CSS1) es va introduïr el 1996. Fins aleshores tot l'estil s'implementava amb marques HTML (bgcolor, etc.). CSS permetia separar el contingut de l'estil. Les diferents pàgines podien compartir els CSS i tenir un disseny consistent.  
+
+Les versions HTML2 (1995), HTML3 (1997) i HTML4 (1999) es van crear durant aquest període (HTML5 va arribar el 2014, 15 anys després).
+PHP va sortir el 1995, així com altres llenguatges de servidor com ASP (1996) o JSP (1999).
+
+**2000-2010**
+
+Wikipedia, una de les webs més visitades, es va crear el 2001 i també fa servir tecnologia dinàmica al seu software MediaWiki.
+
+Wordpress es va llençar el 2003, desenvolupat en el llenguatge PHP per entorns amb bases de dades com MySQL o PostgreSQL. A dia d'avui (2022), més del 40% de totes les pàgines d'internet fan servir Wordpress [Font: w3techs.com](https://w3techs.com/technologies/details/cm-wordpress).
+
+**2010-2020**
+
+En aquesta època surten els frameworks de Javascript més coneguts per desenvolupar webs: React (llibreria feta per programar Facebook) al 2013, Vue.JS (2014) i Angular (2010), desenvolupat per Google.
+
+També es llença Node.js (2009) com a alternativa a PHP.
+
+### Server-side scripting
+
+Les pàgines web dinàmiques, a diferència de les webs estàtiques es generen sota demanda. El contingut d'una web dinàmica canvia segons l'hora del dia, l'usuari, etc. mentre que una web estàtica (per exemple una wiki o un blog) està pensada per a la publicació de continguts estàtics. 
+
+![Server Side Scripting](/assets/img/9-php-Client-Server-transp.png)
+
+A una pàgina web dinàmica, la petició arriba al servidor web. Aquest comprova si el contingut ha de ser generat dinàmicament i en aquest cas li passa la petició al processador de scripts de servidor (l'interpret PHP). Aquest genera el codi HTML dinàmicament i li retorna la pàgina web al servidor web, que la transmet al client.
+
+Existeixen diversos llenguatges de scripting de servidor, essent PHP el més utilitzat i amb una comunitat més àmplia. PHP permet l'accés a recursos externs com bases de dades. 
+
+**Python**
+
+Utilitzat amb frameworks com Django o Flask. Python és fàcil d'aprendre i té més utilitats que PHP.
+
+**Ruby**
+
+El framework Ruby on Rails permet crear aplicacions seguint el model MVC (Model Vista Controlador).
+
+**Node.js**
+
+Node.js no és un llenguatge de programació, sino un entorn d'execució en el costat del servidor per executar Javascript. Conté el gestor de paquets NPM.
 
 
 ## 9.2 Programació bàsica amb PHP
+
+PHP (acrònim recursiu PHP: Hypertext Preprocessor) és un llenguatge de script de servidor molt utilitzat en el desenvolupament web. Permet incrustar codi PHP dintre d'una pàgina HTML. Per exemple:
+
+```html
+<html>
+  <head><title>Exemple</title></head>
+  <body>
+      <?php
+        echo "Hola, sóc un script PHP!";
+      ?>
+  </body>
+</html>
+```
+
+En aquest exemple el codi PHP està dintre de les etiquetes <?php i ?> i l'únic que fa es mostrar per pantalla el texte `Hola, sóc un script PHP!`. Aquest exemple és molt sencill i aquest texte el podem mostrar sense l'ús de PHP, però podria connectar-se a una base de dades MySQL i mostrar informació de les taules.
 
 ### 9.2.1 Comentaris
 

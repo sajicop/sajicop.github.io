@@ -14,15 +14,50 @@ Té les següents característiques:
     * Multi-societat
     * Multi-pla de comptes
 
-
 * A nivell tècnic:
     * És un sistema integrat. Això vol dir que té totes les funcions necessàries per l'empresa en un únic sistema i aquestes funcions (vendes, compres, finances) estan relacionades entre si.
 
     * És un sistema modular. Cadascun dels processos organitzatius està dividit en mòduls o seccions, de forma que es poden instal.lar individualment. Aluns dels mòduls que hi poden haver són: producció, compres, vendes, finances, controlling, logística (magatzem), etc.
 
-El sistema ERP més utilitzat a nivell empresarial es SAP. SAP és una empresa alemanya creada el 1972 per varis ex-enginyers de IBM.
+El sistema ERP més utilitzat a nivell empresarial és SAP. SAP és una empresa alemanya creada el 1972 per varis ex-enginyers de IBM. 
 
-## 8.2 CRM
+## 8.2 Mòduls d'un ERP
+
+Tal com hem comentat, un ERP controla diversos processos de negoci, modelant cadascuna de les fases de cada departament de l'empresa. Els principals mòduls són els següents. Els mòduls es poden dividir en dos tipus, mòduls financers i mòduls logístics.
+
+![Mòduls d'un ERP](/assets/img/8-2-SAP-R3-modules.jpg)
+
+### 8.2.1. Finances
+
+Aquest és el mòdul principal i permet tenir un llibre de contabilitat elèctronic (deu, haver). És el nucli del ERP doncs tota la resta de mòduls fan apunts contables automàticament en algunes de les operacions que duun a terme.
+
+Té altres submoduls com Tesoreria (gestió de l'efectiu), Controlling (despeses per centres de cost), etc.
+
+### 8.2.2. Vendes
+
+Permet dur a terme tot el procés des de que el client fa la comanda fins que el producte arriba a la seva casa. Inclou la gestió de documents com comanda de venda, document d'entrega, albarà i factura.
+
+### 8.2.3. Compres
+
+
+
+### 8.2.4. Logística
+
+
+
+### 8.2.5. Producció
+
+
+
+### 8.2.6. Recursos Humans
+
+
+
+### 8.2.7. Qualitat 
+
+
+
+## 8.3 CRM
 
 Un CRM (Customer relationship management) o gestor de relacions amb els clients és un sistema de gestió d'informació que permet centralitzar en una única base de dades totes les interaccions entre una empresa i els seus clients, principalment en tres àrees:
 
@@ -35,7 +70,7 @@ Un CRM (Customer relationship management) o gestor de relacions amb els clients 
 
 * El **màrqueting**: Gràcies al CRM es pot controlar el conjunt d'accions realitzades sobre els clients o clients potencials, d'aquesta manera permet dirigir i gestionar de forma més senzilla les campanyes de captació de clients i de fidelització.
 
-*   El **servei postvenda** o d'atenció al client: Els CRM proporcionen a l'empresa la informació necessària permetent que aquesta ofereixi un servei d'atenció al client i postvenda de nivell superior.
+* El **servei postvenda** o d'atenció al client: Els CRM proporcionen a l'empresa la informació necessària permetent que aquesta ofereixi un servei d'atenció al client i postvenda de nivell superior.
 
 ![Gestió de processos amb CRM](/assets/img/8-1-CRM.jpg)
 
