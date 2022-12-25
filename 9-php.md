@@ -758,7 +758,7 @@ Exemple:
   $valor = "valor de la cookie";
   setcookie("cookie_proves", $valor);
 
-  echo "el valor de la cookie és " . $_COOKIE('cookie_proves') . ".";
+  echo "el valor de la cookie és " . $_COOKIE['cookie_proves'] . ".";
   ?>
 ```
 
