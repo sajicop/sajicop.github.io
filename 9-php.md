@@ -719,6 +719,48 @@ logout.php
 
 ### 9.4.2 Galetes (cookies)
 
+Una galeta és un petit arxiu de texte que envia el servidor web i guardem al nostre equip amb informació sobre les preferències del usuari. Permeten guardar dades com l'idioma, nom de l'usuari, colors del navegador. Les galetes tenen algunes resticcions:
+
+* No poden ocupar més de 4Kb.
+* Els servidors només poden accedir a les cookies establertes pel seu domini.
+* Hi ha un límit de cookies per domini i un limit total de cookies a l'equip de client.
+* Tenen una data de caducitat, a partir de la qual s'esborren.
+
+Per crear una cookie fem servir la funció setcookie(). Només té dos paràmetres obligatoris, `name` i `value`. Les cookies s'han d'enviar abans de qualsevol altre output a la pàgina (per exemple amb `echo`).
+
+Sintaxi:
+
+```php
+ setcookie(
+    string $name,
+    string $value = "",
+    int $expires = 0,
+    string $path = "",
+    string $domain = "",
+    bool $secure = false,
+    bool $httponly = false
+): bool
+```
+Paràmetres:
+
+* Name: el nom de la cookie, per exemple `usuari`.
+* Value: Valor de la cookie, per exemple `joan`. Per recuperar aquest valor, utilitzariem $_COOKIE['usuari'].
+* expires: temps en el que la cookie expira en segons.
+* path: ruta dintre del servidor on es guardarà la cookie. Si es fa servir `/` la cookie estarà disponible per a tot el domini.
+* domain: subdomini per al qual la cookie estarà disponible.
+* secure: la cookie només s'envia si el protocol es HTTPS.
+* httponly: la cookie només serà accesible amb el protocol HTTP.
+
+Exemple:
+
+```php
+  <?php
+  $valor = "valor de la cookie";
+  setcookie("cookie_proves", $valor);
+
+  echo "el valor de la cookie és " . $_COOKIE('cookie_proves') . ".";
+  ?>
+```
 
 ## Annex 1. Instal.lació entorn de desenvolupament
 
