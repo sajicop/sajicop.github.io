@@ -29,33 +29,37 @@ Tal com hem comentat, un ERP controla diversos processos de negoci, modelant cad
 
 ### 8.2.1. Finances
 
-Aquest és el mòdul principal i permet tenir un llibre de contabilitat elèctronic (deu, haver). És el nucli del ERP doncs tota la resta de mòduls fan apunts contables automàticament en algunes de les operacions que duun a terme.
+Aquest és el mòdul principal i permet tenir un llibre de contabilitat elèctronic (deure, haver, moviments). És el nucli del ERP doncs tota la resta de mòduls fan apunts contables automàticament en algunes de les operacions que duun a terme.
 
-Té altres submoduls com Tesoreria (gestió de l'efectiu), Controlling (despeses per centres de cost), etc.
+Té altres submoduls com Tesoreria (gestió de l'efectiu), amortitzacions, etc.
 
-### 8.2.2. Vendes
+### 8.2.2. Controlling
 
-Permet dur a terme tot el procés des de que el client fa la comanda fins que el producte arriba a la seva casa. Inclou la gestió de documents com comanda de venda, document d'entrega, albarà i factura.
+Aquest és un mòdul financer amb el propòsit d'analitzar els gastos e ingresos dintre de l'empresa. Per exemple, s'encarrega de calcular el cost d'un producte tenint en compte els costos de fabricació: materia prima, mà d'obra directa e indirecta. S'encarrega de l'anàlisi de la rentabilidad per segments de mercat, productes, zones geográfiques, canals vendes. Rentabilitat: ingresos - despeses.
 
-### 8.2.3. Compres
+### 8.2.3. Vendes
 
+Permet dur a terme tot el procés des de que el client fa la comanda fins que el producte arriba a la seva casa. Inclou la gestió de documents com ofertes, gestió del crèdi, comanda de venda, document d'entrega, albarà i factura. 
 
+### 8.2.4. Compres
 
-### 8.2.4. Logística
+S'encarrega de l'aprovisionament de les matèries primes per poder fabricar el producte a vendre, màquines, consumibles, etc. També permet fer una gestió automàtica de les compres segons l'stock, el temps de reaprovisionament i el volum de vendes (MRP automàtic).
 
+### 8.2.5. Logística
 
+S'encarrega de les gestions relacionades amb els matgatzem. Permet gestionar l'stock, moviments entre magatzems inventaris, etc.
 
-### 8.2.5. Producció
+### 8.2.6. Producció
 
+És un dels mòduls més importants, doncs s'encarrega de gestionar el procés productiu. Té documents com el full de ruta (passos per a fabricar un producte determinat a la cadena de producció), el BOM (bill of materials), cost del producte, gestió dels materials...
 
+### 8.2.7. Recursos Humans
 
-### 8.2.6. Recursos Humans
+Tracta amb tots els processos relacionats amb els empleats: contratació, formació, control del temps (horaris), despeses de viatge, remuneracions (càlcul de la nòmina), gestió del talent, etc.
 
+### 8.2.8. Qualitat 
 
-
-### 8.2.7. Qualitat 
-
-
+Molt relacionat amb el mòdul de producció. S'encarrega de gestionar els lots de producció, fer anàlisis del productes per verificar que compleixen una sèrie d'estàndars o normes, que tenen les característiques físiques o químiques necessàries, etc.
 
 ## 8.3 CRM
 
