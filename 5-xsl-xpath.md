@@ -21,11 +21,11 @@ Donat que XML està pensat principalment per emmagatzemar i intercanviar informa
 
 * Transformar el document. Aquesta opció permet transformar el document en un altre pensat per a la seva visualització: PDF, HTML, etc.
 
-## 5.2 eXtensible Stylesheet Language (XSL)
+## 5.2 XSLT (Extensible Stylesheet Language Transformations)
 
-XSL és una familia de llenguatges basats en XML que permeten transformar els documents XML en altres documents. Consta del següents llenguatges:
+XSLT és una familia de llenguatges basats en XML que permeten transformar els documents XML en altres documents. Consta del següents llenguatges:
 
-* XSLT (XSL transformations) és un llenguatge per transformar documents XML.
+* XSL (eXtensible Stylesheet Language) és un llenguatge per transformar documents XML en altres documents com HTML, XML o texte pla.
 
 * XPath és un llenguatge que permet accedir a parts concretes d'un document XML mitjançant expressions de búsqueda. Permet navegar per un document XML.
 
