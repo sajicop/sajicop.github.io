@@ -21,6 +21,8 @@ Té les següents característiques:
 
 El sistema ERP més utilitzat a nivell empresarial és SAP. SAP és una empresa alemanya creada el 1972 per varis ex-enginyers de IBM. 
 
+Respecte els ERPs opensource més coneguts tenim [Odoo](https://www.odoo.com/es_ES) i [Openbravo](https://www.openbravo.com/es) [Wiki](http://wiki.openbravo.com/wiki/Installation/Ubuntu)
+
 ## 8.2 Mòduls d'un ERP
 
 Tal com hem comentat, un ERP controla diversos processos de negoci, modelant cadascuna de les fases de cada departament de l'empresa. Els principals mòduls són els següents. Els mòduls es poden dividir en dos tipus, mòduls financers i mòduls logístics.
@@ -40,6 +42,8 @@ Aquest és un mòdul financer amb el propòsit d'analitzar els gastos e ingresos
 ### 8.2.3. Vendes
 
 Permet dur a terme tot el procés des de que el client fa la comanda fins que el producte arriba a la seva casa. Inclou la gestió de documents com ofertes, gestió del crèdi, comanda de venda, document d'entrega, albarà i factura. 
+
+![Fluxe de vendes](assets/img/8-3-Flujo de ventas.png)
 
 ### 8.2.4. Compres
 
