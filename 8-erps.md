@@ -41,7 +41,7 @@ Aquest és un mòdul financer amb el propòsit d'analitzar els gastos e ingresos
 
 ### 8.2.3. Vendes
 
-Permet dur a terme tot el procés des de que el client fa la comanda fins que el producte arriba a la seva casa. Inclou la gestió de documents com ofertes, gestió del crèdi, comanda de venda, document d'entrega, albarà i factura. 
+Permet dur a terme tot el procés des de que el client fa la comanda fins que el producte arriba a la seva casa. Inclou la gestió de documents com ofertes, gestió del crèdi, comanda de venda, document d'entrega, albarà i factura. A continuació s'adjunta el fluxe general per al procés de vendes a un ERP
 
 ![Fluxe de vendes](assets/img/8-3-Flujo de ventas.png)
 
