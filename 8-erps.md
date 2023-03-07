@@ -41,13 +41,15 @@ Aquest és un mòdul financer amb el propòsit d'analitzar els gastos e ingresos
 
 ### 8.2.3. Vendes
 
-Permet dur a terme tot el procés des de que el client fa la comanda fins que el producte arriba a la seva casa. Inclou la gestió de documents com ofertes, gestió del crèdi, comanda de venda, document d'entrega, albarà i factura. A continuació s'adjunta el fluxe general per al procés de vendes a un ERP
+Permet dur a terme tot el procés des de que el client fa la comanda fins que el producte arriba a la seva casa. Inclou la gestió de documents com ofertes, gestió del crèdi, comanda de venda, document d'entrega, albarà i factura. A continuació s'adjunta el fluxe general per al procés de vendes a un ERP.
 
 ![Fluxe de vendes](assets/img/8-3-Flujo de ventas.png)
 
 ### 8.2.4. Compres
 
-S'encarrega de l'aprovisionament de les matèries primes per poder fabricar el producte a vendre, màquines, consumibles, etc. També permet fer una gestió automàtica de les compres segons l'stock, el temps de reaprovisionament i el volum de vendes (MRP automàtic).
+S'encarrega de l'aprovisionament de les matèries primes per poder fabricar el producte a vendre, màquines, consumibles, etc. També permet fer una gestió automàtica de les compres segons l'stock, el temps de reaprovisionament i el volum de vendes (MRP automàtic). A continuació s'adjunta el fluxe general per al procés de compres a un ERP.
+
+![Fluxe de compres](assets/img/8-4-Flujo de compras.png)
 
 ### 8.2.5. Logística
 
