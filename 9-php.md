@@ -2,6 +2,33 @@
 
 ## Índex de continguts
 
+- [Tema 9: PHP](#tema-9--php)
+  * [9.0 Introducció. Model de programació en entorn client/servidor. Llenguatges de programació en entorn servidor](#90-introducci--model-de-programaci--en-entorn-client-servidor-llenguatges-de-programaci--en-entorn-servidor)
+    + [Client](#--client--) 
+    + [Servidor web](#--servidor-web--)
+    + [Altres serveis](#--altres-serveis--)
+  * [9.1 Llenguatges de scripting](#91-llenguatges-de-scripting)
+    + [Server-side scripting](#server-side-scripting)
+  * [9.2 Programació bàsica amb PHP](#92-programaci--b-sica-amb-php)
+    + [9.2.0 Comentaris](#920-comentaris)
+    + [9.2.1 Constants](#921-constants)
+    + [9.2.2 Variables](#922-variables)
+    + [9.2.2.1 Tipatge de dades](#9221-tipatge-de-dades)
+    + [9.2.3 Tipus de dades compostes](#923-tipus-de-dades-compostes)
+    + [9.2.4 Condicionals](#924-condicionals)
+    + [9.2.4 Bucles](#924-bucles)
+    + [9.2.5 Funcions](#925-funcions)
+  * [9.3. Recuperació i processament de dades des d'un formulari web](#93-recuperaci--i-processament-de-dades-des-d-un-formulari-web)
+    + [9.3.1. Funcions per testejar existència/valor](#--931-funcions-per-testejar-exist-ncia-valor--)
+    + [9.3.2. Arrays superglobals](#--932-arrays-superglobals--)
+    + [9.3.3. Informació del servidor](#--933-informaci--del-servidor--)
+    + [9.3.4. Pàgines autoprocessades](#--934-p-gines-autoprocessades--)
+    + [9.3.5. Càrrega de fitxers](#--935-c-rrega-de-fitxers--)
+  * [9.4 Funcionalits web](#94-funcionalits-web)
+    + [9.4.1 Sessions](#941-sessions)
+    + [9.4.2 Galetes (cookies)](#942-galetes--cookies-)
+  * [Annex 1. Instal.lació entorn de desenvolupament](#annex-1-installaci--entorn-de-desenvolupament)
+
 ## 9.0 Introducció. Model de programació en entorn client/servidor. Llenguatges de programació en entorn servidor
 
 En aquesta unitat veurem el llenguatge de programació PHP, que és pot insertar en el codi del llenguatge de marques HTML. Les pàgines web es poden accedir en local, és a dir podem obrir un arxiu html amb el nostre navegador i visualitzar-ho. No obstant, aquest no és l'escenari més comú. Les aplicacions web fan servir el model client/servidor que veurem a continuació. El funcionament d'aquesta arquitectura és el següent:
