@@ -138,6 +138,7 @@ Una constant és un identificador per un valor que no canvia durant tota l'execu
 
 Per definir constants a PHP, fem servir la funció define(). Exemples:
 
+```php
 // Noms de constants vàlides
 define("PI", "3.141592");
 define("MAX_TEMP", "35");
@@ -145,6 +146,7 @@ define("MIN_TEMP", "-273.15");
 
 // Noms de constants invàlides
 define("2FOO", "algo");
+```
 
 Les constants màgiques es resolen en temps de compilació, per tant canvien durant l'execució de l'script. Cadascuna proporciona informació útil sobre l'entorn d'execucuió. Hi ha nou constants màgiques:
 
