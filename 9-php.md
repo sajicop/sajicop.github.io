@@ -114,7 +114,7 @@ PHP (acrònim recursiu PHP: Hypertext Preprocessor) és un llenguatge de script 
 
 En aquest exemple el codi PHP està dintre de les etiquetes <?php i ?> i l'únic que fa es mostrar per pantalla el texte `Hola, sóc un script PHP!`. Aquest exemple és molt sencill i aquest texte el podem mostrar sense l'ús de PHP, però podria connectar-se a una base de dades MySQL i mostrar informació de les taules.
 
-### 9.2.1 Comentaris
+### 9.2.0 Comentaris
 
 PHP permet diferents notacions per a la inserció de comentaris, dues provenen de C++ i l'altra de Perl o Bash.
 
@@ -131,6 +131,34 @@ multilinea */
 
 ?>
 ```
+
+### 9.2.1 Constants
+
+Una constant és un identificador per un valor que no canvia durant tota l'execució de l'script, excepte per a les constants màgiques que en realitat no són constants. Les constants són case-sensitive al igual que les variables. Per convenció les constants es defineixen en majúscules. 
+
+Per definir constants a PHP, fem servir la funció define(). Exemples:
+
+// Noms de constants vàlides
+define("PI", "3.141592");
+define("MAX_TEMP", "35");
+define("MIN_TEMP", "-273.15");
+
+// Noms de constants invàlides
+define("2FOO", "algo");
+
+Les constants màgiques es resolen en temps de compilació, per tant canvien durant l'execució de l'script. Cadascuna proporciona informació útil sobre l'entorn d'execucuió. Hi ha nou constants màgiques:
+
+|Nom              | Descripció     |
+|-----------------|----------------|
+|`__LINE__`       | Linea actual de l'arxiu .php               |
+|`__FILE__`       | Ruta completa i nom de l'arxiu php que s'està executant              |
+|`__DIR__`        | Directori on està l'arxiu              |
+|`__FUNCTION__`   | El nom de la funció actual              |
+|`__CLASS__`      | El nom de la classe actual              |
+|`__TRAIT__`      | El nom del tret actual (POO)              |
+|`__METHOD__`     | El mètode de la classe actual               |
+|`__NAMESPACE__`  | El nom de l'espai de noms actual              |
+|ClassName::class | Nom fully-qualified (ruta completa) de la classe              |
 
 ### 9.2.2 Variables
 
