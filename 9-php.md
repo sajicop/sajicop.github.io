@@ -714,6 +714,63 @@ Podem crear una pàgina PHP que generi un formulari i després el processi. Una 
 
 ### **9.3.5. Càrrega de fitxers**
 
+Els formularis HTML proporcionen un tipus input de control que permet pujar arxius al servidor web. Per pujar un arxiu, haurem d'establir obligatòriament l'atribut *enctype* de l'element form, tal com es mostra en el següent exemple.
+
+```html
+<form action="mypage.php" method="post" enctype="multipart/form-data">
+  <input name="myfile" type="file">
+  <input type="submit" value="Upload">
+</form>
+```
+
+Aquest arxiu es pot pujar al servidor mitjançant PHP en dos passos. En primer lloc, la informació sobre l'arxiu pujat es guarda en l'array associatiu global $_FILES.
+
+La següent taula descriu les claus de l'array $_FILES una vegada la pugem al servidor.
+
+| Nom            | Descripció       |
+|----------------|------------------|
+| name           | Nom original de l'arxiu pujat |
+| tmp_name       | Ruta de la còpia temporal al servidor web |
+| size           | Tamany de l'arxiu |
+| type           | Tipus MIME de l'arxiu |
+| error          | Codi d'error     |
+
+Els arxius que es pujen al servidor web ho fan temporalment. Si l'script no guarda els arxius definitivament, aquest s'esborren automàticament (per seguretat). Per exemple, podriem comprobar que el tipus d'arxiu o el tamany són els desitjats abans de pujar els arxius definitivament. Per pujar definitivament els arxius al servidor fem servir la funcio **move_uploaded_file(arxiu_temporal, arxiu_definitiu)**. El següent exemple comproba que l'arxiu pujat sigui una imatge i en cas afirmatiu la puja al servidor. En cas contrari imprimeix l'array $_FILES que ens pot donar més informació sobre l'error:
+
+```php
+<?php 
+  if(isset($_POST["submit"])) {
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    if($check !== false) {
+      echo "L'arxiu és una imatge - " . $check["mime"] . ".";
+      $uploadOk = 1;
+    } else {
+      echo "L'arxiu no és una imatge.";
+      $uploadOk = 0;
+    }
+  }
+
+  $uploaddir = '/var/www/uploaded/';
+  $uploadfile = $uploaddir . basename($_FILES["fileToUpload"]["name"]);
+
+  echo "<pre>";
+
+  if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $uploadfile)) {
+      echo "File is valid, and was successfully uploaded.\n";
+  } else {
+      echo "Possible file upload attack!\n";
+  }
+
+  echo 'Here is some more debugging info:';
+  print_r($_FILES);
+
+  print "</pre>";
+?>
+```
+
+Activitat: Probeu aquest codi i comprobeu que l'arxiu efectivament s'ha pujat al servidor.
+
+
 ## 9.4 Funcionalits web
 
 ### 9.4.1 Sessions
@@ -818,6 +875,22 @@ Exemple:
   echo "el valor de la cookie és " . $_COOKIE['cookie_proves'] . ".";
   ?>
 ```
+
+Típicament, les cookies s'establiran amb 3 paràmetres: $name, $value i $expires. Aquest últim paràmetre ens permet establir la validesa de la cookie en segons. Per exemple, per guardar una cookie amb la data de l'ultima visita i una validesa d'una hora, executarem el següent codi:
+
+```php
+  <?php
+    setcookie("lastvisit", date("H:i:s"), time() + 60*60);
+  ?>
+```
+
+Per borrar una galeta manualment, podem establir la data de caducitat en el passat. Una vegada tanquem l'explorador, es borrar la galeta.
+
+```php
+  <?php
+    setcookie("lastvisit", 0, 0);
+  ?>
+
 
 ## Annex 1. Instal.lació entorn de desenvolupament
 
