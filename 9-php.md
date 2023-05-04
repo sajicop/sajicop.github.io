@@ -890,7 +890,7 @@ Per borrar una galeta manualment, podem establir la data de caducitat en el pass
   <?php
     setcookie("lastvisit", 0, 0);
   ?>
-
+```
 
 ## Annex 1. Instal.lació entorn de desenvolupament
 
