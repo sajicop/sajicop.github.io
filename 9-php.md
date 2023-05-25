@@ -18,6 +18,7 @@
     + [9.2.4 Condicionals](#924-condicionals)
     + [9.2.4 Bucles](#924-bucles)
     + [9.2.5 Funcions](#925-funcions)
+    + [9.2.6 Funcions predefinides a PHP](#926-funcions-predefinides-a-PHP)
   * [9.3. Recuperació i processament de dades des d'un formulari web](#93-recuperaci--i-processament-de-dades-des-d-un-formulari-web)
     + [9.3.1. Funcions per testejar existència/valor](#--931-funcions-per-testejar-exist-ncia-valor--)
     + [9.3.2. Arrays superglobals](#--932-arrays-superglobals--)
@@ -515,6 +516,69 @@ Les funcions són blocs de codi que només s'executen quan es criden. La creaci�
   ```php
     $suma = suma_enters(3) // $a = 3 $b = 3 -> suma val 6
   ```
+
+### 9.2.6 Funcions predefinides a PHP (Built-in)
+
+PHP té moltes funcions predefinides que permeten treballar amb arrays, cadenes de text, dates, connectar-se a bases de dades, manipular imatges, etc.
+
+Manipular arrays:
+
+| Nom funcio| Tipus | Descripció    |
+|-----------|--------------------------------------------------------------|
+|asort()    | arrays| Permet ordenar un array ascendentment per valor      |
+|arsort()   | arrays| Permet ordenar un array descendentment per valor     |
+|ksort()    | arrays| Permet ordenar un array ascendentment per clau       |
+|krsort()   | arrays| Permet ordenar un array descendentment per clau      |
+|array_reverse()   | arrays| Retorna un array en ordre invers      |
+|array()   | arrays| Crea un array      |
+|array_sum() |arrays | Retorna la suma dels valors en un array |
+|count()    | arrays | Retorna el numero d'elements en un array |
+
+
+
+Manipulació de cadenes:
+
+| Nom funcio| Tipus | Descripció    |
+|-----------|--------------------------------------------------------------|
+|explode()  | strings| Trenca una cadena en un array                       |
+|implode()  | strings| Retorna una cadena a partir dels elements d'un array |
+|str_replace() | strings| Reemplaça alguns caràcters a una cadena           |
+|strcmp() | strings| Compara dues cadenes (case-sensitive)      |
+|strlen() | strings| Retorna la longitud d'una cadena      |
+|strpos() | strings | Retorna la posició de la primera ocurrència d'una cadena dintre una altra |
+|strrev() | strings | capgira les els caràcters d'una cadena |
+|strtolower() | strings | converteix una cadena a minúscules |
+|strtoupper() | strings | converteix una cadena a majúscules |
+|trim() | strings | Elimina els espais en blanc del principi i final d'una cadena |
+|substr() | strings | Retorna part d'una cadena |
+
+Funcions matemàtiques
+
+| Nom funcio| Tipus | Descripció    |
+|-----------|--------------------------------------------------------------|
+|rand()     | math | Genera un enter aleatori                       |
+|round()    | math | Redondeja un numero decimal |
+|pow()      | math | Retorna x elevat a la potencia de y |
+|min()      | math | Retorna el valor més petit dintre d'un array o llista de valors |
+|max()      | math | Retorna el valor més gran dintre d'un array o llista de valors |
+|sqrt()     | math | Retorna l'arrel quadrada |
+|pi()      | math | Retorna el valor de pi |
+|sin()      | math | Retorna sinus de x |
+
+Altres 
+
+| Nom funcio| Tipus | Descripció    |
+|-----------|--------------------------------------------------------------|
+|print_r()    |altres | Imprimeix una variable o array en format llegible per humans |
+|is_array()   |altres | retorna true si la variable especificada es un array |
+|is_string()   |altres | retorna true si la variable especificada es un string |
+|is_null()   |altres | retorna true si la variable especificada es null |
+|fopen()   |altres | obre un arxiu o URL |
+|fclose()   |altres | tanca un arxiu o URL |
+|header()   |altres | enviar una capcelera HTTP sense format |
+
+
+
 
 ## 9.3. Recuperació i processament de dades des d'un formulari web
 
